@@ -1,0 +1,110 @@
+<div class="panel panel-kite mb-0">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="syslog-title"  (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('syslog', isCollapsed);">
+            <i class="icon fa fa-bar-chart"></i>
+            Syslog<span *ngIf="dashboardService.lastSearch">: {{dashboardService.lastSearch}}</span> <span *ngIf="counter!=undefined" class="add-count">({{ counter }})</span>
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div id="syslog" [collapse]="isCollapsed">
+        <div class="panel-body">
+            <tabset>
+                <tab [heading]="tableSettings.syslogIPS.heading">
+                    <div class="dataTables_wrapper">
+                        <table  border="0" id="syslogIPS-table" class="syslog-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="timestamp">Timestamp</th>
+                                <th class="no-sort source">Source</th>
+                                <th class="no-sort source">Destination</th>
+                                <th class="no-sort source">Port</th>
+                                <th class="no-sort">Event</th>
+                                <th class="no-sort source">Log Source</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+
+                <tab [heading]="tableSettings.syslogDHCP.heading">
+                    <div class="dataTables_wrapper">
+                        <table  border="0" id="syslogDHCP-table" class="syslog-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="timestamp">Timestamp</th>
+                                <th class="no-sort">Event</th>
+                                <th class="no-sort source">Log Source</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+
+                <tab [heading]="tableSettings.syslogASA.heading">
+                    <div class="dataTables_wrapper">
+                        <table  border="0" id="syslogASA-table" class="syslog-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="timestamp">Timestamp</th>
+                                <th class="no-sort">Event</th>
+                                <th class="no-sort source">Log Source</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+
+                <tab [heading]="tableSettings.syslogRouter.heading">
+                    <div class="dataTables_wrapper">
+                        <table  border="0" id="syslogRouter-table" class="syslog-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="timestamp">Timestamp</th>
+                                <th class="no-sort">Event</th>
+                                <th class="no-sort source">Log Source</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+
+                <tab [heading]="tableSettings.syslogVoice.heading">
+                    <div class="dataTables_wrapper">
+                        <table  border="0" id="syslogVoice-table" class="syslog-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="timestamp">Timestamp</th>
+                                <th class="no-sort">Event</th>
+                                <th class="no-sort source">Event Source</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+
+                <tab [heading]="tableSettings.syslogProxy.heading">
+                    <div class="dataTables_wrapper">
+                        <table  border="0" id="syslogProxy-table" class="syslog-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="timestamp">Timestamp</th>
+                                <th class="no-sort source">Source</th>
+                                <th class="no-sort source">Destination</th>
+                                <th class="no-sort source">Port</th>
+                                <th class="no-sort source">Host</th>
+                                <th class="no-sort">URI</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

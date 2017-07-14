@@ -1,0 +1,52 @@
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "week" : {
+      "buckets" : [ {
+        "key_as_string" : "2016-W29",
+        "key" : 1468800000000,
+        "doc_count" : 2,
+        "day" : {
+          "buckets" : [ {
+            "key_as_string" : "4",
+            "key" : 1469059200000,
+            "doc_count" : 2
+          } ]
+        }
+      },
+      {
+        "key_as_string" : "2016-W30",
+        "key" : 1468800000001,
+        "doc_count" : 4,
+        "day" : {
+          "buckets" : [ {
+            "key_as_string" : "5",
+            "key" : 1469059200001,
+            "doc_count" : 4
+          },
+          {
+            "key_as_string" : "6",
+            "key" : 1469059200002,
+            "doc_count" : 5
+          },
+          {
+            "key_as_string" : "7",
+            "key" : 1469059200003,
+            "doc_count" : 2
+          } ]
+        }
+      } ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+autom4te.cache
+.cproject
+.project
+Makefile
+config
+config.h
+config.log
+config.status
+stamp-h1

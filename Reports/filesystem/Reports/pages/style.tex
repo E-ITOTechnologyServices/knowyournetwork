@@ -1,0 +1,115 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\geometry{a4paper, landscape, left=25mm, right=25mm, headsep=1.5cm, bottom=25mm} %Defines the Layout of the paper
+\ULCornerWallPaper{1}{graphics/pageheader.jpg} %Define the graphical header
+\LLCornerWallPaper{0.24}{graphics/pagefooter.jpg} %Define the graphical footer
+
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt} %Chapter starts higher on the page
+\titleformat{\chapter}{\large}{\thechapter.}{10pt}{\large} %Defines what the chapter looks like
+
+\listfiles
+
+
+\makeatletter %Changes the group of the @ Symbol
+\setlength\@fptop{0\p@} %float at the top
+\makeatother %Changes the group of the @ Symbol
+
+\setmainfont{Ubuntu} %sets the default font to ubuntu
+\pgfplotsset{date ZERO=2016-01-01} %changes the time from 24:00 to 0:00
+
+\pgfplotsset{/pgf/number format/assume math mode=true} %sets the mainfont at the pgfplot tables
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} %to set a manual column width for tables
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} %to set a manual column width for tables
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} %to set a manual column width for tables
+
+
+\setlength{\headheight}{20pt}				%Defines the hight of the header
+\definecolor{eito green}{rgb}{0.560784,0.650980,0.172549}	%Defines the colour eito green
+\definecolor{graphgreen}{rgb}{0.4,0.69,0.2}                     %Defines the colour graphgreen
+\definecolor{steelblue}{rgb}{0.27,0.51,0.71}                    %Defines the colour steelblue
+\definecolor{graphgreen2}{RGB}{99,140,82}	%Defines graphgreen2
+\definecolor{graphgreen3}{RGB}{167,190,115}	%Defines graphgreen3
+
+%green from dark to bright
+
+\definecolor{green0}{HTML}{8FA62C}
+\definecolor{green1}{HTML}{A5B657}
+\definecolor{green2}{HTML}{BCC883}
+\definecolor{green3}{HTML}{D2DAAE}
+\definecolor{green4}{HTML}{E8EDD8}
+
+
+\fancypagestyle{plain}	%Defines the header/footer
+{
+\renewcommand{\headrulewidth}{0pt} %Defines the thickness of the headerline
+\fancyfoot[R]{\small{\thepage}}    %Defines the right side of the footer
+\fancyfoot[C]{}                    %Defines the center of the footer
+\fancyfoot[L]{\small{\emph{\normalsize{\textbf{\color{eito green}e}}}-ito Technology Services GmbH}} %Defines the left side of the footer
+}
+\counterwithout{figure}{chapter}	%Changes the way of counting the figures for the ListOfFigures
+\counterwithout{table}{chapter}		%Changes the way of counting the tables for the ListOfTables
+
+\hyphenation{				%Words which should not be divided
+scanner
+requirement
+usage}
+
+\makeatletter  %Changes the group of the @ Symbol
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne   %Changes the style of the list of tables and the table of contents
+                              \refstepcounter{chapter}%
+                              \typeout{\@chapapp\space\thechapter.}%
+                              \addcontentsline{toc}{chapter}%
+                                        {\protect\numberline{\thechapter}#1}%
+                         \else
+                           \addcontentsline{toc}{chapter}{#1}%
+                         \fi
+                         \chaptermark{#1}%
+                         \if@twocolumn
+                           \@topnewpage[\@makechapterhead{#2}]%
+                         \else
+                           \@makechapterhead{#2}%
+                           \@afterheading
+                         \fi}
+\makeatother  %Changes the group of the @ Symbol
+
+%Farbdefinitionen:
+
+\definecolor{RStack1}{RGB}{0,110,138}
+\definecolor{RStack2}{RGB}{111,135,216}
+\definecolor{RStack3}{RGB}{102,61,184}
+\definecolor{RStack4}{RGB}{188,82,188}
+\definecolor{RStack5}{RGB}{158,53,51}
+\definecolor{RStack6}{RGB}{218,160,93}
+\definecolor{RStack7}{RGB}{191,175,64}
+\definecolor{RStack8}{RGB}{64,80,191}
+\definecolor{RStack9}{RGB}{191,80,64}
+\definecolor{RStack10}{RGB}{64,175,191}
+\definecolor{RStack11}{RGB}{112,191,64}
+\definecolor{RStack12}{RGB}{143,64,191}
+\definecolor{RStack13}{RGB}{191,64,167}
+\definecolor{RStack14}{RGB}{64,191,88}
+\definecolor{RStack15}{RGB}{191,151,64}
+\definecolor{RStack16}{RGB}{64,104,191}
+\definecolor{RStack17}{RGB}{191,64,72}
+\definecolor{RStack18}{RGB}{64,191,183}
+\definecolor{RStack19}{RGB}{135,191,64}
+\definecolor{RStack20}{RGB}{120,64,191}
+\definecolor{RStack21}{RGB}{191,64,120}
+
+
+\sloppy %reduces the frequency of divided words but sometimes raise the space between the words a little bit

@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# Copyright (C) 2017 e-ito Technology Services GmbH
+# e-mail: info@e-ito.de
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Frontend test harness
+#
+################################################################
+# Configuration.
+#
+export TAG=${1:-${TAG:-${USER}}}
+#
+HOST=${DOCKER_HOST:-$(hostname)}
+HOST=${HOST##tcp://}
+HOST=${HOST%:*}
+#
+# Name of the Docker image.
+#
+export IMAGE="kyn/frontend"
+#
+# Port the application will listen on.
+#
+INTERNAL_PORT=80
+#
+################################################################
+#
+check_error() {
+	if [ "0" -ne "$1" ]; then
+		echo $2
+		exit 1
+	fi
+}
+#
+check_existence() {
+	echo "Checking for existence of <$1>"
+	curl -sf "${BASE_URL}/$1" > /dev/null
+	check_error $? "File <$1> is missing"
+}
+#
+check_content() {
+	echo "Checking content of <$1>"
+	curl -sN "${BASE_URL}/$1" | grep -q "$2"
+	check_error $? "Content of file <$1> is incorrect, expected <$2>"
+}
+#
+################################################################
+# Discover which port it is listening on.
+#
+CONTAINER=`eval docker ps -aq -f ancestor=$IMAGE:$TAG`
+if [ -z "$CONTAINER" ]; then
+	echo "Not deployed"
+	exit 1
+fi
+#
+PORT=`docker port $CONTAINER $INTERNAL_PORT | cut -d: -f2`
+BASE_URL="http://${HOST}:${PORT}"
+#
+################################################################
+#
+# Check existence of URLs
+#
+URLS=( \
+	   index.html \
+	 )
+#
+for FILE in ${URLS[*]}
+do
+	check_existence $FILE
+done
+#
+# Check content of files.
+#
+check_content index.html "<title>know your network</title>"
+#
+################################################################
+# Clean up and exit.
+#
+echo "All tests completed successfully"
+################################################################
+exit 0

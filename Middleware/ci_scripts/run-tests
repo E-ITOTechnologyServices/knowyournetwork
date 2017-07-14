@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+# Middleware test harness
+#
+# Author: Steve Chaplin
+#
+# Date: 12-07-2016
+#
+# Run tests - return non-zero if anything fails.
+#
+# Usage: run-tests
+#
+####################################################################################################
+# Include convenience functions.
+#
+. ../ci_scripts/common
+#
+####################################################################################################
+# Configuration.
+#
+MODULE="Middleware"
+#
+TAG=${1:-"latest"}
+#
+# Name of the Docker image.
+#
+IMAGE="kyn/middleware-test"
+#
+####################################################################################################
+# Build and run unit tests.
+#
+echo "Please wait, building tests..."
+#
+which docker > /dev/null
+check_error $? "Docker must be installed"
+#
+# Build app tester
+#
+log $MODULE "building app tester..."
+LOG=$( docker build -f ci_scripts/Dockerfile.build -t ${IMAGE}:$TAG . 2>&1 )
+log_success $? "$LOG"
+#
+# Execute tests
+#
+echo "executing tests..."
+docker run --rm -v $PWD:/tmp/middleware -u $(id -u):$(id -g) ${IMAGE}:$TAG -Ptest clean test org.jacoco:jacoco-maven-plugin:report
+if [ $? -ne 0 ]; then
+	echo "Failed to execute tests."
+	exit 1
+fi
+#
+####################################################################################################
+# Perform some cleanup.
+#
+# Stop and remove docker container
+#
+CONTAINER=`eval docker ps -aq -f ancestor=$IMAGE:$TAG`
+if [ ! -z "$CONTAINER" ]; then
+    log $MODULE "stopping container..."
+    LOG=$( docker stop $CONTAINER 2>&1 )
+    log_success $? "$LOG"
+	#
+    log $MODULE "removing container..."
+    LOG=$( docker rm $CONTAINER 2>&1 )
+    log_success $? "$LOG"
+fi
+#

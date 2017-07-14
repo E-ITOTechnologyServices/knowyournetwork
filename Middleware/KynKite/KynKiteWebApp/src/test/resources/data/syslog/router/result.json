@@ -1,0 +1,124 @@
+{
+  "took" : 3,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2200,
+    "max_score" : null,
+    "hits" : [ {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVjUQXFrsYemHJ3OLDsz",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.248.4",
+        "cisco_message" : "Jun 30 06:47:25.703 UTC: %SEC-6-IPACCESSLOGRP: list Voice denied pim 10.134.21.2 -> 224.0.0.13, 1 packet"
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVjUQXFrsYemHJ3OLDs0",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.74.148",
+        "cisco_message" : "Jun 30 06:47:53.948 UTC: %SW_DAI-4-DHCP_SNOOPING_DENY: 4 Invalid ARPs (Req) on Gi1/0/44, vlan 1198.([448a.5bb4.e8a0/10.139.207.46/0000.0000.0000/10.139.207.33/06:47:53 UTC Thu Jun 30 2016])"
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVjUQXFrsYemHJ3OLDs1",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.195.12",
+        "cisco_message" : "Jun 30 06:47:54.025 UTC: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on FastEthernet2/19 (not half duplex), with SEP1CE6C799FA8D Port 1 (half duplex)."
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVjUQXFrsYemHJ3OLDs2",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.178.156",
+        "cisco_message" : "Jun 30 06:47:53.967 UTC: %SW_DAI-4-DHCP_SNOOPING_DENY: 1 Invalid ARPs (Res) on Gi2/0/26, vlan 1118.([0000.747d.3864/10.30.146.5/7c69.f641.48ff/10.30.146.3/06:47:51 UTC Thu Jun 30 2016])"
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVkWPv3KqFUUybCf4azl",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.248.4",
+        "cisco_message" : "Jun 30 06:47:25.703 UTC: %SEC-6-IPACCESSLOGRP: list Voice denied pim 10.134.21.2 -> 224.0.0.13, 1 packet"
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVkWPv3KqFUUybCf4azm",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.74.148",
+        "cisco_message" : "Jun 30 06:47:53.948 UTC: %SW_DAI-4-DHCP_SNOOPING_DENY: 4 Invalid ARPs (Req) on Gi1/0/44, vlan 1198.([448a.5bb4.e8a0/10.139.207.46/0000.0000.0000/10.139.207.33/06:47:53 UTC Thu Jun 30 2016])"
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVkWPv3KqFUUybCf4azn",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.195.12",
+        "cisco_message" : "Jun 30 06:47:54.025 UTC: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on FastEthernet2/19 (not half duplex), with SEP1CE6C799FA8D Port 1 (half duplex)."
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVkWPv3KqFUUybCf4azo",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.769Z",
+        "router" : "10.127.178.156",
+        "cisco_message" : "Jun 30 06:47:53.967 UTC: %SW_DAI-4-DHCP_SNOOPING_DENY: 1 Invalid ARPs (Res) on Gi2/0/26, vlan 1118.([0000.747d.3864/10.30.146.5/7c69.f641.48ff/10.30.146.3/06:47:51 UTC Thu Jun 30 2016])"
+      },
+      "sort" : [ 1467269280769 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVjUQXFrsYemHJ3OLDsy",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.768Z",
+        "router" : "10.127.47.180",
+        "cisco_message" : "Jun 30 06:47:54.788 UTC: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to up"
+      },
+      "sort" : [ 1467269280768 ]
+    }, {
+      "_index" : "kyn-syslog-router-demo",
+      "_type" : "syslog-router",
+      "_id" : "AVkWPv3KqFUUybCf4azk",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-06-30T06:48:00.768Z",
+        "router" : "10.127.47.180",
+        "cisco_message" : "Jun 30 06:47:54.788 UTC: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to up"
+      },
+      "sort" : [ 1467269280768 ]
+    } ]
+  }
+}

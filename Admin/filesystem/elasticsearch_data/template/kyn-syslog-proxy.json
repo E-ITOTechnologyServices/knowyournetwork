@@ -1,0 +1,34 @@
+{
+  "order": 1,
+  "template": "kyn-syslog-proxy-*",
+  "mappings": {
+    "_default_": {
+      "properties": {
+        "destinationIP": {
+          "type": "ip"
+        },
+        "geoip": {
+          "properties": {
+            "location": {
+              "type": "geo_point"
+            },
+            "ip": {
+              "type": "ip"
+            }
+          }
+        },
+        "c_ip": {
+          "type": "ip",
+          "fields": {
+            "string": { 
+              "type":  "keyword"
+            }
+          }
+        },
+        "s_ip": {
+          "type": "ip"
+        }
+      }
+    }
+  }
+}

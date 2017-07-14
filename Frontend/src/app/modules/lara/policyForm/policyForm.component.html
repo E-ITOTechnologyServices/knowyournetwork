@@ -1,0 +1,92 @@
+<div class="policy-form">
+    <div class="left">
+        <form (ngSubmit)="onDisplayFormSubmit(displayForm)" #displayForm="ngForm">
+            <div class="col-md-6">
+                <label>Select Router</label>
+                <ng-select [items]="policyFormService.model.routers"
+                           [active]="policyFormService.model.displayRouter"
+                           placeholder="Router name"
+                           [(ngModel)]="policyFormService.model.displayRouter"
+                           (ngModelChange)="policyFormService.getPoliciesForRouter()"
+                           name="policyFormService.router"
+                           #router="ngModel"
+                           required>
+                </ng-select>
+
+            </div>
+            <div class="col-md-6">
+                <label>Select Policy</label>
+                <ng-select [items]="policyFormService.model.policies"
+                           [active]="policyFormService.model.displayPolicy"
+                           placeholder="Policy name"
+                           [(ngModel)]="policyFormService.model.displayPolicy"
+                           [disabled]="!policyFormService.model.policies"
+                           name="policyFormService.policy"
+                           #policy="ngModel"
+                           required>
+                </ng-select>
+            </div>
+            <div class="col-md-6">
+                <div [hidden]="displayForm.valid" class="alert alert-danger">
+                    All fields are required.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary" [disabled]="!displayForm.form.valid">Display Policy</button>
+            </div>
+        </form>
+    </div>
+    <!--
+    <div class="right">
+        <form (ngSubmit)="onGenerateFormSubmit(generateForm)" #generateForm="ngForm">
+            <div class="col-md-4">
+                <label>Select Router</label>
+                <ng-select [allowClear]="false"
+                           [items]="policyFormService.routers"
+                           [active]="policyFormService.model.generateRouter"
+                           placeholder="Select Router"
+                           [(ngModel)]="policyFormService.model.generateRouter"
+                           name="policyFormService.router"
+                           #router="ngModel"
+                           required>
+                </ng-select>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+
+            <div class="col-sm-6 col-md-4">
+                <label>Date from</label>
+                <input placeholder="YYYY-MM-DD HH:mm" class="form-control"
+                       [(ngModel)]="policyFormService.model.generateDateTimeFrom"
+                       [max-date]="policyFormService.model.generateDateTimeTo || now"
+                       close-on-select="false"
+                       ng2-datetime-picker
+                       required
+                       name="dateTimeFrom"
+                       #dateTimeFrom="ngModel"/>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <label>Date to</label>
+                <input placeholder="YYYY-MM-DD HH:mm" class="form-control"
+                       [(ngModel)]="policyFormService.model.generateDateTimeTo"
+                       [min-date]="minDateForTo()"
+                       [max-date]="now"
+                       close-on-select="false"
+                       ng2-datetime-picker
+                       required
+                       name="dateTimeTo"
+                       #dateTimeTo="ngModel"/>
+            </div>
+            <div class="col-md-4 col-md-offset-4 col-sm-12 col-sm-offset-0">
+                <div [hidden]="generateForm.valid" class="alert alert-danger">
+                    All fields are required.
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary" [disabled]="!generateForm.form.valid">Generate Policy</button>
+            </div>
+        </form>
+    </div>
+    -->
+    <div class="clearfix"></div>
+</div>

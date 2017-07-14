@@ -1,0 +1,28 @@
+{
+  "order": 1,
+  "template": "kyn-netflow-*",
+  "mappings": {
+    "_default_": {
+      "properties": {
+        "DestinationAddress": {
+          "type": "ip"
+        },
+        "NextHOPAddress": {
+          "type": "ip"
+        },
+        "EndTime": {
+          "type": "date"
+        },
+        "StartTime": {
+          "type": "date"
+        },
+        "RouterIPAddress": {
+          "type": "ip"
+        },
+        "SourceAddress": {
+          "type": "ip"
+        }
+      }
+    }
+  }
+}

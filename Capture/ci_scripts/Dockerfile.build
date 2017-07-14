@@ -1,0 +1,15 @@
+#
+# Docker file to build the Backend applications
+#
+####################################################################################################
+#
+FROM debian:jessie
+
+
+RUN apt-get update && \
+	apt-get install -y make cmake autoconf automake	g++
+RUN apt-get install -y flex bison gawk curl
+RUN apt-get install -y libglib2.0-dev libpcap0.8-dev libcurl4-openssl-dev libjansson-dev
+#
+####################################################################################################
+#

@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Copyright (C) 2017 e-ito Technology Services GmbH
+# e-mail: info@e-ito.de
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Stage the entire product - this builds all the images necessary to run the product.
+#
+
+
+####################################################################################################
+#
+# Include convenience functions.
+#
+. ci_scripts/common
+
+stage_module() {
+    MODULE_LOWER=`lowercase $1`
+    MODULE=$1
+    shift
+    if [ -d $MODULE ]; then
+        echo "Building Docker image for $MODULE..."
+        docker build -t kyn/$MODULE_LOWER:$TAG $(normalize_path $BUILD_DIR/$MODULE/) | grep Successfully
+        if [ $TAG == "local" ]; then
+            docker tag kyn/$MODULE_LOWER:$TAG kyn/$MODULE_LOWER:latest
+        fi
+        check_error $? "Failed to stage $MODULE"
+    fi
+}
+#
+####################################################################################################
+# Select the tag under which the resulting Docker image(s) should be filed
+#
+select_docker_tag
+#
+####################################################################################################
+# Stage and build the Docker container(s)
+#
+
+if [ -z $1 ]; then
+    for MODULE in $MODULES
+    do
+        stage_module $MODULE
+    done
+else
+    stage_module $1
+fi
+
+#
+####################################################################################################
+exit 0

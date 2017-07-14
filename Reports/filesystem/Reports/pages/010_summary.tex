@@ -1,0 +1,149 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\begin{Large}
+\underline{Summary}
+\end{Large}
+\begin{table}[H]
+
+\footnotesize
+\setlength\arrayrulewidth{5pt}
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\setitemize{leftmargin=*}
+\newlist{citemize}{itemize}{4}
+\setlist[citemize]{label=-,nosep,topsep=0pt}
+
+\begin{tabularx}{1\textwidth}{p{4.2cm}!{\color{white}\vline} p{3.2cm}!{\color{white}\vline} p{4.6cm}!{\color{white}\vline} p{5.4cm}!{\color{white}\vline} p{5.6cm}} 
+\rowcolor{eito green}\multicolumn{5}{c}{ \Large{\textit{\textcolor{white}{know your network}}} \Large{\textcolor{white}{Recommended Actions}}}\\ %Line 1
+\arrayrulecolor{white}\hline
+\rowcolor{eito green}		%Line 2
+	\textcolor{white}{\vfill \normalsize{System}} & 				%column 1 System
+	
+	\textcolor{white}{\vfill \normalsize{Status \newline Offense $|$ Action}} & 	%column 2 Status
+	
+	\textcolor{white}{\vfill \normalsize{Offense}} & 				%column 3 Offense
+	
+	\textcolor{white}{\vfill \normalsize{Action}} & 				%column 4 Action
+	
+	\textcolor{white}{\vfill \normalsize{Status}}\\ 				%column 5 Status
+
+\arrayrulecolor{white}\hline
+
+\rowcolor{lightgray}		%Line 3
+	\vfill \textbf{10.201.3.190} \newline DNS/IPADMIN unknown &			%column 1 System
+	
+	\vfill \tikz\draw[red,fill=red] (0,0) circle (8pt); \hfill  \tikz\draw[yellow,fill=yellow] (0,0) circle (8pt); &	%column 2 Status
+	
+	\begin{citemize}[leftmargin=*]							%column 3 Offense
+                \item[$\bullet$] Syn Sweep
+                \item[$\bullet$] Restricted Ports
+                \item[$\bullet$] Ping Sweep
+        \end{citemize} &
+	
+	\vspace{-0.5\topsep}
+	\begin{citemize}[leftmargin=*]							%column 4 Action
+                \item[$\bullet$] Check if system is a known scanner \newline If system is not intended to scan, investigate and escalate.
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 5 Status
+		\item[$\bullet$] Opened 2016-07-18 e-ito analyst
+        \end{citemize} \\
+
+\arrayrulecolor{white}\hline	
+
+\rowcolor{lightgray}		%Line 4
+	\vfill \textbf{10.79.9.102} \newline DNS/IPADMIN unknown &			%column 1 System
+	
+	\vfill \tikz\draw[red,fill=red] (0,0) circle (8pt); \hfill  \tikz\draw[yellow,fill=yellow] (0,0) circle (8pt); &	%column 2 Status
+	
+	\begin{citemize}[leftmargin=*]							%column 3 Offense
+                \item[$\bullet$] Syn Sweep
+                \item[$\bullet$] Restricted Ports
+                \item[$\bullet$] Ping Sweep
+        \end{citemize} &
+
+	\begin{citemize}[leftmargin=*]							%column 4 Action
+                \item[$\bullet$] Check if system is a known scanner \newline If system is not intended to scan, investigate and escalate.
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 5 Status
+                \item[$\bullet$] Opened 2016-07-18 e-ito analyst
+        \end{citemize} \\
+
+\arrayrulecolor{white}\hline
+
+\rowcolor{lightgray}		%Line 5
+	\vfill \textbf{10.9.248.126} \newline DNS/IPADMIN unknown &			%column 1 System
+	
+	\vfill \tikz\draw[red,fill=red] (0,0) circle (8pt); \hfill  \tikz\draw[yellow,fill=yellow] (0,0) circle (8pt); &	%column 2 Status
+	
+	\begin{citemize}[leftmargin=*]							%column 3 Offense
+                \item[$\bullet$] Syn Sweep
+                \item[$\bullet$] Restricted Ports
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 4 Action
+                \item[$\bullet$] Check if system is a known scanner \newline If system is not intended to scan, investigate and escalate.
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 5 Status
+                \item[$\bullet$] Opened 2016-07-18 e-ito analyst
+        \end{citemize} \\
+
+\arrayrulecolor{white}\hline
+
+\rowcolor{lightgray}		%Line 6
+	\vfill \textbf{10.79.9.96} \newline DNS/IPADMIN unknown &			%column 1 System
+	
+	\vfill \tikz\draw[red,fill=red] (0,0) circle (8pt); \hfill  \tikz\draw[yellow,fill=yellow] (0,0) circle (8pt); &	%column 2 Status
+	
+	\begin{citemize}[leftmargin=*]							%column 3 Offense
+                \item[$\bullet$] Insecure Telnet Protocol usage
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 4 Action
+                \item[$\bullet$] Check if usage of insecure protocol is a mandatory business requirement.
+		\item[$\bullet$] Replace telnet by ssh.
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 5 Status
+                \item[$\bullet$] Opened 2016-07-18 e-ito analyst
+        \end{citemize} \\
+
+\arrayrulecolor{white}\hline
+
+\rowcolor{lightgray}		%Line 7
+	\vfill \textbf{10.47.42.101} \newline myphone.awc. (VoIP side A) &		%column 1 System
+	
+	\vfill \tikz\draw[red,fill=red] (0,0) circle (8pt); \hfill  \tikz\draw[yellow,fill=yellow] (0,0) circle (8pt); &	%column 2 Status
+	
+	\begin{citemize}[leftmargin=*]							%column 3 Offense
+                \item[$\bullet$] Insecure FTP Protocol usage
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 4 Action
+                \item[$\bullet$] Check if usage of insecure protocol is a mandatory business requirement.
+		\item[$\bullet$] Replace FTP by secure copy.
+        \end{citemize} &
+	
+	\begin{citemize}[leftmargin=*]							%column 5 Status
+                \item[$\bullet$] Opened 2016-07-18 e-ito analyst
+        \end{citemize} \\
+\arrayrulecolor{white}\hline
+
+\end{tabularx}
+
+\end{table}

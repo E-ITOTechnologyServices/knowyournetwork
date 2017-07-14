@@ -1,0 +1,30 @@
+#
+# Docker file to build the frontend testing environment.
+#
+#######################################################################
+#
+FROM node:argon
+
+MAINTAINER Petar Perkovic <petar.perkovic@e-ito.hr>
+
+#
+# Add the application
+#
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+
+# Bundle app source
+COPY ./testing /usr/src/testing
+COPY ./src /usr/src/app/
+RUN rm -r /usr/src/app/versions
+
+# Expose port
+EXPOSE 80
+
+# Run npm script
+WORKDIR /usr/src/testing
+ENTRYPOINT npm run e2e
+#
+#
+#######################################################################

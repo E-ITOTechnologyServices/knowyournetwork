@@ -1,0 +1,22 @@
+{
+  "order": 1,
+  "template": "kyn-newsticker-*",
+  "mappings": {
+    "_default_": {
+      "properties": {
+        "eventid": {
+          "type": "keyword"
+        },
+        "host": {
+          "type": "ip"
+        },
+        "priority": {
+          "type": "integer"
+        }
+      },
+      "_all": {
+        "enabled": true
+      }
+    }
+  }
+}

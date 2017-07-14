@@ -1,0 +1,57 @@
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 35,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-syslog-voice-demo",
+        "_type": "voice_kv",
+        "_id": "AVn_KGOVtkxxGeHqys1b",
+        "_score": null,
+        "_source": {
+          "shortmessage": "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+          "@timestamp": "2016-07-14T00:25:54.461Z",
+          "voicegw": "10.45.3.3"
+        },
+        "sort": [
+          1468455954461
+        ]
+      },
+      {
+        "_index": "kyn-syslog-voice-demo",
+        "_type": "voice_kv",
+        "_id": "AVn_KGOVtkxxGeHqys1a",
+        "_score": null,
+        "_source": {
+          "shortmessage": "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.147.167.24\"  Dst-port=\"46879\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=82247, To=sip:anonym@vc.acme.com, Call-ID=fc73e67d9d5f133d1d0196c691620c43, From-Tag=3d9fcbd44a689cae, To-Tag=bd01900d8abc1a42, Msg-Hash=5169526893209504635\"\n",
+          "@timestamp": "2016-07-14T00:25:54.414Z",
+          "voicegw": "10.45.3.3"
+        },
+        "sort": [
+          1468455954414
+        ]
+      },
+      {
+        "_index": "kyn-syslog-voice-demo",
+        "_type": "voice_kv",
+        "_id": "AVn_KGOVtkxxGeHqys1Z",
+        "_score": null,
+        "_source": {
+          "shortmessage": "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+          "@timestamp": "2016-07-14T00:25:54.412Z",
+          "voicegw": "10.45.3.3"
+        },
+        "sort": [
+          1468455954412
+        ]
+      }
+    ]
+  }
+}

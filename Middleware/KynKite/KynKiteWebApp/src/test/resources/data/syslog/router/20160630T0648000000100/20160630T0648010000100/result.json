@@ -1,0 +1,57 @@
+{
+  "took": 7,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 63,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-syslog-router-demo",
+        "_type": "syslog-router",
+        "_id": "AVn_KGSftkxxGeHqytFW",
+        "_score": null,
+        "_source": {
+          "router": "10.127.248.4",
+          "@timestamp": "2016-06-30T06:48:00.769Z",
+          "cisco_message": "Jun 30 06:47:25.703 UTC: %SEC-6-IPACCESSLOGRP: list Voice denied pim 10.134.21.2 -> 224.0.0.13, 1 packet"
+        },
+        "sort": [
+          1467269280769
+        ]
+      },
+      {
+        "_index": "kyn-syslog-router-demo",
+        "_type": "syslog-router",
+        "_id": "AVn_KGSftkxxGeHqytFX",
+        "_score": null,
+        "_source": {
+          "router": "10.127.74.148",
+          "@timestamp": "2016-06-30T06:48:00.769Z",
+          "cisco_message": "Jun 30 06:47:53.948 UTC: %SW_DAI-4-DHCP_SNOOPING_DENY: 4 Invalid ARPs (Req) on Gi1/0/44, vlan 1198.([448a.5bb4.e8a0/10.139.207.46/0000.0000.0000/10.139.207.33/06:47:53 UTC Thu Jun 30 2016])"
+        },
+        "sort": [
+          1467269280769
+        ]
+      },
+      {
+        "_index": "kyn-syslog-router-demo",
+        "_type": "syslog-router",
+        "_id": "AVn_KGSftkxxGeHqytFY",
+        "_score": null,
+        "_source": {
+          "router": "10.127.195.12",
+          "@timestamp": "2016-06-30T06:48:00.769Z",
+          "cisco_message": "Jun 30 06:47:54.025 UTC: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on FastEthernet2/19 (not half duplex), with SEP1CE6C799FA8D Port 1 (half duplex)."
+        },
+        "sort": [
+          1467269280769
+        ]
+      }
+    ]
+  }
+}

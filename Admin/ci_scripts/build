@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Capture build script
+#
+# Author: Tobias Nieberg
+#
+# Date: 25-04-2017
+#
+# Purpose: Copy files of Admin container to build directory
+#
+# Usage: build destdir
+#
+####################################################################################################
+# Files to ship.
+#
+SHIP_FILES=( filesystem \
+			 Dockerfile \
+		   )
+#
+####################################################################################################
+# Include convenience functions.
+#
+. ../ci_scripts/common
+#
+####################################################################################################
+# Configuration.
+#
+BUILD_DIR="$BUILD_DIR/Admin"
+#
+####################################################################################################
+# Ship into the staging area.
+#
+ship SHIP_FILES[@] $BUILD_DIR
+#

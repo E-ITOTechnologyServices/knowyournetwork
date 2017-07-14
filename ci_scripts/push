@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# Copyright (C) 2017 e-ito Technology Services GmbH
+# e-mail: info@e-ito.de
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Stage the entire product - this builds all the images necessary to run the product.
+#
+
+####################################################################################################
+#
+# Include convenience functions.
+#
+. ci_scripts/common
+
+URL=$bamboo_docker_registry_url
+CUSTOM_MODULE=$1
+
+
+push_module() {
+    MODULE=$1
+    shift
+    if [ -d $MODULE ]; then
+        MODULE_LOWER=`lowercase $MODULE`
+        echo "Pushing Docker image for $MODULE to $URL..."
+        docker tag kyn/$MODULE_LOWER:$TAG $URL/kyn/$MODULE_LOWER:$TAG
+        docker push $URL/kyn/$MODULE_LOWER:$TAG
+        docker rmi $URL/kyn/$MODULE_LOWER:$TAG
+
+        echo "Adding 'latest' tag for module $MODULE..."
+        docker tag kyn/$MODULE_LOWER:$TAG $URL/kyn/$MODULE_LOWER:latest
+        docker push $URL/kyn/$MODULE_LOWER:latest
+        docker rmi $URL/kyn/$MODULE_LOWER:latest
+    fi
+}
+
+#
+####################################################################################################
+# Select the tag under which the resulting Docker image(s) should be filed
+#
+select_docker_tag
+
+#
+####################################################################################################
+# Stage and build the Docker container(s)
+#
+if [ -z $URL ]; then
+    echo "Error: No target URL set. Exiting..."
+    exit 1
+fi
+
+
+case $TAG in
+    ''|*[!0-9]*)
+            echo "Error: Pushing images except for master builds is not supported. Doing nothing." ; exit 0 ;;
+esac
+
+
+if [ -z $CUSTOM_MODULE ]; then
+    for MODULE in $MODULES
+    do
+        push_module $MODULE
+    done
+else
+    stage_module $CUSTOM_MODULE
+fi
+
+#
+####################################################################################################
+exit 0

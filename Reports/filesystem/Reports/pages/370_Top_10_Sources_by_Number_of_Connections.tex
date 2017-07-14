@@ -1,0 +1,38 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Top 10 Sources by Number of Connections]{\underline{Top 10 Sources by Number of Connections}}
+\begin{flushleft}
+This table lists the top 10 source IPs by number of initiated connections. A very high number of initiated sessions can lead to problems with a connection table filled up on a server, a firewall or other devices in a network. Also a misconfigured device can show such behavior.
+\end{flushleft}
+
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Source Address/.style={column type=l,string type,column name=Source IP Address},
+      columns/Connections/.style={int detect,column type=r,string type,column name=Connections},
+      multicolumn names
+    ]{csv/370_Top_10_Sources_by_Number_of_Connections.csv} % filename/path to file
+    \caption[\normalsize{Top IP Addresses by Number of Connections}]{\small{Top IP Addresses by Number of Connections}}
+  \end{center}
+\end{table}
+

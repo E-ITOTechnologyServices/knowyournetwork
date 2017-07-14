@@ -1,0 +1,49 @@
+{
+  "took": 15,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 11,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-syslog-ips-demo",
+        "_type": "ipslogs",
+        "_id": "AVn_KGUPtkxxGeHqytXv",
+        "_score": null,
+        "_source": {
+          "Destination": "194.127.8.11",
+          "@timestamp": "2016-06-30T07:31:44.360Z",
+          "IPS_System": "10.254.128.17",
+          "log": "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+          "Source": "92.246.34.12",
+          "Destinationport": "56451"
+        },
+        "sort": [
+          1467271904360
+        ]
+      },
+      {
+        "_index": "kyn-syslog-ips-demo",
+        "_type": "ipslogs",
+        "_id": "AVn_KGUPtkxxGeHqytXw",
+        "_score": null,
+        "_source": {
+          "Destination": "194.127.4.19",
+          "@timestamp": "2016-06-30T07:31:44.360Z",
+          "IPS_System": "10.254.128.17",
+          "log": "HTTP: Suspicious Document Write Call 13544 tcp ",
+          "Source": "54.230.46.149",
+          "Destinationport": "59307"
+        },
+        "sort": [
+          1467271904360
+        ]
+      }
+    ]
+  }
+}

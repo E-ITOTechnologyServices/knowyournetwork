@@ -1,0 +1,92 @@
+#!/bin/bash
+#
+# Middleware build script
+#
+# Author: Steve Chaplin
+#
+# Date: 02-09-2016
+#
+# Purpose: Build the middleware.
+#
+# Usage: build [-v] builddir
+#
+####################################################################################################
+# Config option parsing
+#
+
+OUT='/dev/null'
+
+while getopts v opt
+do
+	case $opt in
+	v)
+		OUT='1'
+		shift
+		;;
+	esac
+done
+#
+####################################################################################################
+# Files to ship.
+#
+SHIP_FILES=( KynKite/KynKiteWebApp/target/KynKiteWebApp/WEB-INF \
+			Dockerfile \
+            filesystem \
+		   )
+#
+####################################################################################################
+# Include convenience functions.
+#
+. ../ci_scripts/common
+#
+####################################################################################################
+# Configuration.
+#
+MODULE="Middleware"
+#
+TAG="latest"
+#
+# Name of the Docker image.
+#
+IMAGE="kyn/middleware-build"
+#
+# Build directive to disable testing - for now!
+#
+NO_TEST="-Dmaven.test.skip=true"
+#
+# Which variant to build.
+#
+VARIANT="dev"
+#VARIANT="test"
+#VARIANT="prod"
+#
+# Build dir
+#
+BUILD_DIR="$BUILD_DIR/Middleware"
+#
+####################################################################################################
+#
+which docker > /dev/null
+check_error $? "Docker must be installed"
+#
+####################################################################################################
+# Build the middleware.
+# We redirect the output of the docker build process to dev/null as we really want to be able to
+# concentrate on any errors in the build itself.
+#
+log $MODULE "building compiler..."
+LOG=$( docker build -f ci_scripts/Dockerfile.build -t ${IMAGE}:$TAG . 2>&1 )
+log_success $? "$LOG"
+
+log $MODULE "compiling..."
+LOG=$( docker run --rm -v $PWD:/tmp/middleware -u $(id -u):$(id -g) ${IMAGE}:$TAG $NO_TEST -P$VARIANT package 2>&1 )
+log_success $? "$LOG"
+#
+####################################################################################################
+# Ship into the staging area.
+#
+ship SHIP_FILES[@] $BUILD_DIR
+#
+
+####################################################################################################
+exit 0

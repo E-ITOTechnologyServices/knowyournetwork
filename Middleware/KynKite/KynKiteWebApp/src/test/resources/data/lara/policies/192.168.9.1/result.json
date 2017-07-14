@@ -1,0 +1,27 @@
+{
+  "took": 15,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-policy-2017-02-02",
+        "_type": "policy",
+        "_id": "AVnbFVPhISe-c8hencwD",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2017-02-02T15:03:04.000Z"
+        },
+        "sort": [
+          1486047784000
+        ]
+      }
+    ]
+  }
+}

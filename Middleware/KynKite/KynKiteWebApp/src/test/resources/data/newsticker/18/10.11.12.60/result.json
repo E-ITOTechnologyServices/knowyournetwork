@@ -1,0 +1,62 @@
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 5,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIT8",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T21:00:00.000Z",
+        "text" : "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+        "host" : "10.11.12.60",
+        "priority" : "1",
+        "eventid" : "0101"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIT-",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T22:00:00.000Z",
+        "text" : "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+        "host" : "10.11.12.60",
+        "priority" : "3",
+        "eventid" : "0101"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUE",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:00:01.000Z",
+        "text" : "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+        "host" : "10.11.12.60",
+        "priority" : "9",
+        "eventid" : "0101"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUM",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-20T00:02:16.000Z",
+        "text" : "Increase in connections for this source (more than 10x increase between the previous two 15 minute intervals)",
+        "host" : "10.11.12.60",
+        "priority" : "9",
+        "eventid" : "0001"
+      }
+    } ]
+  }
+}

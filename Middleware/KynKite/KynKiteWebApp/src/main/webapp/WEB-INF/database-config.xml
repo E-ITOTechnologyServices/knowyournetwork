@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	    <property name="url" value="jdbc:mysql://${jdbc.host}:${jdbc.port}/${userdb.database_name}" />
+	    <property name="username" value="${userdb.username}" />
+	    <property name="password" value="${userdb.password}" />
+	</bean>
+	
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource" />
+      	<property name="packagesToScan" value="hr.eito.kynkite.usermanagement.model" />
+      	<property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.hbm2ddl.auto">validate</prop>
+            	<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+            	<!-- <prop key="hibernate.show_sql">true</prop> -->
+				<!-- <prop key="hibernate.format_sql">true</prop> -->
+         	</props>
+      	</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<qualifier value="userdbData"/>
+	</bean>
+	
+	<bean id="dataSourceAQL" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	    <property name="url" value="jdbc:mysql://${jdbc.host}:${jdbc.port}/${aqldb.database_name}" />
+	    <property name="username" value="${aqldb.username}" />
+	    <property name="password" value="${aqldb.password}" />
+	</bean>
+	
+    <bean id="sessionFactoryAQL" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="dataSourceAQL" />
+      	<property name="packagesToScan" value="hr.eito.kynkite.aql.model" />
+      	<property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.hbm2ddl.auto">validate</prop>
+            	<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+            	<!-- <prop key="hibernate.show_sql">true</prop> -->
+				<!-- <prop key="hibernate.format_sql">true</prop> -->
+         	</props>
+      	</property>
+	</bean>
+	
+	<bean id="transactionManagerAQL" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryAQL" />
+		<qualifier value="aqlData"/>
+	</bean>
+	
+</beans>

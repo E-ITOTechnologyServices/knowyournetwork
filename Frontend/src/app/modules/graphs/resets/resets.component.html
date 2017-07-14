@@ -1,0 +1,14 @@
+<!-- while loading -->
+<div *ngIf="haveResults==undefined && !errorMessage" class="loading"></div>
+<!-- when is loaded -->
+<div *ngIf="haveResults!=undefined && !haveResults && !errorMessage" class="ip-message">There are currently no results for the entered IP address.</div>
+<div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
+<div *ngIf="haveResults" id="resets-chart">
+    <div class="chart" tabindex="1">
+        <svg></svg>
+    </div>
+    <div class="widgets">
+        <div class="menu"></div>
+        <div class="info"></div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+---
+- config:
+    - testset: "Reports test set"
+    - variable_binds: 
+        {  
+            username : 'admin'
+            , password : 'admin'
+        }
+    - timeout: 100  # Increase timeout from the default 10 seconds
+
+- test:
+    - name: "Successful login"
+    - url: "/KynKiteWebApp/rest/login"
+    - method: "POST"
+    - body: {template: 'username=$username&password=$password'}
+    - headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    - extract_binds:
+      - 'authtoken_cookie' : { jsonpath_mini : 'content.access_token_cookie' }
+      - 'authtoken' : { jsonpath_mini : 'content.access_token' }
+      - 'username_cookie' : { jsonpath_mini : 'content.username_cookie' }
+      - 'username' : { jsonpath_mini : 'content.username' }
+
+
+#
+# Create report - deactivated - expects certain state
+#
+- #test:
+    - name: "Create report - OK"
+    - url: "/KynKiteWebApp/rest/reports/createReport"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2017-04-01 00:00:00.000",
+                "dateTimeTo": "2017-04-08 00:00:00.000"
+            },
+            "maxDestSyn": "5",
+            "maxDestIpPing": "6"
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+
+#
+# Create report with expected error - report already exists - deactivated - expects certain state
+#
+- #test:
+    - name: "Create report - invalid date time range"
+    - url: "/KynKiteWebApp/rest/reports/createReport"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2017-04-01 00:00:00.000",
+                "dateTimeTo": "2017-04-08 00:00:00.000"
+            },
+            "maxDestSyn": "5",
+            "maxDestIpPing": "6"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Report already exists'}
+
+#
+# Create report with expected error - invalid date time range
+#
+- test:
+    - name: "Create report - invalid date time range"
+    - url: "/KynKiteWebApp/rest/reports/createReport"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2017-04-29 00:00:00.000"
+            },
+            "maxDestSyn": "5",
+            "maxDestIpPing": "6"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}
+        
+#
+# Get list of reports
+#
+- test:
+    - name: "Get list of reports"
+    - url: "/KynKiteWebApp/rest/reports/getList"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if status is 0 - OK
+        #- compare: {jsonpath_mini: "content.data", comparator: "contains", expected: "report_20170401_20170408.pdf"}
+
+#
+# Get report by name - OK - deactivated - expects certain state
+#
+- #test:
+    - name: "Get report by name"
+    - url: "/KynKiteWebApp/rest/reports/getReportByName"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"reportName": "report_20170401_20170408.pdf"}'
+        
+#
+# Get report by name with expected error - report not found
+#
+- test:
+    - name: "Get report by name"
+    - url: "/KynKiteWebApp/rest/reports/getReportByName"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"reportName": "madeupname.pdf"}'
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'src/files/reports/madeupname.pdf (No such file or directory)'}

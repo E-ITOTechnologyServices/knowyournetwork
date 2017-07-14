@@ -1,0 +1,125 @@
+---
+- config:
+    - testset: "Lara test set"
+    - variable_binds: 
+        {  
+            username : 'admin'
+            , password : 'admin'
+        }
+    - timeout: 100  # Increase timeout from the default 10 seconds
+
+- test:
+    - name: "Successful login"
+    - url: "/KynKiteWebApp/rest/login"
+    - method: "POST"
+    - body: {template: 'username=$username&password=$password'}
+    - headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    - extract_binds:
+      - 'authtoken_cookie' : { jsonpath_mini : 'content.access_token_cookie' }
+      - 'authtoken' : { jsonpath_mini : 'content.access_token' }
+      - 'username_cookie' : { jsonpath_mini : 'content.username_cookie' }
+      - 'username' : { jsonpath_mini : 'content.username' }
+
+
+#
+# Get list of routers - OK
+#
+- test:
+    - name: "Get list of routers - OK"
+    - url: "/KynKiteWebApp/rest/lara/routers"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        
+#
+# Get list of policies for specific router - OK
+#
+- test:
+    - name: "Get list of policies for specific router - OK"
+    - url: "/KynKiteWebApp/rest/lara/policyListForRouter"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"routerIpAddress": "0.0.0.0"}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        
+#
+# Lara Cisco ACL
+#
+- test:
+    - name: "Lara Cisco ACL"
+    - url: "/KynKiteWebApp/rest/laraCisco"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"policyId": "<policy ID>"}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+
+#
+# Lara Rules
+#
+- test:
+    - name: "Lara Rules"
+    - url: "/KynKiteWebApp/rest/laraRules"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"policyId": "<policy ID>"}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+
+#
+# Statistics: Top sources for dynamic hosts ranking
+#
+- test:
+    - name: "Statistics: Top sources for dynamic hosts ranking"
+    - url: "/KynKiteWebApp/rest/laraRules/topSrcDynamic"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"policyId": "<policy ID>"}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        
+#
+# Statistics: Top destinations for dynamic hosts ranking
+#
+- test:
+    - name: "Statistics: Top destinations for dynamic hosts ranking"
+    - url: "/KynKiteWebApp/rest/laraRules/topDstDynamic"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"policyId": "<policy ID>"}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        
+#
+# Statistics: Top sources for static hosts ranking
+#
+- test:
+    - name: "Statistics: Top sources for static hosts ranking"
+    - url: "/KynKiteWebApp/rest/laraRules/topSrcStatic"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"policyId": "<policy ID>"}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        
+#
+# Statistics: Top destinations for static hosts ranking
+#
+- test:
+    - name: "Statistics: Top destinations for static hosts ranking"
+    - url: "/KynKiteWebApp/rest/laraRules/topDstStatic"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '{"policyId": "<policy ID>"}'
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}

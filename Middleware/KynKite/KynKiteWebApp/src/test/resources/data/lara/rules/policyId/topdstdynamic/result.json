@@ -1,0 +1,29 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-policy-2017-02-02",
+        "_type": "policy",
+        "_id": "AVnbFVPhISe-c8hencwD",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2017-02-02T15:03:04.000Z",
+          "top_destinations_dynamic": "[{\"no\":1,\"ip\":\"8.8.8.8\",\"count\":33879,\"size\":2812876},{\"no\":2,\"ip\":\"8.8.4.4\",\"count\":28548,\"size\":2189494},{\"no\":3,\"ip\":\"192.168.9.1\",\"count\":18864,\"size\":12397078},{\"no\":4,\"ip\":\"136.243.196.230\",\"count\":15365,\"size\":665308155},{\"no\":5,\"ip\":\"172.30.5.3\",\"count\":10312,\"size\":19978742}]",
+          "name": "192.168.9.1"
+        },
+        "sort": [
+          1486047784000
+        ]
+      }
+    ]
+  }
+}

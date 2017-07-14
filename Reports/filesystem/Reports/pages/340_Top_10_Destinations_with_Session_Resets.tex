@@ -1,0 +1,36 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Top 10 Destinations with Session Resets]{\underline{Top 10 Destinations with Session Resets}}
+\begin{flushleft}
+The following table shows the summary of sessions terminated by RESET flags grouped by the destination IP address. This spots problems within a certain application or a device in the traffic flow is not allowing this type of traffic (like Firewalls, IPS, etc.)
+\end{flushleft}
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/IP Address/.style={column type=l,string type,column name=Destination IP Address},
+      columns/Amount of Resets/.style={int detect,column type=r,string type,column name=Amount of Resets},
+      multicolumn names
+    ]{csv/340_Top_10_Destinations_with_Session_Resets.csv} % filename/path to file
+    \caption[\normalsize{Top 10 Destinations with Session Resets}]{\small{Top 10 Destinations with Session Resets}}
+  \end{center}
+\end{table}

@@ -1,0 +1,37 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Top 20 Destination TCP and UDP Ports by Traffic Volume in Bytes]{\underline{Top 20 Destination TCP and UDP Ports by Traffic Volume in Bytes}}
+\begin{flushleft}
+The following table shows the summary of total traffic volume grouped by the application port and gives an overview about the bandwidth usage and potential bandwidth/performance problems.
+\end{flushleft}
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Protocol/.style={column type=r,string type,column name=Protocol},
+      columns/Destination Port/.style={column type=r,string type,column name=Destination Port},
+      columns/Sum (bytes)/.style={int detect,column type=r,string type,column name=Sum (Bytes)},
+      multicolumn names
+    ]{csv/350_Top_20_Destination_TCP_and_UDP_Ports_by_Traffic_Volume_in_Bytes.csv} % filename/path to file
+    \caption[\normalsize{Top 20 Destination TCP and UDP Ports by Traffic Volumen Byte}]{\small{Top 20 Destination TCP and UDP Ports by Traffic Volumen Byte}}
+  \end{center}
+\end{table}

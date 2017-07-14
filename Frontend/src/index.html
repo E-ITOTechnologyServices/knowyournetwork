@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <title>Know your network</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/libs/datatables.min.css"/>
+    <link rel="stylesheet" href="assets/css/libs/ng2-select.css"/>
+    <link rel="stylesheet" href="assets/css/libs/perfect-scrollbar.min.css"/>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('app').catch(function(err){ console.error(err); });
+    </script>
+</head>
+<body id="body">
+<kyn-app>
+    <img class="loader" src="assets/images/loader.svg">
+</kyn-app>
+<script src="assets/js/libs/jquery.min.js"></script>
+<script src="assets/js/libs/bootstrap.min.js"></script> <!-- used in Ruleset table -->
+<script src="node_modules/moment/moment.js"></script> <!-- used in Ruleset table -->
+<script src="assets/js/libs/datatables.min.js"></script>
+<script src="assets/js/libs/perfect-scrollbar.jquery.min.js"></script>
+</body>
+</html>

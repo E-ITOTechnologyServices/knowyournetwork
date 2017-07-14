@@ -1,0 +1,37 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "events": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "many_connections",
+          "doc_count": 1,
+          "minmax": {
+            "count": 1,
+            "min": 1466264700000,
+            "max": 1466264700000,
+            "avg": 1466264700000,
+            "sum": 1466264700000,
+            "min_as_string": "2016-06-18T15:45:00.000Z",
+            "max_as_string": "2016-06-18T15:45:00.000Z",
+            "avg_as_string": "2016-06-18T15:45:00.000Z",
+            "sum_as_string": "2016-06-18T15:45:00.000Z"
+          }
+        }
+      ]
+    }
+  }
+}

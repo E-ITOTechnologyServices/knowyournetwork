@@ -1,0 +1,5 @@
+# Put your crontab capture entries in here.
+
+# transport netflow data into elastic search every 1 min
+*/1 * * * *    /usr/bin/nfdump_rotate.sh
+*/1 * * * *    /usr/bin/yaf_rotate.sh

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Copyright (C) 2017 e-ito Technology Services GmbH
+# e-mail: info@e-ito.de
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+DATE=$(date +%H%M%S)
+
+# start the container and connect it to the network
+
+KYN_NETWORK=$(docker network list --filter name=kyn* --format {{.Name}})
+KYN_VOLUME=kyn_ReportsData
+
+echo "Network: $KYN_NETWORK"
+echo "Volume: $KYN_VOLUME"
+
+docker run -v $KYN_VOLUME:/out --rm --name "kyn_reports_$DATE" --network=$KYN_NETWORK  kyn/reports $*

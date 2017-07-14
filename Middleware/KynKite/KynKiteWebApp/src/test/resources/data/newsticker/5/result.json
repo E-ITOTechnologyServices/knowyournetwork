@@ -1,0 +1,95 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 18,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-newsticker-2016",
+        "_type": "news",
+        "_id": "AVn_KGaWtkxxGeHqytsc",
+        "_score": null,
+        "_source": {
+          "eventid": "0101",
+          "@timestamp": "2016-11-29T23:59:02+01:00",
+          "host": "10.11.12.60",
+          "text": "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+          "priority": "3"
+        },
+        "sort": [
+          1480460342000
+        ]
+      },
+      {
+        "_index": "kyn-newsticker-2016",
+        "_type": "news",
+        "_id": "AVn_KGaWtkxxGeHqytsr",
+        "_score": null,
+        "_source": {
+          "eventid": "0107",
+          "@timestamp": "2016-10-20T01:54:00.100Z",
+          "host": "10.11.12.61",
+          "text": "The host has been accessed by multiple hosts but did not respond (within the last 15 minutes, more than 5 differnet sources accessed the host via TCP but only SYN packets are sent and no response is received).",
+          "priority": "1"
+        },
+        "sort": [
+          1476928440100
+        ]
+      },
+      {
+        "_index": "kyn-newsticker-2016",
+        "_type": "news",
+        "_id": "AVn_KGaWtkxxGeHqytsq",
+        "_score": null,
+        "_source": {
+          "eventid": "0001",
+          "@timestamp": "2016-10-20T00:02:16.000Z",
+          "host": "10.11.12.60",
+          "text": "Increase in connections for this source (more than 10x increase between the previous two 15 minute intervals)",
+          "priority": "9"
+        },
+        "sort": [
+          1476921736000
+        ]
+      },
+      {
+        "_index": "kyn-newsticker-2016",
+        "_type": "news",
+        "_id": "AVn_KGaWtkxxGeHqytsp",
+        "_score": null,
+        "_source": {
+          "eventid": "0200",
+          "@timestamp": "2016-10-20T00:00:10.000Z",
+          "host": "10.11.13.200",
+          "text": "The host accessed a large number of unresponsive TCP ports.",
+          "priority": "3"
+        },
+        "sort": [
+          1476921610000
+        ]
+      },
+      {
+        "_index": "kyn-newsticker-2016",
+        "_type": "news",
+        "_id": "AVn_KGaWtkxxGeHqytso",
+        "_score": null,
+        "_source": {
+          "eventid": "0401",
+          "@timestamp": "2016-10-19T23:40:00.000Z",
+          "host": "10.11.13.100",
+          "text": "Increase in traffic volume for this source (more than 10x increase between the previous two 15 minute intervals)",
+          "priority": "5"
+        },
+        "sort": [
+          1476920400000
+        ]
+      }
+    ]
+  }
+}

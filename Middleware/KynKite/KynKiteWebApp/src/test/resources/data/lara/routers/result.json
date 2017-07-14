@@ -1,0 +1,26 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "distinct_routers": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "192.168.9.1",
+          "doc_count": 1
+        }
+      ]
+    }
+  }
+}

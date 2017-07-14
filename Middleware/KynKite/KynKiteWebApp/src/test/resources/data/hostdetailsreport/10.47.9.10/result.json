@@ -1,0 +1,63 @@
+{
+  "took" : 3,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 2,
+    "successful" : 2,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 18,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "events" : {
+      "doc_count_error_upper_bound" : 0,
+      "sum_other_doc_count" : 0,
+      "buckets" : [ {
+        "key" : "many_connections",
+        "doc_count" : 11,
+        "minmax" : {
+          "count" : 11,
+          "min" : 1.4662647E12,
+          "max" : 1.4663043E12,
+          "avg" : 1.4662849909090908E12,
+          "sum" : 1.61291349E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T02:45:00.000Z",
+          "avg_as_string" : "2016-06-18T21:23:10.909Z",
+          "sum_as_string" : "2481-02-09T19:15:00.000Z"
+        }
+      }, {
+        "key" : "scanner",
+        "doc_count" : 6,
+        "minmax" : {
+          "count" : 6,
+          "min" : 1.4662872E12,
+          "max" : 1.466298E12,
+          "avg" : 1.46629185E12,
+          "sum" : 8.7977511E12,
+          "min_as_string" : "2016-06-18T22:00:00.000Z",
+          "max_as_string" : "2016-06-19T01:00:00.000Z",
+          "avg_as_string" : "2016-06-18T23:17:30.000Z",
+          "sum_as_string" : "2248-10-15T19:45:00.000Z"
+        }
+      }, {
+        "key" : "many_destinations",
+        "doc_count" : 1,
+        "minmax" : {
+          "count" : 1,
+          "min" : 1.4663043E12,
+          "max" : 1.4663043E12,
+          "avg" : 1.4663043E12,
+          "sum" : 1.4663043E12,
+          "min_as_string" : "2016-06-19T02:45:00.000Z",
+          "max_as_string" : "2016-06-19T02:45:00.000Z",
+          "avg_as_string" : "2016-06-19T02:45:00.000Z",
+          "sum_as_string" : "2016-06-19T02:45:00.000Z"
+        }
+      } ]
+    }
+  }
+}

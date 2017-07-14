@@ -1,0 +1,230 @@
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 18,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIT8",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T21:00:00.000Z",
+        "text" : "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+        "host" : "10.11.12.60",
+        "priority" : "1",
+        "eventid" : "0101"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIT9",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T21:00:00.000Z",
+        "text" : "Increase in traffic volume for this destination (more than 10x increase between the previous two 15 minute intervals)",
+        "host" : "10.11.12.61",
+        "priority" : "2",
+        "eventid" : "0402"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIT-",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T22:00:00.000Z",
+        "text" : "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+        "host" : "10.11.12.60",
+        "priority" : "3",
+        "eventid" : "0101"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIT_",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T22:00:01.000Z",
+        "text" : "Routing via a new hop. (for communication between this source and destination subnet, a router which did not report flows for this source/destination has reported a flow)",
+        "host" : "10.11.13.10",
+        "priority" : "4",
+        "eventid" : "0302"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUA",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T22:00:01.300Z",
+        "text" : "Host used GRE tunneling. (IP protocol 47)",
+        "host" : "10.11.13.10",
+        "priority" : "5",
+        "eventid" : "5000"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUB",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T22:00:11.000Z",
+        "text" : "Communication with a new service. For this port on this destination host, no such communication was seen in the past.",
+        "host" : "10.11.12.10",
+        "priority" : "6",
+        "eventid" : "0108"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUC",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T22:00:12.000Z",
+        "text" : "The host connected to many others on restricted ports (more than 100 destinations within the last hour for one of these ports: 25, 53, 80, 443, 445, 3389)",
+        "host" : "10.11.12.11",
+        "priority" : "7",
+        "eventid" : "0106"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUD",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T22:02:12.000Z",
+        "text" : "Communication with a new host. For this destination, no connections were seen before this event.",
+        "host" : "10.11.12.18",
+        "priority" : "8",
+        "eventid" : "0109"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUE",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:00:01.000Z",
+        "text" : "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+        "host" : "10.11.12.60",
+        "priority" : "9",
+        "eventid" : "0101"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUF",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:23:01.000Z",
+        "text" : "The host accessed a large number of destination ports (more than 100 different TCP ports within the last 15 minutes).",
+        "host" : "10.11.12.59",
+        "priority" : "10",
+        "eventid" : "0100"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUG",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:23:03.000Z",
+        "text" : "Host accessed administrative ports (ssh, telnet, rdp) on more than 5 systems in last 15 minutes while 4 or less systems were accessed during all of last week.",
+        "host" : "10.11.13.10",
+        "priority" : "1",
+        "eventid" : "0500"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUH",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:23:03.020Z",
+        "text" : "The host send icmp echo requests to a large number of unresponsive systems.",
+        "host" : "10.11.13.12",
+        "priority" : "1",
+        "eventid" : "0201"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUI",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:34:52.000Z",
+        "text" : "Host connected to many systems using known reconaissance ports (more than 100 destinations within the last hour for one of these ports: 25, 53, 80, 443, 445, 3389).",
+        "host" : "10.11.13.12",
+        "priority" : "3",
+        "eventid" : "0105"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUJ",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:35:00.000Z",
+        "text" : "The host opened many connections (more than 100 different destinations within the last 15 minute interval)",
+        "host" : "10.11.13.19",
+        "priority" : "7",
+        "eventid" : "0102"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUK",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-19T23:40:00.000Z",
+        "text" : "Increase in traffic volume for this source (more than 10x increase between the previous two 15 minute intervals)",
+        "host" : "10.11.13.100",
+        "priority" : "5",
+        "eventid" : "0401"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUL",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-20T00:00:10.000Z",
+        "text" : "The host accessed a large number of unresponsive TCP ports.",
+        "host" : "10.11.13.200",
+        "priority" : "3",
+        "eventid" : "0200"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUM",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-20T00:02:16.000Z",
+        "text" : "Increase in connections for this source (more than 10x increase between the previous two 15 minute intervals)",
+        "host" : "10.11.12.60",
+        "priority" : "9",
+        "eventid" : "0001"
+      }
+    }, {
+      "_index" : "kyn-newsticker-2016",
+      "_type" : "news",
+      "_id" : "AVi1-kX5eK1FPa4JsIUN",
+      "_score" : 1.0,
+      "_source" : {
+        "@timestamp" : "2016-10-20T01:54:00.100Z",
+        "text" : "The host has been accessed by multiple hosts but did not respond (within the last 15 minutes, more than 5 differnet sources accessed the host via TCP but only SYN packets are sent and no response is received).",
+        "host" : "10.11.12.61",
+        "priority" : "1",
+        "eventid" : "0107"
+      }
+    } ]
+  }
+}

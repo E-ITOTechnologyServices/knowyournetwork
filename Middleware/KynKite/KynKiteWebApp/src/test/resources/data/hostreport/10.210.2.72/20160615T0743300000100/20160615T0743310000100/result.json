@@ -1,0 +1,50 @@
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "hosts": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "10.210.2.72",
+          "doc_count": 1,
+          "cardinal": {
+            "value": 1
+          },
+          "time": {
+            "count": 1,
+            "min": 1465976610055,
+            "max": 1465976610055,
+            "avg": 1465976610055,
+            "sum": 1465976610055,
+            "min_as_string": "2016-06-15T07:43:30.055Z",
+            "max_as_string": "2016-06-15T07:43:30.055Z",
+            "avg_as_string": "2016-06-15T07:43:30.055Z",
+            "sum_as_string": "2016-06-15T07:43:30.055Z"
+          },
+          "events": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "scanner",
+                "doc_count": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

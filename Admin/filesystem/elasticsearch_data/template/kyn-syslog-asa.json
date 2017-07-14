@@ -1,0 +1,256 @@
+{
+    "order": 1,
+    "template": "kyn-syslog-asa-*",
+    "settings": {},
+    "mappings": {
+      "_default_": {
+        "_all": {
+          "enabled": false
+        },
+        "properties": {
+          "err_icmp_type": {
+            "type": "keyword"
+          },
+          "xlate_type": {
+            "type": "keyword"
+          },
+          "reason": {
+            "type": "keyword"
+          },
+          "src_interface": {
+            "type": "keyword"
+          },
+          "orig_src_ip": {
+            "type": "ip"
+          },
+          "type": {
+            "type": "keyword"
+          },
+          "orig_src_port": {
+            "type": "long"
+          },
+          "seq_num": {
+            "type": "long"
+          },
+          "syslog_severity": {
+            "type": "keyword"
+          },
+          "protocol": {
+            "type": "keyword"
+          },
+          "cisco_message": {
+            "type": "keyword"
+          },
+          "tcp_flags": {
+            "type": "keyword"
+          },
+          "orig_dst_port": {
+            "type": "long"
+          },
+          "host": {
+            "type": "ip"
+          },
+          "action": {
+            "type": "keyword"
+          },
+          "icmp_code": {
+            "type": "keyword"
+          },
+          "icmp_code_xlated": {
+            "type": "keyword"
+          },
+          "icmp_seq_num": {
+            "type": "keyword"
+          },
+          "group": {
+            "type": "keyword"
+          },
+          "dst_mapped_port": {
+            "type": "long"
+          },
+          "err_dst_ip": {
+            "type": "ip"
+          },
+          "err_protocol": {
+            "type": "keyword"
+          },
+          "syslog_severity_code": {
+            "type": "long"
+          },
+          "err_src_ip": {
+            "type": "ip"
+          },
+          "syslog_facility": {
+            "type": "keyword"
+          },
+          "err_dst_interface": {
+            "type": "keyword"
+          },
+          "spi": {
+            "type": "keyword"
+          },
+          "src_mapped_ip": {
+            "type": "ip"
+          },
+          "tags": {
+            "type": "keyword"
+          },
+          "connection_count": {
+            "type": "long"
+          },
+          "orig_dst_ip": {
+            "type": "ip"
+          },
+          "src_xlated_interface": {
+            "type": "keyword"
+          },
+          "hashcode1": {
+            "type": "keyword"
+          },
+          "hashcode2": {
+            "type": "keyword"
+          },
+          "icmp_type": {
+            "type": "keyword"
+          },
+          "policy_id": {
+            "type": "keyword"
+          },
+          "interface": {
+            "type": "keyword"
+          },
+          "src_xlated_ip": {
+            "type": "ip"
+          },
+          "dst_ip": {
+            "type": "ip"
+          },
+          "err_icmp_code": {
+            "type": "keyword"
+          },
+          "src_mapped_port": {
+            "type": "long"
+          },
+          "dst_mapped_ip": {
+            "type": "ip"
+          },
+          "duration": {
+            "type": "keyword"
+          },
+          "src_ip": {
+            "type": "ip"
+          },
+          "tunnel_type": {
+            "type": "keyword"
+          },
+          "direction": {
+            "type": "keyword"
+          },
+          "err_src_interface": {
+            "type": "keyword"
+          },
+          "syslog_pri": {
+            "type": "keyword"
+          },
+          "timestamp": {
+            "type": "keyword"
+          },
+          "geoip": {
+            "properties": {
+              "timezone": {
+                "type": "keyword"
+              },
+              "area_code": {
+                "type": "long"
+              },
+              "ip": {
+                "type": "ip"
+              },
+              "latitude": {
+                "type": "double"
+              },
+              "continent_code": {
+                "type": "keyword"
+              },
+              "number": {
+                "type": "keyword"
+              },
+             "city_name": {
+                "type": "keyword"
+              },
+              "country_code2": {
+                "type": "keyword"
+              },
+              "country_name": {
+                "type": "keyword"
+              },
+              "dma_code": {
+                "type": "long"
+              },
+              "country_code3": {
+                "type": "keyword"
+              },
+              "location": {
+                "type": "geo_point"
+              },
+              "region_name": {
+                "type": "keyword"
+              },
+              "real_region_name": {
+                "type": "keyword"
+              },
+              "postal_code": {
+                "type": "keyword"
+              },
+              "asn": {
+                "type": "keyword"
+              },
+              "longitude": {
+                "type": "double"
+              }
+            }
+          },
+          "orig_protocol": {
+            "type": "keyword"
+          },
+          "ciscotag": {
+            "type": "keyword"
+          },
+          "syslog_facility_code": {
+            "type": "long"
+          },
+          "dst_interface": {
+            "type": "keyword"
+          },
+          "message": {
+            "type": "keyword"
+          },
+          "src_port": {
+            "type": "long"
+          },
+          "is_remote_natted": {
+            "type": "keyword"
+          },
+          "connection_id": {
+            "type": "keyword"
+          },
+          "bytes": {
+            "type": "long"
+          },
+          "dst_port": {
+            "type": "long"
+          },
+          "connection_count_max": {
+            "type": "long"
+          },
+          "is_local_natted": {
+            "type": "keyword"
+          },
+          "user": {
+            "type": "keyword"
+          }
+        }
+      }
+    },
+    "aliases": {}
+  }

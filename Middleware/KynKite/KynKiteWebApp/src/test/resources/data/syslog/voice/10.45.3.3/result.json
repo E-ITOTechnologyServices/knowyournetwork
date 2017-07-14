@@ -1,0 +1,234 @@
+{
+  "took" : 9,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 1214,
+    "max_score" : null,
+    "hits" : [ {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc3",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.147.167.24\"  Dst-port=\"46879\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=82247, To=sip:anonym@vc.acme.com, Call-ID=fc73e67d9d5f133d1d0196c691620c43, From-Tag=3d9fcbd44a689cae, To-Tag=bd01900d8abc1a42, Msg-Hash=5169526893209504635\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.414Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954414 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajp",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.147.167.24\"  Dst-port=\"46879\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=82247, To=sip:anonym@vc.acme.com, Call-ID=fc73e67d9d5f133d1d0196c691620c43, From-Tag=3d9fcbd44a689cae, To-Tag=bd01900d8abc1a42, Msg-Hash=5169526893209504635\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.414Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954414 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc1",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.139.164.241\"  Dst-port=\"54511\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=e6bed364866e6cd2, Msg-Hash=8810220758206943821\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.406Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954406 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajn",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.139.164.241\"  Dst-port=\"54511\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=e6bed364866e6cd2, Msg-Hash=8810220758206943821\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.406Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954406 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc0",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.139.164.241\"  Src-port=\"54511\"   Detail=\"Receive Request Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=, Msg-Hash=16696336233875493912\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.398Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954398 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajm",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.139.164.241\"  Src-port=\"54511\"   Detail=\"Receive Request Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=, Msg-Hash=16696336233875493912\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.398Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954398 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcv",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.11.154.28\"  Dst-port=\"35310\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=69708, To=sip:anonym@vc.acme.com, Call-ID=b9408c6d37c4c135f898b1222a26f5f1, From-Tag=53f581347a3494ce, To-Tag=baa5e4c6c5c660b1, Msg-Hash=13962150244868185387\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.215Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954215 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajh",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.11.154.28\"  Dst-port=\"35310\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=69708, To=sip:anonym@vc.acme.com, Call-ID=b9408c6d37c4c135f898b1222a26f5f1, From-Tag=53f581347a3494ce, To-Tag=baa5e4c6c5c660b1, Msg-Hash=13962150244868185387\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.215Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954215 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDct",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.11.154.28\"  Src-port=\"35310\"   Detail=\"Receive Request Method=REGISTER, CSeq=69708, To=sip:anonym@vc.acme.com, Call-ID=b9408c6d37c4c135f898b1222a26f5f1, From-Tag=53f581347a3494ce, To-Tag=, Msg-Hash=8594147356170657699\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.209Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954209 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajf",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.11.154.28\"  Src-port=\"35310\"   Detail=\"Receive Request Method=REGISTER, CSeq=69708, To=sip:anonym@vc.acme.com, Call-ID=b9408c6d37c4c135f898b1222a26f5f1, From-Tag=53f581347a3494ce, To-Tag=, Msg-Hash=8594147356170657699\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.209Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954209 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcs",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.84.16.221\"  Dst-port=\"35369\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=47370, To=sip:anonym@vc.acme.com, Call-ID=4ac15ee454f38f3919d2ca70011cdaf0, From-Tag=992243cdc4021052, To-Tag=c18ce125504eeb6e, Msg-Hash=3925709658959365775\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.181Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954181 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4aje",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.84.16.221\"  Dst-port=\"35369\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=47370, To=sip:anonym@vc.acme.com, Call-ID=4ac15ee454f38f3919d2ca70011cdaf0, From-Tag=992243cdc4021052, To-Tag=c18ce125504eeb6e, Msg-Hash=3925709658959365775\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.181Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954181 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcr",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.84.16.221\"  Src-port=\"35369\"   Detail=\"Receive Request Method=REGISTER, CSeq=47370, To=sip:anonym@vc.acme.com, Call-ID=4ac15ee454f38f3919d2ca70011cdaf0, From-Tag=992243cdc4021052, To-Tag=, Msg-Hash=14357734379004975807\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.173Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954173 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajd",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.84.16.221\"  Src-port=\"35369\"   Detail=\"Receive Request Method=REGISTER, CSeq=47370, To=sip:anonym@vc.acme.com, Call-ID=4ac15ee454f38f3919d2ca70011cdaf0, From-Tag=992243cdc4021052, To-Tag=, Msg-Hash=14357734379004975807\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.173Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954173 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcp",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.148.135.71\"  Dst-port=\"57194\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=31992, To=sip:anonym@vc.acme.com, Call-ID=b170840183b27a3e83f0aae5517f8efc, From-Tag=64f203472a3046ef, To-Tag=e01ff82e8b87491e, Msg-Hash=3361626132230600430\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.125Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954125 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajb",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.148.135.71\"  Dst-port=\"57194\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=31992, To=sip:anonym@vc.acme.com, Call-ID=b170840183b27a3e83f0aae5517f8efc, From-Tag=64f203472a3046ef, To-Tag=e01ff82e8b87491e, Msg-Hash=3361626132230600430\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.125Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954125 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcn",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.148.135.71\"  Src-port=\"57194\"   Detail=\"Receive Request Method=REGISTER, CSeq=31992, To=sip:anonym@vc.acme.com, Call-ID=b170840183b27a3e83f0aae5517f8efc, From-Tag=64f203472a3046ef, To-Tag=, Msg-Hash=782605389803747865\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.118Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954118 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajZ",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.148.135.71\"  Src-port=\"57194\"   Detail=\"Receive Request Method=REGISTER, CSeq=31992, To=sip:anonym@vc.acme.com, Call-ID=b170840183b27a3e83f0aae5517f8efc, From-Tag=64f203472a3046ef, To-Tag=, Msg-Hash=782605389803747865\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.118Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954118 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcl",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.141.59.89\"  Dst-port=\"60433\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=75707, To=sip:anonym@vc.acme.com, Call-ID=c4e4f39a876013e1ee6fc09385f8e5ff, From-Tag=b8487fd4977902a9, To-Tag=ea44caddb9daa53a, Msg-Hash=12935257760424611074\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.038Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954038 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajX",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.141.59.89\"  Dst-port=\"60433\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=75707, To=sip:anonym@vc.acme.com, Call-ID=c4e4f39a876013e1ee6fc09385f8e5ff, From-Tag=b8487fd4977902a9, To-Tag=ea44caddb9daa53a, Msg-Hash=12935257760424611074\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.038Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954038 ]
+    } ]
+  }
+}

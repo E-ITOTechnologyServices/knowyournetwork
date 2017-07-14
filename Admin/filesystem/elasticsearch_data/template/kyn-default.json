@@ -1,0 +1,33 @@
+{
+  "order": 0,
+  "template": "kyn-*",
+  "settings": {
+    "index": {
+      "number_of_replicas": "0",
+      "number_of_shards": "1",
+      "codec": "best_compression"
+    }
+  },
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [
+        {
+          "strings_as_keywords": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        }
+      },
+      "_all": {
+        "enabled": false
+      }
+    }
+  }
+}

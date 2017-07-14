@@ -1,0 +1,40 @@
+#!/bin/bash
+
+############################################################
+## clean all build artefacts from Capture build
+
+
+
+. ../ci_scripts/common
+
+DESTDIR="$BUILD_DIR/Capture"
+
+############################################################
+#
+BUILDNODE="KYNbuildNodeCapture"
+#
+MODULE="Capture"
+#
+############################################################
+
+log $MODULE "Removing $DESTDIR/filesystem..."
+LOG=$(rm -rf $DESTDIR/filesystem)
+log_success $? "$LOG"
+
+###
+
+# check for running build node
+docker top $BUILDNODE > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    log $MODULE "Removing docker build container..."
+    LOG=$(docker rm -f $BUILDNODE 2>&1 )
+    log_success $? "$LOG"
+fi
+
+####
+
+log $MODULE "Removing docker build volume..."
+LOG=$(docker volume rm -f CaptureBuild 2>&1 )
+log_success $? "$LOG"
+

@@ -1,0 +1,59 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\pgfplotstableread[col sep=comma]{csv/310_Multiday_View_of_Sessions_Terminated_with_RST.csv}\sessionreset %
+\pgfplotsset{colormap={eitogreen3d}{rgb255(0cm)=(143,166,44); rgb255(1cm)=(0,128,0); rgb255(3cm)=(255,255,0); rgb255(6cm)=(255,0,0)}  % 143 | 166 | 44
+}
+
+%
+%
+\chapter[Multiday View of Sessions Terminated with RST]{\underline{Multiday View of Sessions Terminated with RST}}
+%
+\begin{flushleft}
+The graph shows the total amount of connections terminated by a Reset flag across the report period. A session termination by the Reset flag is unusual and can show potential misconfiguration or misbehavior on server side, within an application or a device in between the communication.
+This graph provides information about single peak or recurring events.
+
+%
+\end{flushleft}
+%
+%
+%
+\begin{center}
+\begin{figure}[h]
+\vspace{-0.5cm}
+\begin{tikzpicture}%[trim left=-5cm]
+\begin{axis}[
+     colormap name=eitogreen3d,
+     height=11cm, width=20cm,
+     title={},
+     z tick label style={font=\small,/pgf/number format/.cd,fixed,precision=20},
+     scaled ticks=false,
+     date coordinates in=y,
+     xlabel={Time},
+     %ylabel={Day},
+     xticklabel style= {font=\small},
+     yticklabel style= {anchor=west,font=\small, right=5mm},
+     yticklabel={\day.\month.\year},
+     zlabel={Resets},
+     legend style={anchor=west, draw=none}
+     ]
+  \addlegendentry{Total Resets}
+  \addplot3 [surf, shader=interp, fill=white] file {csv/310_Multiday_View_of_Sessions_Terminated_with_RST.csv};
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}[\normalsize{Session Reset}]{\small{Session Reset}}
+\end{figure}
+\end{center}

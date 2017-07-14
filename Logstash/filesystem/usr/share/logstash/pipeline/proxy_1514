@@ -1,0 +1,128 @@
+###### PROXY LOGS ######
+input {
+  tcp {
+    port => "1514"
+    type => "syslog-proxy"
+    #codec => plain { charset => "ISO-8859-1" }
+  }
+}
+
+filter {
+  if [type] == "syslog-proxy" {
+    # drop comment lines
+    if ([message] =~ /^#/) {
+      drop{}
+    }
+
+    csv {
+      columns => ["date",
+                  "time",
+                  "time_taken",
+                  "c_ip",
+                  "cs_username",
+                  "cs_auth_group",
+                  "x_exception_id",
+                  "sc_filter_result",
+                  "cs_categories",
+                  "cs_referer",
+                  "sc_status",
+                  "s_action",
+                  "cs_method",
+                  "rs_content_type",
+                  "cs_uri_scheme",
+                  "cs_host",
+                  "cs_uri_port",
+                  "cs_uri_path",
+                  "cs_uri_query",
+                  "cs_uri_extension",
+                  "cs_user_agent",
+                  "s_ip",
+                  "sc_bytes",
+                  "cs_bytes",
+                  "x_virus_id",
+                  "x_bluecoat_application_name",
+                  "x_bluecoat_application_operation",
+                  "proxy_port",
+                  "profile",
+                  "destinationIP"]
+      separator => " "
+    }
+
+    # ignore IPv6
+    if [destinationIP] =~ /:/ {
+      drop {}
+    }
+
+    # parse timestamp
+    if [date] and [time] {
+      mutate {
+        add_field => { "timestamp" => "%{date} %{time}" }
+      }
+      date {
+        match => ["timestamp", "YYYY-MM-dd HH:mm:ss" ]
+        timezone => ['UTC']
+      }
+    }
+
+    # enrich log entry with destination geolocation info
+    if [destinationIP] != "-" {
+      geoip {
+        source => "destinationIP"
+      }
+    }
+    else { 
+      mutate { 
+        remove_field => ["destinationIP"]
+      }
+    }
+
+    if [s_ip] == "-" {
+      mutate {
+        remove_field => ["s_ip"]
+      }
+    }
+
+
+    # parse User-Agent header
+    if ([cs_user_agent] and [cs_user_agent] != "" and [cs_user_agent] != "-") {
+      useragent {
+        source => "cs_user_agent"
+        prefix => "user_agent_"
+      }    
+    }
+
+    # split Blue Coat web site categories into an array
+    if ([cs_categories] and [cs_categories] != "" and [cs_categories] != "-") {
+      mutate {
+        split => { "cs_categories" => ";" }
+      }
+    }
+
+    # type convert number fields
+    mutate {
+      convert => ["sc_bytes", "integer",
+                  "time_taken", "integer",
+                  "r_port", "integer",
+                  "s_port", "integer",
+                  "cs_bytes", "integer",
+                  "proxy_port", "integer",
+                  "duration", "integer"]
+    }
+
+    # cleanup
+    mutate {
+      remove_field => ["message", "date", "time"]
+    }
+  }
+}
+
+output {
+  if [type] == "syslog-proxy" {
+    #stdout { codec => rubydebug }
+    elasticsearch {
+      index => "kyn-syslog-proxy-%{+YYYY-MM-dd}"
+      flush_size => 2500
+      hosts => ["elasticsearch:9200"]
+    }
+  }
+}

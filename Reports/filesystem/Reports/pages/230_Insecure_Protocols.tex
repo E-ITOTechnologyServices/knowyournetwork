@@ -1,0 +1,138 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\setlength{\parindent}{0pt}
+\chapter[Insecure Protocols]{\underline{Insecure Protocols}}
+\begin{flushleft}
+Protocols like FTP or Telnet are insecure protocols due to clear-text transmission and weak authentication. Both protocols shall not be in use beside the appliance is unable to support encrypted communication like SSH or SCP. In such a case additional protection of an insecure device can be provided by implementing firewalls and NIPS in front of the vulnerable device.
+
+\end{flushleft}
+
+\begin{table}[h]
+\centering
+\begin{center}
+  \begin{minipage}{0.45\textwidth} 
+   \centering
+      \pgfplotstabletypeset[
+        font=\small,
+        col sep=comma, % the seperator in our .csv file
+        use comma, % Decimal separator
+        every even row/.style={ before row={\rowcolor {green4}}},
+        every head row/.style={ before row=\toprule,after row=\midrule},
+        every last row/.style={ after row=\bottomrule},
+        columns/Destination IP Address/.style={column type=l,string type,column name=Destination IP Address},
+        columns/Source IP Addresses/.style={int detect,column type=r,string type,column name=Source IP Addresses},
+        multicolumn names
+      ]{csv/235_FTP_Server_Unique_Hosts.csv} % filename/path to file
+\caption[\normalsize{FTP-Protocol}]{\small{FTP-Protocol}}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.45\textwidth}
+   \centering
+      \pgfplotstabletypeset[
+        font=\small,
+        col sep=comma, % the seperator in our .csv file
+        use comma, % Decimal separator
+        every even row/.style={ before row={\rowcolor {green4}}},
+        every head row/.style={ before row=\toprule,after row=\midrule},
+        every last row/.style={ after row=\bottomrule},
+        columns/Destination IP Address/.style={column type=l,string type,column name=Destination IP Address},
+        columns/Source IP Addresses/.style={int detect,column type=r,string type,column name=Source IP Addresses},
+        multicolumn names
+      ]{csv/230_Telnet_Server_Unique_Hosts.csv} % filename/path to file
+\caption[\normalsize{Telnet-Protocol}]{\small{Telnet-Protocol}}
+  \end{minipage}
+\end{center}
+\end{table}
+
+\pgfplotstableread[col sep=comma]{csv/237_FTP_Transferred_Bytes.csv}\FTP %
+\pgfplotstableread[col sep=comma]{csv/232_Telnet_Transferred_Bytes.csv}\Telnet %
+
+
+\DTLloaddb{FTP}{csv/235_FTP_Server_Unique_Hosts.csv}
+\DTLloaddb{Telnet}{csv/230_Telnet_Server_Unique_Hosts.csv}
+
+\DTLforeach{FTP}{%
+\FTPDest=Destination IP Address,\FTPSource=Source IP Addresses}{%
+}
+\DTLforeach{Telnet}{%
+\TelnetDest=Destination IP Address,\TelnetSource=Source IP Addresses}{%
+}
+
+
+\def\Hilfe{n/a} 
+
+\ifx\FTPDest\Hilfe
+\def\FTPH{0}
+\else
+\def\FTPH{1}
+\fi
+
+\ifx\TelnetDest\Hilfe
+\def\TelnetH{0}
+\else
+\def\TelnetH{2}
+\fi
+
+\ifnum\FTPH=\TelnetH
+\def\Gesamt{0}
+\else
+\def\Gesamt{1}
+\fi
+
+\ifnum\Gesamt=0
+
+\else
+\newpage
+The Graph below shows the transferred bytes which are exchanged between the listed hosts before using FTP and/or Telnet. The Communication is shown in bytes as this gives an indication if the communication has been established.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture} 
+\begin{axis}[
+  ybar=0pt,
+  ymajorgrids=true,
+  y axis line style = { opacity = 0 },
+  scaled ticks=false,
+  height=11cm, width=20cm,
+  date coordinates in=x,
+  title={},
+  enlarge x limits=0.01,
+  legend style=
+    {
+    at={(1,1)},
+    xshift=0.2cm,
+    anchor=north west,
+    nodes=right,
+    draw=none,
+    font=\tiny,
+    },
+  ylabel={\small{Sum of Bytes}},
+  xticklabel style={rotate=30,anchor=north east,font=\tiny},
+  xticklabel={\day.\month.\year\ \hour:\minute},
+  y tick label style={/pgf/number format/fixed, /pgf/number format/precision=5, /pgf/number format/1000 sep=., font=\tiny },
+  bar width=6pt
+  ]
+\addlegendentry{FTP}
+\addplot [fill=graphgreen2] table[x={Date}, y=Bytes] from {\FTP};
+\addlegendentry{Telnet}
+\addplot [fill=graphgreen3] table[x={Date}, y=Bytes] from {\Telnet};
+
+\end{axis} 
+\end{tikzpicture}
+\caption{Sum of Bytes Transferred by FTP/Telnet}%
+\end{figure}
+\fi

@@ -1,0 +1,25 @@
+
+########################################################################
+#
+# This component defines an admin container image for kyn.
+# The container is created on every kyn build, but not executed automatically.
+# It must be run manually on the command line:
+#
+# docker run --rm --volume=/var/run/docker.sock:/var/run/docker.sock --network=kyn_default  kyn/admin [command]
+#
+# Or use this wrapper script from the main source dir:
+#
+# ./kynadmin.sh [command]
+#
+# The supported commands are currently:
+#
+# eslicense         :   install elastic search license into elastic search instance in docker service 'elasticsearch'
+# inituserdb        :   clean and re-init user management database in docker service 'mysql'
+# importestemplates :   import elasticsearch templates
+# importesindices   :   import elasticsearch indices
+# importesdemodata  :   import elasticsearch demo data
+# init              :   perform all init commands at once
+# up                :   start all kyn container services
+# down              :   stop all kyn container services
+#
+########################################################################

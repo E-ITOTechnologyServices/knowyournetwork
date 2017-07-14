@@ -1,0 +1,124 @@
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2200,
+    "max_score" : null,
+    "hits" : [ {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG2",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.253.10 dhcpd 17620 - - DHCPACK to 10.135.77.144 (2c:44:fd:0f:36:46) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.253.10"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG3",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.253.10 dhcpd 17620 - - DHCPACK to 10.135.154.188 (a0:d3:c1:2e:3e:bb) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.253.10"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG4",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.253.10 dhcpd 17620 - - DHCPACK to 10.135.77.144 (2c:44:fd:0f:36:46) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.253.10"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG5",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.245.8 dhcpd 6218 - - DHCPACK to 10.135.77.144 (2c:44:fd:0f:36:46) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.245.8"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG6",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.253.10 dhcpd 17620 - - DHCPACK to 10.135.154.188 (a0:d3:c1:2e:3e:bb) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.253.10"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG7",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.245.8 dhcpd 6218 - - DHCPACK to 10.135.77.144 (2c:44:fd:0f:36:46) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.245.8"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG8",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.245.8 dhcpd 6218 - - DHCPACK to 10.135.154.188 (a0:d3:c1:2e:3e:bb) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.245.8"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG9",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.245.8 dhcpd 6218 - - DHCPACK to 10.254.52.250 (90:48:9a:c5:ab:05) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.245.8"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG-",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.253.10 dhcpd 17620 - - DHCPACK to 10.135.45.61 (2c:44:fd:17:43:4b) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.253.10"
+      },
+      "sort" : [ 1467269161970 ]
+    }, {
+      "_index" : "kyn-syslog-dhcp-demo",
+      "_type" : "dhcp",
+      "_id" : "AVjUQWNpsYemHJ3OLDG_",
+      "_score" : null,
+      "_source" : {
+        "message" : "2016-06-30T06:46:01+02:00 10.254.253.10 dhcpd 17620 - - DHCPACK to 10.135.45.61 (2c:44:fd:17:43:4b) via eth0\n",
+        "@timestamp" : "2016-06-30T06:46:01.970Z",
+        "AD-Server" : "10.254.253.10"
+      },
+      "sort" : [ 1467269161970 ]
+    } ]
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "took" : 6,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 38,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "vol_increase_d",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increase in traffic volume for this destination (more than 10x increase between the previous two 15 minute intervals)",
+        "use_case" : "vol_increase_d",
+        "severity" : 2,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0402",
+		"date_offset" : 12
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "routing_change",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Routing via a new hop. (for communication between this source and destination subnet, a router which did not report flows for this source/destination has reported a flow)",
+        "use_case" : "routing_change",
+        "severity" : 1,
+        "elk_link" : "Not yet implemented",
+        "eventid" : "0302"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "many_destinations",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+        "use_case" : "many_destinations",
+        "severity" : 1,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0101"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "tunneling",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Host used GRE tunneling. (IP protocol 47)",
+        "use_case" : "tunneling",
+        "severity" : 5,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'(SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22)%20AND%20(Protocol:47)')),title:FE-Dashboard,uiState:())",
+        "eventid" : "5000"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "new_communication",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Communication with a new service. For this port on this destination host, no such communication was seen in the past.",
+        "use_case" : "new_communication",
+        "severity" : 1,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0108"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "many_destinations_restricted_ports",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "The host connected to many others on restricted ports (more than 100 destinations within the last hour for one of these ports: 25, 53, 80, 443, 445, 3389)",
+        "use_case" : "many_destinations_restricted_ports",
+        "severity" : 2,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'(SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22)%20AND%20(Protocol:6)%20AND%20(DestinationPort:25%20OR%20DestinationPort:53%20OR%20DestinationPort:80%20OR%20DestinationPort:443%20OR%20DestinationPort:445)')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0106"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "new_destination",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Communication with a new host. For this destination, no connections were seen before this event.",
+        "use_case" : "new_destination",
+        "severity" : 1,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0109"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "scanner",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "The host accessed a large number of destination ports (more than 100 different TCP ports within the last 15 minutes).",
+        "use_case" : "scanner",
+        "severity" : 10,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0100"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "admin_source",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Host accessed administrative ports (ssh, telnet, rdp) on more than 5 systems in last 15 minutes while 4 or less systems were accessed during all of last week.",
+        "use_case" : "admin_source",
+        "severity" : 5,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'(SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22)%20AND%20(DestinationPort:22%20OR%20DestinationPort:23%20OR%20DestinationPort:3389)')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0500"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "failed_icmp",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "The host send icmp echo requests to a large number of unresponsive systems.",
+        "use_case" : "failed_icmp",
+        "severity" : 1,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22%20AND%20(Protocol:0)’)),title:FE-Dashboard,uiState:())",
+        "eventid" : "0201"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "many_connections_restricted_ports",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Host connected to many systems using known reconaissance ports (more than 100 destinations within the last hour for one of these ports: 25, 53, 80, 443, 445, 3389).",
+        "use_case" : "many_connections_restricted_ports",
+        "severity" : 2,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'(SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22)%20AND%20(Protocol:6)%20AND%20(DestinationPort:25%20OR%20DestinationPort:53%20OR%20DestinationPort:80%20OR%20DestinationPort:443%20OR%20DestinationPort:445)')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0105"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "many_connections",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "The host opened many connections (more than 100 different destinations within the last 15 minute interval)",
+        "use_case" : "many_connections",
+        "severity" : 5,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0102"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "vol_increase_s",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increase in traffic volume for this source (more than 10x increase between the previous two 15 minute intervals)",
+        "use_case" : "vol_increase_s",
+        "severity" : 2,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0401"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "failed_tcp",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "The host accessed a large number of unresponsive TCP ports.",
+        "use_case" : "failed_tcp",
+        "severity" : 5,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22%20AND%20(Protocol:6%20AND%20TCPFlags:%22...S..%22)')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0200"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "conn_increase_s",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increase in connections for this source (more than 10x increase between the previous two 15 minute intervals)",
+        "use_case" : "conn_increase_s",
+        "severity" : 2,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0001"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "failed_tcp_d",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "The host has been accessed by multiple hosts but did not respond (within the last 15 minutes, more than 5 differnet sources accessed the host via TCP but only SYN packets are sent and no response is received).",
+        "use_case" : "failed_tcp_d",
+        "severity" : 5,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22%20AND%20(Protocol:6%20AND%20TCPFlags:“….S.“)’)),title:FE-Dashboard,uiState:())",
+        "eventid" : "0107"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "insecure_protocol",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Host used FTP or Telnet. (unencrypted communication protocol) (tcp/21 or tcp/23)",
+        "use_case" : "insecure_protocol",
+        "severity" : 5,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'(SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22)%20AND%20(DestinationPort:21%20OR%20DestinationPort:23)')),title:FE-Dashboard,uiState:())",
+        "eventid" : "5200"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "comm_pattern",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Unique communication pattern (Based on heuristic rating. Communication of this host does not share many destinations with other sources.)",
+        "use_case" : "comm_pattern",
+        "severity" : 1,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0303"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "malware_ip",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Host tried to connect to an IP address that is on the bad-reputation-list.",
+        "use_case" : "malware_ip",
+        "severity" : 2,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'(SourceAddress:%2210.47.57.160%22%20OR%20DestinationAddress:%2210.47.57.160%22)%20AND%20(SourceAddress:%2210.254.253.179%22%20OR%20DestinationAddress:%2210.254.253.179%22)')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0301"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "conn_increase_d",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increase in connections for this destination (more than 10x increase between the previous two 15 minute intervals)",
+        "use_case" : "conn_increase_d",
+        "severity" : 2,
+        "elk_link" : "app/kibana#/dashboard/FE-Dashboard?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-09-27T22:00:00.000Z',mode:absolute,to:'2016-09-28T21:59:59.999Z'))&_a=(filters:!(),options:(darkTheme:!f),query:(query_string:(analyze_wildcard:!t,query:'SourceAddress:%22[%IP%]%22%20OR%20DestinationAddress:%22[%IP%]%22')),title:FE-Dashboard,uiState:())",
+        "eventid" : "0104"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "brute_force",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Brute force attack against authentication",
+        "use_case" : "brute_force",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0110"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "cloud_storage",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Host communicated with servers listed as cloud storage servers (e.g. Dropbox)",
+        "use_case" : "cloud_storage",
+        "severity" : 4,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "5001"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "cloud_storage_from_smb",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Host accessed file shares and cloud storage",
+        "use_case" : "cloud_storage_from_smb",
+        "severity" : 4,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "5002"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "command_and_control",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Communication to known command-and-control servers detected",
+        "use_case" : "command_and_control",
+        "severity" : 8,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0002"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "dcard_increase_s",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increase in number of distinct destination IP for this source",
+        "use_case" : "dcard_increase_s",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0003"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "dns_increase",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increase in number of DNS clients for this server",
+        "use_case" : "dns_increase",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0111"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "hr_network_access",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Clients accessed a protected network for the first time",
+        "use_case" : "hr_network_access",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0004"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "kerberos_conns",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increased number of Kerberos connections detected for this destination",
+        "use_case" : "kerberos_conns",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0005"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "new_kerberos_d",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "This host has contacted Kerberos destinations it did not contact before",
+        "use_case" : "new_kerberos_d",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0112"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "kerberos_volume",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increased volume of kerberos traffic for this host",
+        "use_case" : "kerberos_volume",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0006"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "malware",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Detect communication to sites known to spread malware",
+        "use_case" : "malware",
+        "severity" : 8,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0007"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "new_https_d",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "This host has been accessed via HTTPS for the first time",
+        "use_case" : "new_https_d",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0113"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "scard_increase_d",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increase in number of distinct sources IP has been detected for this destination",
+        "use_case" : "scard_increase_d",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0114"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "slow_lateral_tcp_scan",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Failing connections to large number of destinations has been observed",
+        "use_case" : "slow_lateral_tcp_scan",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0008"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "smb_increase_d",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Increased usage of SMB traffic has been detected",
+        "use_case" : "smb_increase_d",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0009"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "web_dns_usage",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Ratio between DNS queries and Web traffic has changed",
+        "use_case" : "web_dns_usage",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0010"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "web_session_size_inbound",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Inbound web session size change was detected",
+        "use_case" : "web_session_size_inbound",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0115"
+      }
+    }, {
+      "_index" : "kyn-eventdescription",
+      "_type" : "not_set",
+      "_id" : "web_session_size_outbound",
+      "_score" : 1.0,
+      "_source" : {
+        "description" : "Outbound web session size change was detected",
+        "use_case" : "web_session_size_outbound",
+        "severity" : 2,
+        "elk_link" : "Not yet implememted",
+        "eventid" : "0011"
+      }
+    } ]
+  }
+}

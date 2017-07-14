@@ -1,0 +1,152 @@
+/**
+ * 
+ */
+package hr.eito.kynkite.rest;
+
+import java.net.URI;
+
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.webapp.WebAppContext;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import hr.eito.helper.ElasticSearchLoader;
+
+
+/**
+ * @author Danijel Soltic
+ *
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/config/app-config.xml" })
+@ActiveProfiles("dev")
+public class ElasticSearchControllerTest extends AbstractElasticSearchController {
+
+	static String hostUrl = "server:9200";
+
+	static boolean loadData = true;
+	private static Server server;
+	private static URI serverUri;
+	
+	@BeforeClass
+	public static void startJetty() throws Exception{
+		
+		// Create Server
+		server = new Server();
+		ServerConnector connector = new ServerConnector(server);
+		connector.setPort(0); // auto-bind to available port
+		server.addConnector(connector);
+
+		WebAppContext webapp1 = new WebAppContext();
+		webapp1.setResourceBase("src/main/webapp");
+		webapp1.setContextPath("/");
+		webapp1.setDefaultsDescriptor("src/main/webapp/WEB-INF/web.xml");
+
+		server.setHandler(webapp1);
+
+		// Start Server
+		server.start();
+
+		// Determine Base URI for Server
+		String host = connector.getHost();
+		if (host == null)
+		{
+			host = "localhost";
+		}
+		int port = connector.getLocalPort();
+		serverUri = new URI(String.format("http://%s:%d/",host,port));
+		//load data in elasticsearch
+		prepareData();
+	}
+	
+
+	@AfterClass
+	public static void stopJetty()
+	{
+		try
+		{
+			server.stop();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * loads data if reload data is true
+	 */
+	private static void prepareData(){
+		
+		String indexes = ElasticSearchLoader.getTemplates(hostUrl);
+
+		//hostTable
+		index = "kyn-eventdescription";
+		if(!indexes.contains(index) && loadData){
+			ElasticSearchLoader.deleteTemplate(hostUrl, index);
+			ElasticSearchLoader.createTemplate(hostUrl, index, "/data/hostTable/kyn-eventdescription-template.json");
+			ElasticSearchLoader.loadData(hostUrl, index, "/data/hostTable/kyn-eventdescription-import-data.json");
+		}
+		index = "kyn-events-demo";
+		if(!indexes.contains(index) && loadData){
+			ElasticSearchLoader.deleteTemplate(hostUrl, index);
+			ElasticSearchLoader.createTemplate(hostUrl, index, "/data/hostTable/kyn-events-template.json");
+			ElasticSearchLoader.loadData(hostUrl, index, "/data/hostTable/kyn-events-import-data.json");
+		}
+		
+		//syslog asa
+		index="kyn-syslog-asa-demo";
+		if(!indexes.contains(index) && loadData){
+			ElasticSearchLoader.deleteTemplate(hostUrl, index);
+			ElasticSearchLoader.createTemplate(hostUrl, index, "/data/syslog/kyn-syslog-asa-template.json");
+			ElasticSearchLoader.loadData(hostUrl, index, "/data/syslog/bulk-export-kyn-syslog-asa.json");
+		}
+		
+		//syslog router
+		index="kyn-syslog-router-demo";
+		if(!indexes.contains(index) && loadData){
+			ElasticSearchLoader.deleteTemplate(hostUrl, index);
+			ElasticSearchLoader.createTemplate(hostUrl, index, "/data/syslog/kyn-syslog-router-template.json");
+			ElasticSearchLoader.loadData(hostUrl, index, "/data/syslog/bulk-export-kyn-syslog-router.json");
+		}
+		
+		//syslog router
+		index="kyn-syslog-voice-demo";
+		if(!indexes.contains(index) && loadData){
+			ElasticSearchLoader.deleteTemplate(hostUrl, index);
+			ElasticSearchLoader.createTemplate(hostUrl, index, "/data/syslog/kyn-syslog-voice-template.json");
+			ElasticSearchLoader.loadData(hostUrl, index, "/data/syslog/bulk-export-kyn-syslog-voice.json");
+		}
+		
+		//syslog DHCP
+		index="kyn-syslog-dhcp-demo";
+		if(!indexes.contains(index) && loadData){
+			ElasticSearchLoader.deleteTemplate(hostUrl, index);
+			ElasticSearchLoader.createTemplate(hostUrl, index, "/data/syslog/kyn-syslog-dhcp-template.json");
+			ElasticSearchLoader.loadData(hostUrl, index, "/data/syslog/bulk-export-kyn-syslog-dhcp.json");
+		}
+		
+		//syslog router
+		index="kyn-syslog-ips-demo";
+		if(!indexes.contains(index) && loadData){
+			ElasticSearchLoader.deleteTemplate(hostUrl, index);
+			ElasticSearchLoader.createTemplate(hostUrl, index, "/data/syslog/kyn-syslog-ips-template.json");
+			ElasticSearchLoader.loadData(hostUrl, index, "/data/syslog/bulk-export-kyn-ips-voice.json");
+		}
+				
+				
+	}
+
+
+	/* (non-Javadoc)
+	 * @see hr.eito.kynkite.rest.AbstractElasticSearchController#getServerUri()
+	 */
+	@Override
+	URI getServerUri() {
+		return serverUri;
+	}
+}

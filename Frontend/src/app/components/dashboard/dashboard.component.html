@@ -1,0 +1,68 @@
+<div id="overlay"></div>
+<nav id="header">
+    <div class="wrapper">
+        <div class="logo"><img src="assets/images/logo.png"></div>
+        <div class="user-menu">
+            {{ currentUser.username }}
+            <button class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-gear"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a [routerLink]="['logout']">Logout</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</nav>
+<div class="wrapper">
+    <div class="logo-kyn">
+        <a [routerLink]="['']"><img src="assets/images/logo-kyn.png"></a>
+    </div>
+    <search></search>
+    <div class="row">
+        <div class="panel-group" id="panels">
+            <!-- newsTicker --><newsTicker></newsTicker><!-- / newsTicker -->
+            <!-- reports --><reports></reports><!-- / reports -->
+            <!-- KITE -->
+            <div class="panel panel-kite">
+                <div class="panel-heading">
+                    <h4 class="panel-title" id="kite-title" (click)="isKiteCollapsed = !isKiteCollapsed; dashboardService.onCollapse('kite', isKiteCollapsed);">
+                        <i class="icon fa fa-tasks"></i>
+                        KITE<span *ngIf="dashboardService.lastSearch">: {{dashboardService.lastSearch}}</span> <span *ngIf="outputKITECounts()!=undefined" class="add-count">({{ outputKITECounts()}})</span>
+                        <i class="fa expandible"></i>
+                    </h4>
+                </div>
+                <div id="collapse-kite" [collapse]="isKiteCollapsed">
+                    <div class="panel-body">
+                        <div class="logo-kite"><img src="assets/images/logo-kite.png"></div>
+                        <!-- hostReports --><hostReports></hostReports><!-- / hostReports -->
+                        <!-- hostInfo --><hostInfo></hostInfo><!-- / hostInfo -->
+                        <!-- syslog --><syslog></syslog><!-- / syslog -->
+                    </div>
+                </div>
+            </div>
+            <!-- / KITE -->
+            <!-- Network Traffic Visualization -->
+            <div class="panel panel-kibana">
+                <div class="panel-heading">
+                    <h4 class="panel-title" id="visualization-title" (click)="isVisualizationCollapsed = !isVisualizationCollapsed; dashboardService.onCollapse('visualization', isVisualizationCollapsed);">
+                        <i class="icon fa fa-tasks"></i>
+                        Network Traffic Visualization<span *ngIf="dashboardService.validateIPv4(dashboardService.lastSearch)">: {{dashboardService.lastSearch}}</span>
+                        <i class="fa expandible"></i>
+                    </h4>
+                </div>
+                <div id="visualization" [collapse]="isVisualizationCollapsed">
+                    <div class="panel-body pb-0">
+                        <div class="panel-group">
+                            <!-- kibana --><kibana></kibana><!-- / kibana -->
+                            <!-- graphs --><graphs></graphs><!-- / graphs -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / Network Traffic Visualization -->
+            <!-- AQL rules --><AQLrules></AQLrules><!-- AQL rules -->
+            <!-- lara --><lara></lara><!-- / lara -->
+        </div>
+    </div>
+</div>

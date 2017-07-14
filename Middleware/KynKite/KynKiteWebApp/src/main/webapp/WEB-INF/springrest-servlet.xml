@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+   
+	<context:component-scan
+		base-package="hr.eito.kynkite.rest, hr.eito.kynkite.business, hr.eito.kynkite.usermanagement, hr.eito.kynkite.aql.dao" />
+	
+	<mvc:annotation-driven />
+	<tx:annotation-driven />
+
+	<beans profile="dev">
+		<context:property-placeholder
+			location="classpath:hr/eito/kynkite/application-dev.properties"
+			ignore-unresolvable="true" />
+	</beans>
+
+	<beans profile="test">
+		<context:property-placeholder
+			location="classpath:hr/eito/kynkite/application-test.properties"
+			ignore-unresolvable="true" />
+	</beans>
+
+	<beans profile="prod">
+		<context:property-placeholder
+			location="classpath:hr/eito/kynkite/application-prod.properties"
+			ignore-unresolvable="true" />
+	</beans>
+
+</beans>

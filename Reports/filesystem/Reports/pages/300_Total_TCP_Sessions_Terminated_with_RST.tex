@@ -1,0 +1,75 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\pgfplotstableread[col sep=comma]{csv/300_Total_TCP_Sessions_Terminated_with_RST_b.csv}\sessionreset %
+%
+%
+\chapter[Total TCP Sessions Terminated with Reset]{\underline{Total TCP Sessions Terminated with Reset}}
+%
+\begin{flushleft}
+The next table shows the total amount and percentage of connections terminated by a Reset(RST) flag. A normal session closure is done by a sequence of FIN, FIN-ACK, ACK flags. A session termination by a RST flag is unusual and can show potential misconfiguration or misbehavior on server side, within an application or a device in between the communication.
+%
+\end{flushleft}
+%
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Sessions/.style={column type=r,string type,column name=Sessions},
+      columns/Percentage/.style={column type=r,string type,column name=Percentage},
+    ]{csv/300_Total_TCP_Sessions_Terminated_with_RST_a.csv} % filename/path to file
+    \caption[\normalsize{Sessions Terminated with Reset Flag}]{\small{Sessions Terminated with Reset Flag}}
+  \end{center}
+\end{table}
+%
+\begin{center}
+\begin{figure}[h]
+\vspace{-0.5cm}
+\begin{tikzpicture} [trim left=-3cm]
+\begin{axis}[
+     ybar,
+     scaled ticks=false,
+     ymajorgrids=true,
+     y axis line style = {opacity = 0},
+     height=8cm, width=20cm,
+     date coordinates in=x,
+     enlarge x limits=0.02,
+     title={},
+     legend style=
+     {
+       at={(1,1)},
+       xshift=0.2cm,
+       anchor=north west,
+       font=\tiny,
+       draw=none
+     },
+     ylabel={\small{Number of Reset Packets sent}},
+     xticklabel style= {rotate=20,anchor=north east,font=\tiny},
+     xticklabel={\day.\month.\year\ \hour:\minute},
+     y tick label style={/pgf/number format/fixed, /pgf/number format/precision=5, /pgf/number format/1000 sep=., font=\tiny},
+     bar width=6pt]
+  \addlegendentry{Total Resets}
+  \addplot [fill=graphgreen] table[x={Date}, y=Count] from {\sessionreset};
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}[\normalsize{Session Reset}]{\small{Session Reset}}
+\end{figure}
+\end{center}

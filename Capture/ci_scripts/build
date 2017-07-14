@@ -1,0 +1,96 @@
+#! /bin/bash
+#
+# Capture build script
+#
+# Author: Steve Chaplin
+#
+# Date: 18-11-2016
+#
+# Purpose: Build the capture environment
+#
+# Usage: build destdir
+#
+####################################################################################################
+# Files to ship.
+#
+SHIP_FILES=( filesystem \
+			 Dockerfile \
+		   )
+#
+####################################################################################################
+# Include convenience functions.
+#
+. ../ci_scripts/common
+#
+####################################################################################################
+# Configuration.
+#
+MODULE="Capture"
+#
+BUILD_DIR="$BUILD_DIR/Capture"
+#
+IMAGE=kyn/capture-build
+#
+CONTAINER=KYNbuildNodeCapture
+#
+SRC_DIR=/Capture
+#
+BUILD_VOLUME=CaptureBuild
+#
+USER_ID=$(id -u)
+#
+####################################################################################################
+# Ship into the staging area.
+#
+ship SHIP_FILES[@] $BUILD_DIR
+#
+####################################################################################################
+# Build capture binaries in docker build container.
+
+log $MODULE "preparing build image..."
+LOG=$( docker build -f ci_scripts/Dockerfile.build -t ${IMAGE}:latest .  2>&1)
+log_success $? "$LOG"
+
+
+#
+# check for orpaned container and remove it
+#
+ORPHANED_BUILD_CONTAINER=$(docker ps -a -q --filter=name=${CONTAINER})
+if [ -n "$ORPHANED_BUILD_CONTAINER" ]; then
+	log $MODULE "removing orphaned build container..."
+	LOG=$( docker rm -f ${ORPHANED_BUILD_CONTAINER} )
+	log_success $? "$LOG"
+fi
+
+log $MODULE "starting build node..."
+docker rm -f ${CONTAINER} > /dev/null 2>&1
+LOG=$( docker run --name ${CONTAINER} -d -t --volume ${BUILD_VOLUME}:/capture --volume ${BUILD_DIR}/filesystem:/out/ --volume $(pwd):${SRC_DIR}   ${IMAGE} /bin/bash 2>&1 )
+log_success $? "$LOG"
+
+#
+# download, extract, build and deploy tools
+#
+log $MODULE "building tools..."
+LOG=$( docker exec ${CONTAINER} ${SRC_DIR}/ci_scripts/build_yaf.sh /capture /out ${USER_ID}  2>&1)
+log_success $? "$LOG"
+
+#
+# build nfelastic
+#
+log $MODULE "building nfelastic..."
+LOG=$( docker exec ${CONTAINER} ${SRC_DIR}/ci_scripts/build_nfelastic.sh ${SRC_DIR} /capture/nfelastic /out ${USER_ID}  2>&1)
+log_success $? "$LOG"
+
+#
+# cleanup: stop and remove docker build container
+#
+log $MODULE "stopping build node..."
+LOG=$( docker stop ${CONTAINER} 2>&1)
+log_success $? "$LOG"
+
+log $MODULE "removing build node..."
+LOG=$( docker rm ${CONTAINER} 2>&1)
+log_success $? "$LOG"
+#
+####################################################################################################
+exit 0

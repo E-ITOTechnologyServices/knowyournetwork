@@ -1,0 +1,87 @@
+<!-- Modal Message -->
+<div bsModal #modalMessage="bs-modal" [class.modal-error]="modals.message.error" class="modal modal-default fade" tabindex="-1" role="dialog" aria-labelledby="Status" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="modalMessage.hide()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Report Generation Status</h4>
+            </div>
+            <div class="modal-body">
+                {{ modals.message.body }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="modalMessage.hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / Modal Message -->
+
+<div class="panel panel-primary panel-reports">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="reports-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('reports', isCollapsed);">
+            <i class="icon fa fa-tasks"></i>
+            Security Analysis Reports
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div id="collapse-reports" class="panel-body" [collapse]="isCollapsed">
+        <div class="reports-form datetime">
+            <div class="left">
+                <form id="report-form" (ngSubmit)="generateReport()">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <label>From</label>
+                        <input [placeholder]="dateTimeFormat" class="form-control" [class.error]="formError.dateFrom" [ngModelOptions]="{standalone: true}"
+                               [(ngModel)]="model.dateTimeRange.dateTimeFrom"
+                               [max-date]="maxDateForFrom"
+                               [default-value]="defaultDate.from"
+                               (valueChanged)="onDateFromChange()"
+                               (ngModelChange)="isGenerateFormValid()"
+                               date-only="true"
+                               ng2-datetime-picker />
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <label>To</label>
+                        <input [placeholder]="dateTimeFormat" class="form-control" [class.error]="formError.dateTo" [ngModelOptions]="{standalone: true}"
+                               [(ngModel)]="model.dateTimeRange.dateTimeTo"
+                               [min-date]="minDateForTo"
+                               [max-date]="now"
+                               [default-value]="defaultDate.to"
+                               (valueChanged)="onDateToChange()"
+                               (ngModelChange)="isGenerateFormValid()"
+                               date-only="true"
+                               ng2-datetime-picker />
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <label>Max Dst.</label>
+                        <input type="number" name="maxDestSyn" [(ngModel)]="model.maxDestSyn" class="form-control" min="0">
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <label>Max Dst. for ping</label>
+                        <input type="number" name="maxDestIpPing" [(ngModel)]="model.maxDestIpPing" class="form-control" min="0">
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <button type="submit" class="btn btn-primary">Generate Report</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="right">
+                <div class="col-sm-12">
+                    <label>Download report</label>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="select-reports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Select
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="select-reports">
+                            <li *ngFor="let report of reports"><a href="/rest/reports/getReportByName/reportName/{{report}}">{{ report }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+</div>

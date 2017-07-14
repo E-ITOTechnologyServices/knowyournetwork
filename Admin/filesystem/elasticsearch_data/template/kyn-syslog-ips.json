@@ -1,0 +1,41 @@
+{
+    "order": 1,
+    "template": "kyn-syslog-ips-*",
+    "settings": {
+      "index": {
+        "codec": "best_compression"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "properties": {
+          "Destination": {
+            "type": "ip"
+          },
+          "geoip": {
+            "properties": {
+              "location": {
+                "type": "geo_point"
+              }
+            }
+          },
+          "Sourceport": {
+            "type": "long"
+          },
+          "IPS_System": {
+            "type": "ip"
+          },
+          "Source": {
+            "type": "ip"
+          },
+          "Destinationport": {
+            "type": "long"
+          }
+        },
+        "_all": {
+          "enabled": false
+        }
+      }
+    },
+    "aliases": {}
+  }

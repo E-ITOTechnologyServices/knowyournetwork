@@ -1,0 +1,39 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[GRE Tunnel Detection]{\underline{GRE Tunnel Detection}}
+\begin{flushleft}
+%
+Generic routing encapsulation (GRE) is very often used to link two peer networks which wouldn’t be able to communicate to each other, e.g. over a public network. Within intranets GRE is very often used as a workaround to solve routing and broad-/multicast issues. From security perspective a GRE tunnel is not providing the level of security as the name itself is pretending.
+\end{flushleft}
+%
+\begin{table}[H]
+\begin{center}
+      \pgfplotstabletypeset[
+        font=\small,
+        col sep=comma, % the seperator in our .csv file
+        use comma, % Decimal separator
+        every even row/.style={ before row={\rowcolor {green4}}},
+        every head row/.style={ before row=\toprule,after row=\midrule},
+        every last row/.style={ after row=\bottomrule},
+        columns/Source Address/.style={column type=l,string type,column name=Source IP Address},
+        columns/Destination Address/.style={column type=l,string type,column name=Destination IP Address},
+        columns/Session Count/.style={int detect,column type=r,string type,column name=Session Count},
+        multicolumn names
+      ]{csv/440_GRE_Tunnel_Detection.csv} % filename/path to file
+  \caption[\normalsize{GRE Session Count}]{\small{GRE Session Count}}
+\end{center}
+\end{table}

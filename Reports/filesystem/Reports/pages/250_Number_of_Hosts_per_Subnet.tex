@@ -1,0 +1,37 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Number of Hosts per Subnet]{\underline{Number of Hosts per Subnet}}
+\begin{flushleft}
+The following table lists the seen devices acting as source in the communication per IP source network. This table gives an overview about the communication distribution per subnetwork of the infrastructure.
+\end{flushleft}
+
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Class C Network/.style={int detect,column type=l,string type,column name=Class C Network},
+      columns/Number of Hosts/.style={column type=r,string type,column name=Number of Hosts},
+    ]{csv/250_Number_of_Hosts_per_Subnet.csv} % filename/path to file
+    \caption[\normalsize{Number of Hosts per Subnet}]{\small{Number of Hosts per Subnet}}
+  \end{center}
+\end{table}
+

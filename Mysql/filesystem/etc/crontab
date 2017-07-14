@@ -1,0 +1,2 @@
+# Run backup script every Sunday at 12 noon UTC
+0 12 * * 0   /var/kyn/scripts/db_backup.sh >/dev/null 2>&1

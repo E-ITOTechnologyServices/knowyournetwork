@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# Copyright (C) 2017 e-ito Technology Services GmbH
+# e-mail: info@e-ito.de
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Build all components of the product ready for deployment.
+# Notes: This should be run from parent directory as ./ci_scripts/build
+#
+####################################################################################################
+#
+# Files to ship along with the module builds.
+#
+BUILD_SCRIPT="./ci_scripts/build"
+
+#
+####################################################################################################
+# Include convenience functions.
+#
+
+. ci_scripts/common
+
+build_module() {
+	MODULE=$1
+	shift
+	if [ -d $MODULE ]; then
+		pushd $MODULE > /dev/null
+		check_error $? "Failed to switch to module directory $MODULE"
+		echo "Building $MODULE..."
+		#
+		# Make the target directory for the build.
+		#
+		MODULE_BUILD_DIR=$BUILD_DIR/$MODULE
+        mkdir -p $MODULE_BUILD_DIR
+
+		#
+		if [ -x $BUILD_SCRIPT ]; then
+			$BUILD_SCRIPT $MODULE_BUILD_DIR
+			check_error $? "Build failure"
+		fi
+		popd > /dev/null
+	fi
+}
+#
+####################################################################################################
+#
+
+
+#
+####################################################################################################
+# Override some of the configuration variables if the user requires it.
+#
+if [ ! -z "$KYN_CONFIG_CONFIG" ]; then
+	. "$KYN_BUILD_CONFIG"
+	check_error $? "Failed to set your custom configuration $KYN_BUILD_CONFIG"
+fi
+#
+####################################################################################################
+#
+
+
+####################################################################################################
+#
+# Build the components
+#
+
+if [ -z $1 ]; then
+    for MODULE in $MODULES
+    do
+        build_module $MODULE
+    done
+else
+    build_module $1
+fi
+
+#
+echo "Build success"
+#
+####################################################################################################
+exit 0

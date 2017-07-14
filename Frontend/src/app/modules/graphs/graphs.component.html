@@ -1,0 +1,13 @@
+<div class="panel panel-graphs">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="graphs-title" (click)="isCollapsed = !isCollapsed;  dashboardService.onCollapse('graphs', isCollapsed);">
+            <i class="icon fa fa-bar-chart"></i>
+            Graphs<span *ngIf="isIP">: {{dashboardService.lastSearch}}</span>
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div [collapse]="isCollapsed" id="graphs" class="panel-body">
+        <resets *ngIf="isIP"></resets>
+        <div *ngIf="!isIP" class="ip-message"><a class="search-for-ip" href="#">Search for IP</a> to display results.</div>
+    </div>
+</div>

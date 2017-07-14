@@ -1,0 +1,38 @@
+{
+    "order": 1,
+    "template": "kyn-syslog-voice-*",
+    "settings": {
+      "index": {
+        "codec": "best_compression"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "properties": {
+          "@timestamp": {
+            "type": "date",
+            "format": "strict_date_optional_time||epoch_millis"
+          },
+          "Dst-ip": {
+            "type": "ip"
+          },
+          "Dst-port": {
+            "type": "integer"
+          },
+          "Local-ip": {
+            "type": "ip"
+          },
+          "Local-port": {
+            "type": "integer"
+          },
+          "voicegw": {
+            "type": "ip"
+          }
+        },
+        "_all": {
+          "enabled": false
+        }
+      }
+    },
+    "aliases": {}
+  }

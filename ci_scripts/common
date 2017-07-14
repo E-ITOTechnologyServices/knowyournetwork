@@ -1,0 +1,129 @@
+#!/bin/bash
+
+# Copyright (C) 2017 e-ito Technology Services GmbH
+# e-mail: info@e-ito.de
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Common functions and constants used during the build process
+#
+####################################################################################################
+#
+# Check and report on an error code - print a message and exit if the supplied code is non-zero.
+#
+check_error() {
+	if [ "0" -ne "$1" ]; then
+		echo $2
+		exit 1
+	fi
+}
+#
+# Safely copy a file or directory $1 into $2.
+#
+ship() {
+	SHIP_FILES=("${!1}")
+	for SHIP in ${SHIP_FILES[@]}
+	do
+		DEST=$2/`dirname $SHIP`
+		mkdir -p $DEST
+		cp -R $SHIP $DEST
+		check_error $? "Failed to copy $SHIP to $2"
+	done
+}
+#
+# Create a directory and make sure it is empty.
+#
+make_clean() {
+	[ -z "$1" ] && return
+	mkdir -p "$1"
+	check_error $? "Failed to create directory $1"
+	rm -rf $1/*
+	check_error $? "Failed to clean directory $1"
+}
+#
+# Helper function to generate nice logging output
+# Usage:    log <module name> <message>
+#
+log()
+{
+    echo -n \[$1\] $2
+}
+#
+# Helper function to generate nice error and success messages
+# Usage:    log_success <return code> <error message>
+#
+log_success()
+{
+    RESULT=$1
+    LOG=$2
+
+    if [ $RESULT -eq 0 ]; then
+        echo done.
+    else
+        echo "FAIL!"
+        echo "=== ERROR LOG ==="
+        echo "$LOG"
+        echo "================="
+        exit $RESULT
+    fi
+}
+
+normalize_path()
+{
+    case $OSTYPE in
+        darwin*)
+           echo $1 | sed -E -e 's/[^\/]+\/\.\.\///g' -e's/\.\///g' ;;
+        linux-gnu)
+           echo $1 | sed -r -e 's/[^\/]+\/\.\.\///g' -e 's/\.\///g' ;;
+        *)
+           echo $1;;
+    esac
+
+}
+
+
+lowercase() {
+    echo $1 | tr '[:upper:]' '[:lower:]'
+}
+
+#
+####################################################################################################
+if [ ! "$(type -t realpath)" = "builtin" ]; then
+    realpath() {
+        [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+    }
+fi
+
+select_docker_tag()
+{
+    if [ -z "$TAG" ]; then
+        if [ -n "$bamboo_repository_branch_name" ]; then
+            if [ $bamboo_repository_branch_name == "master" ]; then
+                # Master build \w buildnumber as tag
+                export TAG="$bamboo_buildNumber"
+            else
+                # Branch build on Bamboo, currently not used, so no unique name required
+                export TAG="branch"
+            fi
+        else
+            # Local build on a developer's machine.
+            export TAG="local"
+        fi
+    fi
+}
+
+BUILD_DIR="$(normalize_path $(realpath $(dirname $BASH_SOURCE))/../build)"
+
+MODULES="Capture Backend Middleware Frontend Elasticsearch Logstash Kibana Spark Mysql Reports Admin Pyresttest"

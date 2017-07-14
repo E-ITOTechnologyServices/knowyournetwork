@@ -1,0 +1,16 @@
+#
+# Docker file to publish middleware javadocs.
+#
+#######################################################################
+#
+FROM nginx
+MAINTAINER Steve Chaplin <s.chaplin@e-ito.de>
+#
+# Add the generated site.
+#
+RUN rm -rf /usr/share/nginx/html/*
+COPY  KynKite/KynKiteWebApp/target/site /usr/share/nginx/html
+#
+EXPOSE 80
+#
+#######################################################################

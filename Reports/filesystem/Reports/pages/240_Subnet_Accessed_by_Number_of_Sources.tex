@@ -1,0 +1,38 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Subnet Accessed by Number of Sources]{\underline{Subnet Accessed by Number of Sources}}
+\begin{flushleft}
+The following table lists the number of devices acting as sources in the communication per IP destination network. This table gives an overview about the communication distribution per subnetwork of the infrastructure.
+\end{flushleft}
+
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Class subnet/.style={int detect,column type=l,string type,column name=Class C Network},
+      columns/Number unique clients/.style={column type=r,string type,column name=Number unique clients},
+      multicolumn names
+    ]{csv/240_Subnet_Accessed_by_Number_of_Sources.csv} % filename/path to file
+    \caption[\normalsize{Unique Clients per Subnet}]{\small{Unique Clients per Subnet}}
+  \end{center}
+\end{table}
+

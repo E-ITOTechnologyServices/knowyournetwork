@@ -1,0 +1,29 @@
+<div class="panel panel-kite">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="hostInfo-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('hostInfo', isCollapsed);" >
+            <i class="icon fa fa-bar-chart"></i>
+            Host info<span *ngIf="dashboardService.validateIPv4(hostInfoService.ip)">: {{hostInfoService.ip}}</span> <span *ngIf="hostInfoService.counter!=undefined" class="add-count">({{ hostInfoService.counter }})</span>
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div id="hostInfo" [collapse]="isCollapsed">
+        <div *ngIf="hostInfoService.isTableVisible" class="panel-body">
+            <h2>CMDB</h2>
+            <div class="dataTables_wrapper">
+                <table border="0" id="cmdbReport-table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="host">IP/Network</th>
+                        <th>Name</th>
+                        <th class="lw1">City</th>
+                        <th class="lw1">Country</th>
+                        <th class="lw1">Source</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-table"></tbody>
+                </table>
+            </div>
+        </div>
+        <div *ngIf="!hostInfoService.isTableVisible" class="ip-message"><a class="search-for-ip" href="#">Search for IP</a> to display results.</div>
+    </div>
+</div>

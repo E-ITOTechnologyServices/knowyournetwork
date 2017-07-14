@@ -1,0 +1,40 @@
+<div class="login-box" id="login-box">
+    <div class="logo">
+        <img src="assets/images/logo-kyn.png">
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Dashboard Panel
+            </h4>
+        </div>
+        <div class="panel-body">
+            <div class="message">
+                <span *ngIf="!f.submitted || f.submitted && username.valid && password.valid && !model.errorMessage ">Please Sign in.</span>
+                <span class="error" *ngIf="f.submitted && !username.valid && !password.valid">Username and password are required.</span>
+                <span class="error" *ngIf="f.submitted && !username.valid && password.valid">Username is required.</span>
+                <span class="error" *ngIf="f.submitted && username.valid && !password.valid">Password is required.</span>
+                <span class="error" *ngIf="model.errorMessage">{{ model.errorMessage }}</span>
+            </div>
+            <form name="form" id="login-form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                <div class="input-group">
+                    <span class="form-control-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" (ngModelChange)="model.errorMessage=''" [(ngModel)]="model.username" #username="ngModel" required>
+                </div>
+                <div class="input-group">
+                    <span class="form-control-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" (ngModelChange)="model.errorMessage=''" [(ngModel)]="model.password" #password="ngModel" required>
+                </div>
+                <div class="actions">
+                    <div class="pull-left">
+                    </div>
+                    <div class="pull-right">
+                        <img *ngIf="loading" class="ajax-loader" src="assets/images/loader.svg">
+                        <button class="btn btn-primary">Login</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

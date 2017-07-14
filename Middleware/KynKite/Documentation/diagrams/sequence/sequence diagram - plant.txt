@@ -1,0 +1,242 @@
+@startuml
+
+title "KYN - Sequence Diagram"
+
+actor "WebGUI" as User
+
+User -> ElasticSearchController : /getJsonFile
+ElasticSearchController -> FileManager : getJsonFile
+FileManager -> FileSystemDao : getJsonFile
+FileSystemDao -> FS :
+FileSystemDao <-- FS :
+FileManager <-- FileSystemDao :
+ElasticSearchController <-- FileManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /getTextFile
+ElasticSearchController -> FileManager : getTextFile
+FileManager -> FileSystemDao : getTextFile
+FileSystemDao -> FS :
+FileSystemDao <-- FS :
+FileManager <-- FileSystemDao :
+ElasticSearchController <-- FileManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /getPdfFile
+ElasticSearchController -> FileManager : getPdfFile
+FileManager -> FileSystemDao : getPdfFile
+FileSystemDao -> FS :
+FileSystemDao <-- FS :
+FileManager <-- FileSystemDao :
+ElasticSearchController <-- FileManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /resets/ipAddress
+ElasticSearchController -> ElasticSearchManager : loadDataByIP
+ElasticSearchManager -> ElasticSearchDao : loadDataByIP
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : newsTicker/paramSize/paramQuery
+ElasticSearchController -> ElasticSearchManager : newstickerWithParam
+ElasticSearchManager -> ElasticSearchDao : newstickerWithParam
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /newsTicker/paramSize
+ElasticSearchController -> ElasticSearchManager : newsticker
+ElasticSearchManager -> ElasticSearchDao : newsticker
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /newsTickerNoParams
+ElasticSearchController -> ElasticSearchManager : newsticker
+ElasticSearchManager -> ElasticSearchDao : newsticker
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /laraCiscoACL
+ElasticSearchController -> LaraManager : laracisco
+LaraManager -> FS :
+LaraManager <-- FS :
+ElasticSearchController <-- LaraManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /laraDetailsTable
+ElasticSearchController -> LaraManager : laradetails
+LaraManager -> FS :
+LaraManager <-- FS :
+ElasticSearchController <-- LaraManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /laraRulesetTable
+ElasticSearchController -> LaraManager : lararuleset
+LaraManager -> FS :
+LaraManager <-- FS :
+ElasticSearchController <-- LaraManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /tanium
+ElasticSearchController -> ElasticSearchManager : tanium
+ElasticSearchManager -> ElasticSearchDao : tanium
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /getIPAdminInfo/ip
+ElasticSearchController -> ElasticSearchManager : getIPAdminInfo
+ElasticSearchManager -> FileSystemDao : executeCurlCall
+FileSystemDao -> FS :
+FileSystemDao <-- FS :
+ElasticSearchManager <-- FileSystemDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /getIPAdminInfoHttp/ip
+ElasticSearchController -> ElasticSearchManager : getIPAdminInfo
+ElasticSearchManager -> FileSystemDao : executeCurlCall
+FileSystemDao -> FS :
+FileSystemDao <-- FS :
+ElasticSearchManager <-- FileSystemDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /hostTable
+ElasticSearchController -> ElasticSearchManager : hostTable
+ElasticSearchManager -> ElasticSearchDao : loadHostTableFirstPart
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchManager -> ElasticSearchDao : loadHostTableSecondPart
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchManager -> ElasticSearchDao : loadHostTableEventSeverity
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /hostDetailsTable/ip
+ElasticSearchController -> ElasticSearchManager : hostTable
+ElasticSearchManager -> ElasticSearchDao : loadHostTableDetails
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchManager -> ElasticSearchDao : loadHostTableEventSeverity
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogASA
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogASA/query
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogRouter
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogRouter/query
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogVoice
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogVoice/query
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogDHCP/query
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+User -> ElasticSearchController : /syslogDHCP/query
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+
+User -> ElasticSearchController : /syslogIPS/query
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+
+User -> ElasticSearchController : /syslogIPS/query
+ElasticSearchController -> ElasticSearchManager : syslogASA
+ElasticSearchManager -> ElasticSearchDao : syslogASA
+ElasticSearchDao -> ES :
+ElasticSearchDao <-- ES :
+ElasticSearchManager <-- ElasticSearchDao :
+ElasticSearchController <-- ElasticSearchManager : 
+User <-- ElasticSearchController :
+
+
+entity "File system" as FS
+database "Elastic search Server" as ES 
+
+@enduml

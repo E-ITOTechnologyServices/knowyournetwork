@@ -1,0 +1,61 @@
+<!-- Modal Rule -->
+<div bsModal #modalRule="bs-modal"  class="modal modal-default fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="modalRule.hide()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{ modals.rule.title }}</h4>
+            </div>
+            <form (ngSubmit)="onRuleFormSubmit(ruleForm)" #ruleForm="ngForm">
+                <div class="modal-body">
+                    <div [innerHTML]="modals.rule.body"></div>
+                    <div *ngIf="modals.rule.showForm">
+                        <div class="form-group">
+                            <label>Rule</label>
+                            <textarea name="rule" required [(ngModel)]="model.rule" (ngModelChange)="isRuleFormValid(ruleForm)" class="form-control" [class.error]="modals.rule.ruleError" rows="5" style="resize: none;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input name="description" required [(ngModel)]="model.description" (ngModelChange)="isRuleFormValid(ruleForm)" [class.error]="modals.rule.descriptionError" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="modalRule.hide()">Cancel</button>
+                    <button *ngIf="!modals.rule.showError" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- / Modal Rule -->
+
+<div class="panel panel-primary panel-AQLrules">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="AQLrules-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('AQLrules', isCollapsed);">
+            <i class="icon fa fa-tasks"></i>
+            AQL rules
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div id="collapse-AQLrules" class="panel-body" [collapse]="isCollapsed">
+        <div class="action-form">
+            <button class="btn btn-primary" type="button" (click)="showAddRule()">Add new rule</button>
+        </div>
+        <div class="dataTables_wrapper">
+            <table  border="0" id="AQLrules-table" class="AQLrules-table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="timestamp">ID</th>
+                        <th class="no-sort">Rule</th>
+                        <th class="no-sort desc">Description</th>
+                        <th class="no-sort action">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-table"></tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{
+  "took": 6,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 14,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-syslog-voice-demo",
+        "_type": "voice_kv",
+        "_id": "AVn_KGOVtkxxGeHqys1a",
+        "_score": null,
+        "_source": {
+          "shortmessage": "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.147.167.24\"  Dst-port=\"46879\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=82247, To=sip:anonym@vc.acme.com, Call-ID=fc73e67d9d5f133d1d0196c691620c43, From-Tag=3d9fcbd44a689cae, To-Tag=bd01900d8abc1a42, Msg-Hash=5169526893209504635\"\n",
+          "@timestamp": "2016-07-14T00:25:54.414Z",
+          "voicegw": "10.45.3.3"
+        },
+        "sort": [
+          1468455954414
+        ]
+      },
+      {
+        "_index": "kyn-syslog-voice-demo",
+        "_type": "voice_kv",
+        "_id": "AVn_KGOVtkxxGeHqys1Y",
+        "_score": null,
+        "_source": {
+          "shortmessage": "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.139.164.241\"  Dst-port=\"54511\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=e6bed364866e6cd2, Msg-Hash=8810220758206943821\"\n",
+          "@timestamp": "2016-07-14T00:25:54.406Z",
+          "voicegw": "10.45.3.3"
+        },
+        "sort": [
+          1468455954406
+        ]
+      }
+    ]
+  }
+}

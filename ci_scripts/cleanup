@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Copyright (C) 2017 e-ito Technology Services GmbH
+# e-mail: info@e-ito.de
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Clean up a pre-existing build based on the current version.
+#
+####################################################################################################
+# Include convenience functions.
+#
+. ci_scripts/common
+#
+####################################################################################################
+#
+#
+[ -d $BUILD_DIR ] || exit 0
+#
+
+clean_module() {
+    echo "Cleaning module $1..."
+    cd $1
+    if [ -f ./ci_scripts/clean ]; then
+        ./ci_scripts/clean $BUILD_DIR
+    fi
+    cd ..
+}
+
+
+if [ -n "$1" ]; then
+    clean_module $1
+else
+    echo "Removing build dir at $BUILD_DIR..."
+    rm -rf $BUILD_DIR
+
+    for MODULE in $MODULES
+    do
+        clean_module $MODULE
+    done
+fi

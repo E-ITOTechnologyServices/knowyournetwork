@@ -1,0 +1,42 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Top Talker Restricted Ports]{\underline{Top Talker Restricted Ports}}
+\begin{flushleft}
+The following table lists the top talkers in the network using a set of restricted ports (25 – smtp, 80 – http, 443 – https,
+445 – netbios and 3389 – RDP). If new IP addresses appear on this list it can be an indicator of compromised systems start
+attacking other systems.
+\end{flushleft}
+
+
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Source IP/.style={column type=l,string type,column name=Source IP Address},
+      columns/Destination Port/.style={int detect,column type=r,string type,column name=Destination Port},
+      columns/Session Count/.style={int detect,column type=r,string type,column name=Session Count},
+      multicolumn names
+    ]{csv/220_Top_Talker_Restricted_Ports.csv} % filename/path to file
+    \caption[\normalsize{Top talker using restricted ports}]{\small{Top talker using restricted ports}}
+  \end{center}
+\end{table}
+

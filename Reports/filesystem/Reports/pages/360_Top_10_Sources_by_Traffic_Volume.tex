@@ -1,0 +1,38 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Top 10 Sources by Traffic Volume]{\underline{Top 10 Sources by Traffic Volume}}
+\begin{flushleft}
+This table lists the top 10 source IPs by traffic volume. The information highlights Top Talkers in the network and show devices causing potential performance problems in a network by transferring a high amount of data.
+\end{flushleft}
+
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Source Address/.style={column type=l,string type,column name=Source IP Address},
+      columns/Sum of Bytes/.style={int detect,column type=r,string type,column name=Sum of Bytes},
+      multicolumn names
+    ]{csv/360_Top_10_Sources_by_Traffic_Volume.csv} % filename/path to file
+    \caption[\normalsize{Top IP Addresses by Transferred Bytes}]{\small{Top IP Addresses by Transferred Bytes}}
+  \end{center}
+\end{table}
+

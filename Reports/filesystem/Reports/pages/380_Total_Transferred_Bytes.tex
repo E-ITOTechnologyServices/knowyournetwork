@@ -1,0 +1,57 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\pgfplotstableread[col sep=comma]{csv/380_Total_Transferred_Bytes.csv}\sessiontotal %
+%
+%
+\chapter[Total Transferred Bytes]{\underline{Total Transferred Bytes}}
+%
+\begin{flushleft}
+The next figure shows the total transferred data per time.
+%
+\end{flushleft}
+%
+%\vspace{-0.5cm}
+\begin{figure}[h]
+\begin{tikzpicture}[trim left=-3cm]
+\begin{axis}[
+     ybar,
+     scaled ticks=false,
+     ymajorgrids=true,
+     y axis line style = {opacity = 0},
+     height=11cm, width=20cm,
+     date coordinates in=x,
+     title={},
+     enlarge x limits=0.02,
+     legend style=
+     {
+       at={(1,1)},
+       xshift=0.2cm,
+       anchor=north west,
+       font=\tiny,
+       draw=none
+     },
+     ylabel={\small{Bytes}},
+     xticklabel style= {rotate=20,anchor=north east,font=\tiny},
+     xticklabel={\day.\month.\year\ \hour:\minute},
+     y tick label style={/pgf/number format/fixed, /pgf/number format/precision=20, /pgf/number format/1000 sep=., font=\tiny },
+     bar width=6pt]
+  \addlegendentry{Total Bytes}
+   \addplot [fill=steelblue] table[x={Date}, y=Bytes] from {\sessiontotal}; 
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}[\normalsize{Total Transferred Bytes over Time}]{\small{Total Transferred Bytes over Time}}
+\end{figure}

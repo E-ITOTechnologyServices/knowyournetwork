@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+  <property name="MODULE_NAME" value="KynKiteWebApp"/>
+  <property name="PATTERN_LAYOUT"
+    value="[%date{dd.MM.yyyy HH:mm:ss.SSS}] : %-5level : ${MODULE_NAME} : %logger{0}.%method.[%line] : %thread%n: %mdc : %message%n%exception"/>
+  <property name="LOGDIR" value="d:/logs/KynKite" />
+  <property name="KYNKITE_LEVEL" value="debug" />
+  <property name="ROOT_LEVEL" value="error" />
+
+  <contextName>${MODULE_NAME}Context</contextName>
+
+  <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOGDIR}/${MODULE_NAME}/${MODULE_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <pattern>${PATTERN_LAYOUT}</pattern>
+    </layout>
+  </appender>
+
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <pattern>${PATTERN_LAYOUT}</pattern>
+    </layout>
+  </appender>
+
+  <logger name="hr.eito" level="${KYNKITE_LEVEL}" additivity="false">
+    <appender-ref ref="consoleAppender" />
+    <appender-ref ref="rollingFileAppender" />
+  </logger>
+
+  <root level="${ROOT_LEVEL}">
+    <appender-ref ref="consoleAppender" />
+    <appender-ref ref="rollingFileAppender" />
+  </root>
+</configuration>
+

@@ -1,0 +1,18 @@
+{
+  "order": 1,
+  "template": "kyn-events-*",
+  "mappings": {
+    "_default_": {
+      "properties": {
+        "host": {
+          "type": "ip",
+          "fields": {
+            "string": { 
+              "type":  "keyword"
+            }
+          }
+        }
+      }
+    }
+  }
+}

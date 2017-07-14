@@ -1,0 +1,77 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}%provide colors for the text
+\usepackage{wallpaper} %background on title page
+\usepackage{geometry} %Design on the pages
+\usepackage[T1]{fontenc} %for character encoding
+\usepackage[english]{babel} %package for english language
+\usepackage[obeyspaces]{url} %allows linebreaks in URLs
+\usepackage
+		[plainpages=false,
+		pdfpagelabels,
+		pageanchor=false,
+		unicode=true,
+		pdftitle={report},
+		pdfauthor={e-ito},
+		colorlinks=true,
+		linkcolor=blue,
+		citecolor=blue,
+		urlcolor=blue,
+		breaklinks=true,
+		linktocpage={true}]
+		{hyperref} %provide Links in the pdf document and set up the meta data of the pdf document
+\usepackage{graphicx} %for loading images
+\usepackage{fix-cm} %enables larger font sizes
+\usepackage{float} %package to force the position of a graphic
+\usepackage{titlesec} %defining what the chapter font looks like
+\usepackage{graphicx} %for the import of pictures and graphics
+\usepackage{fontspec} %for managing the fonts
+%\usepackage{kantlipsum} 
+\usepackage{filecontents} %For the import of external files
+\usepackage{pgfplots} %For Diagrams
+    \usepgfplotslibrary{dateplot} %For the Dates in pgfplots Diagrams
+%    \pgfplotsset{compat=1.13}
+\usepackage{pgfplotstable} % Generates table from .csv
+\usepackage{longtable} %For Tables with pagebreaks
+\usepackage{numprint} %For printing numbers correctly
+%\usepackage{datapie}[2016/07/20] %For the pie diagrams 
+%\usepackage{blindtext}
+
+
+%Paket für CSV Import
+\usepackage{booktabs} % For \toprule, \midrule and \bottomrule
+%\usepackage{siunitx} % Formats the units and values
+
+% Komascript
+%%\usepackage{scrbase}
+%%\usepackage{selinput}
+\usepackage{scrextend}
+
+\usepackage{tocstyle} %changes the sytle of the table of contents
+%%\usepackage{eurosym} %provide Euro symbol
+\usepackage{chngcntr} %to change the way of counting the tables
+\usepackage{fancyhdr} %package for the design of the header
+%\usepackage{layout} %temporary for seeing how the layout of the page looks. Can be deletet after testing
+\usepackage[font=small]{caption} %Provides captions for figures
+\usepackage{colortbl} %for the colour of the tables
+\usepackage{tabularx} %better tables
+\usepackage{enumitem} %for enumerations
+\usepackage{pifont}   %Package for 'Windings'
+%\usepackage{pstricks-add}
+\usepackage{ifthen} %for simple coding in Latex
+\usepackage{datatool} %to create databases from csv files

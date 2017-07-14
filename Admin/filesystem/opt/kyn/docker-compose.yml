@@ -1,0 +1,110 @@
+#
+# docker-compose instructions to deploy the product from images
+#
+
+version: '3'
+
+services:
+  capture:
+    image: kyn/capture
+    depends_on:
+      - elasticsearch
+    ports:
+      - "${KYN_NFCAPD_PORT:-2055}:2055/udp"
+    environment:
+      - KYN_YAF_INTERFACE=${KYN_YAF_INTERFACE:-eth0}
+    volumes:
+      - CaptureData:/var/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"
+  
+  
+  backend:
+    image: kyn/backend
+    depends_on:
+      - mysql
+      - elasticsearch
+
+      
+  middleware:
+    image: kyn/middleware
+    depends_on:
+      - mysql
+      - elasticsearch
+    expose:
+      - "8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.proxy
+      - ReportsData:/var/lib/jetty/src/files/reports
+  
+  
+  frontend:
+    image: kyn/frontend
+    depends_on:
+      - middleware
+    ports:
+      - "80:80"
+    
+    
+  elasticsearch:
+    image: kyn/elasticsearch
+    ports:
+      - "9200:9200"
+    environment:
+      - ES_JAVA_OPTS=-Xms${KYN_ES_MEM:-512m} -Xmx${KYN_ES_MEM:-512m}
+      - cluster.name=eitokyn
+      - bootstrap.memory_lock=true
+      - script.inline=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ElasticData:/usr/share/elasticsearch/data
+  
+  
+  logstash:
+    image: kyn/logstash
+    depends_on:
+      - elasticsearch
+    ports:
+      - 514:5140
+      - 514:5140/udp
+  
+  
+  kibana:
+    image: kyn/kibana
+    depends_on:
+      - elasticsearch
+    expose:
+      - "5601"
+  
+  
+  spark:
+    image: kyn/spark
+    depends_on:
+      - elasticsearch
+
+    
+  mysql:
+    image: kyn/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD="yes"
+    expose:
+     - "3306"
+    volumes:
+      - MysqlData:/var/lib/mysql
+      - MysqlBackupData:/backup
+
+
+volumes:
+  ElasticData:
+  CaptureData:
+  MysqlData:
+  MysqlBackupData:
+  ReportsData:

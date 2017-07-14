@@ -1,0 +1,304 @@
+---
+- config:
+    - testset: "Syslog test set"
+    - variable_binds: 
+        {  
+            username : 'admin'
+            , password : 'admin'
+        }
+    - timeout: 100  # Increase timeout from the default 10 seconds
+
+- test:
+    - name: "Successful login"
+    - url: "/KynKiteWebApp/rest/login"
+    - method: "POST"
+    - body: {template: 'username=$username&password=$password'}
+    - headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    - extract_binds:
+      - 'authtoken_cookie' : { jsonpath_mini : 'content.access_token_cookie' }
+      - 'authtoken' : { jsonpath_mini : 'content.access_token' }
+      - 'username_cookie' : { jsonpath_mini : 'content.username_cookie' }
+      - 'username' : { jsonpath_mini : 'content.username' }
+
+
+#
+# Syslog ASA - OK
+#
+- test:
+    - name: "Syslog ASA - OK"
+    - url: "/KynKiteWebApp/rest/syslogASA"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2016-06-30 07:45:00.000",
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if recordsTotal is 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+        # Check if recordsFiltered 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+
+#
+# Syslog ASA - Invalid date time range
+#
+- test:
+    - name: "Syslog ASA - Invalid date time range"
+    - url: "/KynKiteWebApp/rest/syslogASA"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}
+        
+#
+# Syslog Router - OK
+#
+- test:
+    - name: "Syslog Router - OK"
+    - url: "/KynKiteWebApp/rest/syslogRouter"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2016-06-30 07:45:00.000",
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if recordsTotal is 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+        # Check if recordsFiltered 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+
+#
+# Syslog Router - Invalid date time range
+#
+- test:
+    - name: "Syslog Router - Invalid date time range"
+    - url: "/KynKiteWebApp/rest/syslogRouter"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}
+        
+#
+# Syslog Voice - OK
+#
+- test:
+    - name: "Syslog Voice - OK"
+    - url: "/KynKiteWebApp/rest/syslogVoice"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2016-06-30 07:45:00.000",
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if recordsTotal is 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+        # Check if recordsFiltered 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+
+#
+# Syslog Voice - Invalid date time range
+#
+- test:
+    - name: "Syslog Voice - Invalid date time range"
+    - url: "/KynKiteWebApp/rest/syslogVoice"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}
+        
+#
+# Syslog DHCP - OK
+#
+- test:
+    - name: "Syslog DHCP - OK"
+    - url: "/KynKiteWebApp/rest/syslogDHCP"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2016-06-30 07:45:00.000",
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if recordsTotal is 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+        # Check if recordsFiltered 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+
+#
+# Syslog DHCP - Invalid date time range
+#
+- test:
+    - name: "Syslog DHCP - Invalid date time range"
+    - url: "/KynKiteWebApp/rest/syslogDHCP"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}
+        
+#
+# Syslog IPS - OK
+#
+- test:
+    - name: "Syslog IPS - OK"
+    - url: "/KynKiteWebApp/rest/syslogIPS"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2016-06-30 07:45:00.000",
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if recordsTotal is 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+        # Check if recordsFiltered 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+
+#
+# Syslog IPS - Invalid date time range
+#
+- test:
+    - name: "Syslog IPS - Invalid date time range"
+    - url: "/KynKiteWebApp/rest/syslogIPS"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "some message"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}
+        
+#
+# Syslog Proxy - OK
+#
+- test:
+    - name: "Syslog Proxy - OK"
+    - url: "/KynKiteWebApp/rest/syslogProxy"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2016-06-30 07:45:00.000",
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "168.0.11"
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if recordsTotal is 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+        # Check if recordsFiltered 0 or more
+        - compare: {jsonpath_mini: "status", comparator: "ge", expected: 0}
+
+#
+# Syslog Proxy - Invalid date time range
+#
+- test:
+    - name: "Syslog Proxy - Invalid date time range"
+    - url: "/KynKiteWebApp/rest/syslogProxy"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2016-06-30 07:45:59.999"
+            },
+            "query": "168.0.11"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}

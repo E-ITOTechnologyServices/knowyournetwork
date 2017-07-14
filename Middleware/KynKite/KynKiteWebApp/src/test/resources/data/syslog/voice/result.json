@@ -1,0 +1,179 @@
+{
+  "took" : 3,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2800,
+    "max_score" : null,
+    "hits" : [ {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc4",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-07-14T00:25:54.461Z",
+        "shortmessage" : "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954461 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajq",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-07-14T00:25:54.461Z",
+        "shortmessage" : "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954461 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc3",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.147.167.24\"  Dst-port=\"46879\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=82247, To=sip:anonym@vc.acme.com, Call-ID=fc73e67d9d5f133d1d0196c691620c43, From-Tag=3d9fcbd44a689cae, To-Tag=bd01900d8abc1a42, Msg-Hash=5169526893209504635\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.414Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954414 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajp",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.147.167.24\"  Dst-port=\"46879\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=82247, To=sip:anonym@vc.acme.com, Call-ID=fc73e67d9d5f133d1d0196c691620c43, From-Tag=3d9fcbd44a689cae, To-Tag=bd01900d8abc1a42, Msg-Hash=5169526893209504635\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.414Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954414 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc2",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-07-14T00:25:54.412Z",
+        "shortmessage" : "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954412 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajo",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-07-14T00:25:54.412Z",
+        "shortmessage" : "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954412 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc1",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.139.164.241\"  Dst-port=\"54511\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=e6bed364866e6cd2, Msg-Hash=8810220758206943821\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.406Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954406 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajn",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Dst-ip=\"10.139.164.241\"  Dst-port=\"54511\"   Detail=\"Sending Response Code=200, Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=e6bed364866e6cd2, Msg-Hash=8810220758206943821\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.406Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954406 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcz",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-07-14T00:25:54.403Z",
+        "shortmessage" : "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954403 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajl",
+      "_score" : null,
+      "_source" : {
+        "@timestamp" : "2016-07-14T00:25:54.403Z",
+        "shortmessage" : "Module=\"network.ldap\" Level=\"INFO\":   Detail=\"Authentication credential found in directory for identity: acme\"\n",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954403 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDc0",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.139.164.241\"  Src-port=\"54511\"   Detail=\"Receive Request Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=, Msg-Hash=16696336233875493912\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.398Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954398 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajm",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.3\"  Local-port=\"5061\"  Src-ip=\"10.139.164.241\"  Src-port=\"54511\"   Detail=\"Receive Request Method=REGISTER, CSeq=109072, To=sip:anonym@vc.acme.com, Call-ID=6540b8e83905b5a7b049ad3338ea72f0, From-Tag=0e36b105246509cd, To-Tag=, Msg-Hash=16696336233875493912\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.398Z",
+        "voicegw" : "10.45.3.3"
+      },
+      "sort" : [ 1468455954398 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcx",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.4\"  Local-port=\"25014\"  Src-ip=\"178.215.135.31\"  Src-port=\"5060\"   Detail=\"Receive Response Code=200, Method=OPTIONS, CSeq=38762, To=sip:anonym@10.45.3.4, From-Tag=fd0bf643c4271ec9, To-Tag=1387562964, Msg-Hash=14560316732774901524\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.319Z",
+        "voicegw" : "10.45.3.4"
+      },
+      "sort" : [ 1468455954319 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVkWPvyNqFUUybCf4ajj",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Received\"  Local-ip=\"10.45.3.4\"  Local-port=\"25014\"  Src-ip=\"178.215.135.31\"  Src-port=\"5060\"   Detail=\"Receive Response Code=200, Method=OPTIONS, CSeq=38762, To=sip:anonym@10.45.3.4, From-Tag=fd0bf643c4271ec9, To-Tag=1387562964, Msg-Hash=14560316732774901524\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.319Z",
+        "voicegw" : "10.45.3.4"
+      },
+      "sort" : [ 1468455954319 ]
+    }, {
+      "_index" : "kyn-syslog-voice-demo",
+      "_type" : "voice_kv",
+      "_id" : "AVjUQWc3sYemHJ3OLDcw",
+      "_score" : null,
+      "_source" : {
+        "shortmessage" : "Module=\"network.sip\" Level=\"INFO\":  Action=\"Sent\"  Local-ip=\"10.45.3.4\"  Local-port=\"25009\"  Dst-ip=\"178.215.135.32\"  Dst-port=\"5060\"   Detail=\"Sending Request Method=OPTIONS, CSeq=516, Request-URI=sip:anonym@10.45.3.4, From-Tag=11bd6f464aa31e4e, To-Tag=, Msg-Hash=2158902365452396996\"\n",
+        "@timestamp" : "2016-07-14T00:25:54.298Z",
+        "voicegw" : "10.45.3.4"
+      },
+      "sort" : [ 1468455954298 ]
+    } ]
+  }
+}

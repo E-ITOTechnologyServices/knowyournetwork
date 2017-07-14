@@ -1,0 +1,57 @@
+{
+  "took": 15,
+  "timed_out": false,
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
+  },
+  "hits": {
+    "total": 9,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-syslog-proxy-2016-12-02",
+        "_type": "not_set",
+        "_id": "AVi_86PUk4XOh_g1warN",
+        "_score": null,
+        "_source": {
+          "destinationIP": "173.194.32.183",
+          "sc_status": "200",
+          "cs_uri_port": "443",
+          "@timestamp": "2016-12-02T14:32:45.000Z",
+          "user_agent_os": "Windows 7",
+          "cs_host": "www.google.de",
+          "cs_uri_path": "/ads/user-lists/1072409767/",
+          "user_agent_major": "50",
+          "user_agent_name": "Firefox",
+          "c_ip": "10.110.149.227"
+        },
+        "sort": [
+          1480689165000
+        ]
+      },
+      {
+        "_index": "kyn-syslog-proxy-2016-12-02",
+        "_type": "not_set",
+        "_id": "AVi_86PUk4XOh_g1warE",
+        "_score": null,
+        "_source": {
+          "destinationIP": "172.217.22.2",
+          "sc_status": "302",
+          "cs_uri_port": "443",
+          "@timestamp": "2016-12-02T14:32:44.000Z",
+          "user_agent_os": "Windows 7",
+          "cs_host": "googleads.g.doubleclick.net",
+          "cs_uri_path": "/pagead/viewthroughconversion/1072409767/",
+          "user_agent_major": "50",
+          "user_agent_name": "Firefox",
+          "c_ip": "10.110.149.227"
+        },
+        "sort": [
+          1480689164000
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+<div class="panel panel-kibana panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="kibana-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('kibana', isCollapsed);">
+            <i class="icon fa fa-bar-chart"></i>
+            Kibana visualization<span *ngIf="dashboardService.validateIPv4(ip)">: {{ip}}</span> <span class="info" tooltip="The left chart shows the number of sessions started  by the source IP address in the inner circle. The outer circle shows the destination addresses and the number of sessions. The table on the right shows an overview of the last session aggregated by source IP, destination IP and destination port and the number of matching sessions." placement="right"><i class="fa fa-info-circle"></i></span>
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div [collapse]="isCollapsed" id="kibana">
+        <div *ngIf="isKibanaVisible" class="panel-body p-0">
+            <iframe class="kibana-dashboard" [src]="url | safe"  frameborder="0" width="100%" height="{{iHeight}}'"></iframe>
+        </div>
+        <div *ngIf="!isKibanaVisible" class="ip-message"><a class="search-for-ip" href="#">Search for IP</a> to display results.</div>
+    </div>
+</div>

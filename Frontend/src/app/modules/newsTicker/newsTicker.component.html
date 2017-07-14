@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="newsTicker-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('newsTicker', isCollapsed);">
+            <i class="icon fa fa-warning"></i>
+            Network Security Event Ticker <span *ngIf="newsTickerService.counter!=undefined" class="add-count">({{newsTickerService.counter}})</span>
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div id="newsTicker" [collapse]="isCollapsed">
+        <div  class="panel-body dashboard-events">
+            <div class="change-style">
+                <label>Style by:</label> <span id="style-type" data-style="type">Type</span> | <span id="style-priority" data-style="priority">Priority</span>
+            </div>
+            <table id="newsTicker-table" class="display" cellspacing="0" width="100%" border="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,298 @@
+---
+- config:
+    - testset: "AQL test set"
+    - variable_binds: 
+        {  
+            username : 'admin'
+            , password : 'admin'
+        }
+    - timeout: 100  # Increase timeout from the default 10 seconds
+
+- test:
+    - name: "Successful login"
+    - url: "/KynKiteWebApp/rest/login"
+    - method: "POST"
+    - body: {template: 'username=$username&password=$password'}
+    - headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    - extract_binds:
+      - 'authtoken_cookie' : { jsonpath_mini : 'content.access_token_cookie' }
+      - 'authtoken' : { jsonpath_mini : 'content.access_token' }
+      - 'username_cookie' : { jsonpath_mini : 'content.username_cookie' }
+      - 'username' : { jsonpath_mini : 'content.username' }
+
+
+#
+# Get list of AQL rules
+#
+- test:
+    - name: "Get list of AQL rules"
+    - url: "/KynKiteWebApp/rest/aql/rules/list"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+
+#
+# Add new AQL rule - OK
+#
+- test:
+    - name: "Add new AQL rule - OK"
+    - url: "/KynKiteWebApp/rest/aql/rules/add"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "rule": "Smoketest added rule",
+            "description": "smoke_added_rule"
+        }
+    '
+    - validators:
+        # Check if status is 0
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'OK'}
+        # Check if recordsTotal is 1
+        - compare: {jsonpath_mini: "content.recordsTotal", comparator: "eq", expected: 1}
+        # Check if recordsFiltered is 1
+        - compare: {jsonpath_mini: "content.recordsFiltered", comparator: "eq", expected: 1}
+        # Check if rule text is as sent
+        - compare: {jsonpath_mini: "content.data.0.rule", comparator: "eq", expected: "Smoketest added rule"}
+        # Check if description is as sent
+        - compare: {jsonpath_mini: "content.data.0.description", comparator: "eq", expected: "smoke_added_rule"}
+    - extract_binds:
+        - 'id': {'jsonpath_mini': 'content.data.0.id'}
+
+#
+# Add new AQL rule - OK - help record
+#
+- test:
+    - name: "Add new AQL rule - OK - help record"
+    - url: "/KynKiteWebApp/rest/aql/rules/add"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "rule": "Smoketest added rule - for existance smoketest check",
+            "description": ""
+        }
+    '
+    - validators:
+        # Check if status is 0
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'OK'}
+        # Check if recordsTotal is 1
+        - compare: {jsonpath_mini: "content.recordsTotal", comparator: "eq", expected: 1}
+        # Check if recordsFiltered is 1
+        - compare: {jsonpath_mini: "content.recordsFiltered", comparator: "eq", expected: 1}
+        # Check if rule text is as sent
+        - compare: {jsonpath_mini: "content.data.0.rule", comparator: "eq", expected: "Smoketest added rule - for existance smoketest check"}
+        # Check if description is as sent
+        - compare: {jsonpath_mini: "content.data.0.description", comparator: "eq", expected: ""}
+    - extract_binds:
+        - 'id2': {'jsonpath_mini': 'content.data.0.id'}
+        
+#
+# Add new AQL rule - Empty rule field
+#
+- test:
+    - name: "Add new AQL rule - Empty rule field"
+    - url: "/KynKiteWebApp/rest/aql/rules/add"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "rule": "",
+            "description": "smoke_added_rule"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Empty rule not allowed'}
+
+#
+# Add new AQL rule - Rule exists
+#
+- test:
+    - name: "Add new AQL rule - Rule exists"
+    - url: "/KynKiteWebApp/rest/aql/rules/add"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "rule": "Smoketest added rule",
+            "description": "smoke_added_rule"
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Rule already exists'}
+
+#
+# Edit AQL rule - OK
+#
+- test:
+    - name: "Edit AQL rule - OK"
+    - url: "/KynKiteWebApp/rest/aql/rules/edit"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: {template: '
+        {
+            "id": $id,
+            "rule": "EDITED: Smoketest added rule",
+            "description": "EDITED: smoke_added_rule"
+        }
+    '}
+    - validators:
+        # Check if status is 0
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'OK'}
+        # Check if recordsTotal is 1
+        - compare: {jsonpath_mini: "content.recordsTotal", comparator: "eq", expected: 1}
+        # Check if recordsFiltered is 1
+        - compare: {jsonpath_mini: "content.recordsFiltered", comparator: "eq", expected: 1}
+        # Check if rule text is as sent
+        - compare: {jsonpath_mini: "content.data.0.rule", comparator: "eq", expected: "EDITED: Smoketest added rule"}
+        # Check if description is as sent
+        - compare: {jsonpath_mini: "content.data.0.description", comparator: "eq", expected: "EDITED: smoke_added_rule"}
+
+#
+# Edit AQL rule - Empty rule field
+#
+- test:
+    - name: "Edit AQL rule - Empty rule field"
+    - url: "/KynKiteWebApp/rest/aql/rules/edit"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: {template: '
+        {
+            "id": $id,
+            "rule": "",
+            "description": "EDITED: smoke_added_rule"
+        }
+    '}
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Empty rule not allowed'}
+
+#
+# Edit AQL rule - Rule exists
+#
+- test:
+    - name: "Edit AQL rule - Rule exists"
+    - url: "/KynKiteWebApp/rest/aql/rules/edit"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: {template: '
+        {
+            "id": $id,
+            "rule": "Smoketest added rule - for existance smoketest check",
+            "description": ""
+        }
+    '}
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Rule already exists'}
+        
+#
+# Edit AQL rule - Rule not found
+#
+- test:
+    - name: "Edit AQL rule - Rule not found"
+    - url: "/KynKiteWebApp/rest/aql/rules/edit"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "id": -1,
+            "rule": "Some random text",
+            "description": ""
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'AQL rule not found'}
+        
+#
+# Delete AQL rule - OK
+#
+- test:
+    - name: "Delete AQL rule - OK"
+    - url: "/KynKiteWebApp/rest/aql/rules/delete"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: {template: '
+        {
+            "id": $id
+        }
+    '}
+    - validators:
+        # Check if status is 0
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+
+#
+# Delete AQL rule - OK - help record
+#
+- test:
+    - name: "Delete AQL rule - OK - help record"
+    - url: "/KynKiteWebApp/rest/aql/rules/delete"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: {template: '
+        {
+            "id": $id2
+        }
+    '}
+    - validators:
+        # Check if status is 0
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        
+#
+# Delete AQL rule - Rule not found
+#
+- test:
+    - name: "Delete AQL rule - Rule not found"
+    - url: "/KynKiteWebApp/rest/aql/rules/delete"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: {template: '
+        {
+            "id": $id
+        }
+    '}
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'AQL rule not found'}
+        
+#
+# Delete AQL rule - Rule not found - help record
+#
+- test:
+    - name: "Delete AQL rule - Rule not found - help record"
+    - url: "/KynKiteWebApp/rest/aql/rules/delete"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: {template: '
+        {
+            "id": $id2
+        }
+    '}
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'AQL rule not found'}

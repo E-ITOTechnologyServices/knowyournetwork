@@ -1,0 +1,42 @@
+<form id="search-form" (ngSubmit)="search()">
+    <div class="search-wrapper">
+        <div class="fields">
+            <div class="datetime">
+                <div class="date-from">
+                    <label>From:</label>
+                    <input [placeholder]="dateTimeFormat" class="form-control" [class.error]="searchError.dateFrom" [ngModelOptions]="{standalone: true}"
+                           [(ngModel)]="dashboardService.dateTimeRange.dateTimeFrom"
+                           [max-date]="maxDateForFrom"
+                           [default-value]="defaultDate.from"
+                           close-on-select="false"
+                           (valueChanged)="onDateFromChange()"
+                           (ngModelChange)="isSearchFormValid()"
+                           ng2-datetime-picker />
+                </div>
+                <div class="date-to">
+                    <label>To:</label>
+                    <input [placeholder]="dateTimeFormat" class="form-control" [class.error]="searchError.dateTo" [ngModelOptions]="{standalone: true}"
+                           [(ngModel)]="dashboardService.dateTimeRange.dateTimeTo"
+                           [min-date]="minDateForTo"
+                           [max-date]="now"
+                           [default-value]="defaultDate.to"
+                           close-on-select="false"
+                           (valueChanged)="onDateToChange()"
+                           (ngModelChange)="isSearchFormValid()"
+                           ng2-datetime-picker />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <input name="query" id="search-query" autofocus [(ngModel)]="dashboardService.query" (ngModelChange)="liveSearch()" type="text" class="form-control field-search" placeholder="IP / Name / Anything" />
+        </div>
+        <div class="buttons">
+            <button class="btn-clear" type="button" (click)="clearFields()">Clear</button>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <div class="error">
+        <span *ngIf="searchError.dateFields">For searching by time it is necessary to select date range.</span>
+        <span *ngIf="searchError.dateRange">Time in "To" needs to be greater than time in "From".</span>
+        <span *ngIf="searchError.dateFormat">Date format is not correct.</span>
+    </div>
+</form>

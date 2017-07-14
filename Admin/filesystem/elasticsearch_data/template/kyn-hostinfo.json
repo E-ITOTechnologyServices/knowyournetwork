@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "template": "kyn-hostinfo",
+  "mappings": {
+    "_default_": {
+      "properties": {
+        "ipam": {
+          "type": "object",
+          "enabled": false
+        }
+      }
+    }
+  }
+}

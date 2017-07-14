@@ -1,0 +1,15 @@
+{
+    "order": 1,
+    "template": "kyn-cluster*",
+    "settings": {},
+    "mappings": {
+      "_default_": {
+        "properties": {
+          "host": {
+            "type": "ip"
+          }
+        }
+      }
+    }
+  }
+}

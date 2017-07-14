@@ -1,0 +1,31 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-newsticker-2016",
+        "_type": "news",
+        "_id": "AVn_KGaWtkxxGeHqytsc",
+        "_score": null,
+        "_source": {
+          "eventid": "0101",
+          "@timestamp": "2016-11-29T23:59:02+01:00",
+          "host": "10.11.12.60",
+          "text": "The host connected to many systems (more than 100 different destination hosts within the last hour).",
+          "priority": "3"
+        },
+        "sort": [
+          1480460342000
+        ]
+      }
+    ]
+  }
+}

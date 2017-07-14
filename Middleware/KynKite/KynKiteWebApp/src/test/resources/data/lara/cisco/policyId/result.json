@@ -1,0 +1,57 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 10,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "kyn-policy-2017-01-26",
+        "_type": "policy",
+        "_id": "AVnbFYB4ISe-c8hencwK",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2017-01-26T15:02:17.000Z",
+          "name": "10.133.200.1",
+          "acl": "no object-group network g-network-185\nobject-group network g-network-185\n 10.202.6.42 /32\n 10.202.15.141 /32\n!no object-group network g-network-186\nobject-group network g-network-186\n 10.201.60.69 /32\n 10.252.1.52 /32\n!no object-group service g-service-91\nobject-group service g-service-91\n ICMP eq 0\n ICMP eq 8\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-91 object-group g-network-185 object-group g-network-186\n!no object-group network g-network-188\nobject-group network g-network-188\n 10.201.16.104 /32\n 10.254.127.2 /32\n 10.254.253.166 /32\n!no object-group network g-network-187\nobject-group network g-network-187\n 10.202.2.160 /32\n 10.202.6.101 /32\n 10.202.7.147 /32\n 10.202.7.157 /32\n 10.202.15.136 /32\n!no object-group service g-service-92\nobject-group service g-service-92\n UDP eq 68\n UDP eq 54536\n UDP eq 57230\n UDP eq 62564\n UDP eq 63450\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-92 object-group g-network-188 object-group g-network-187\n!no object-group network g-network-189\nobject-group network g-network-189\n 10.202.1.54 /32\n 10.202.1.98 /32\n 10.202.3.222 /32\n 10.202.5.100 /32\n 10.202.5.191 /32\n 10.202.6.71 /32\n 10.202.7.71 /32\n 10.202.8.48 /32\n!no object-group network g-network-190\nobject-group network g-network-190\n 10.127.39.66 /32\n 10.254.127.1 /32\n 10.254.127.2 /32\n!no object-group service g-service-93\nobject-group service g-service-93\n UDP eq 53\n UDP eq 5247\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-93 object-group g-network-189 object-group g-network-190\n!no object-group network g-network-191\nobject-group network g-network-191\n 10.99.14.54 /32\n 10.201.16.31 /32\n 10.202.1.206 /32\n 10.202.3.156 /32\n 10.202.3.214 /32\n 10.202.4.118 /32\n 10.202.5.179 /32\n 10.202.5.189 /32\n 10.202.7.75 /32\n 10.202.60.17 /32\n!no object-group network g-network-192\nobject-group network g-network-192\n 10.99.14.54 /32\n 10.202.6.47 /32\n 10.202.15.137 /32\n!no object-group service g-service-94\nobject-group service g-service-94\n TCP eq 135\n TCP eq 389\n TCP eq 8080\n TCP eq 56741\n TCP eq 57243\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-94 object-group g-network-191 object-group g-network-192\n!no object-group network g-network-193\nobject-group network g-network-193\n 10.202.15.137 /32\n 10.202.15.170 /32\n 10.202.15.177 /32\n!no object-group network g-network-194\nobject-group network g-network-194\n 10.201.3.53 /32\n 10.201.4.58 /32\n 10.201.16.26 /32\n!no object-group service g-service-95\nobject-group service g-service-95\n TCP eq 4122\n TCP eq 51112\n TCP eq 59758\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-95 object-group g-network-193 object-group g-network-194\n!no object-group network g-network-197\nobject-group network g-network-197\n 10.202.33.42 /32\n 10.254.127.1 /32\n 10.254.127.2 /32\n!no object-group network g-network-198\nobject-group network g-network-198\n 10.202.6.67 /32\n 10.202.6.241 /32\n 10.202.15.137 /32\n!no object-group service g-service-97\nobject-group service g-service-97\n UDP eq 53\n UDP eq 52620\n UDP eq 57917\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-97 object-group g-network-197 object-group g-network-198\n!no object-group network g-network-199\nobject-group network g-network-199\n 10.202.3.84 /32\n 10.202.3.168 /32\n 10.202.15.144 /32\n 10.202.62.58 /32\n!no object-group network g-network-200\nobject-group network g-network-200\n 10.199.204.11 /32\n 10.201.3.95 /32\n 10.201.7.194 /32\n!no object-group service g-service-98\nobject-group service g-service-98\n TCP eq 80\n TCP eq 389\n TCP eq 8014\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-98 object-group g-network-199 object-group g-network-200\n!no object-group network g-network-201\nobject-group network g-network-201\n 10.99.14.54 /32\n 10.201.2.70 /32\n 10.202.15.155 /32\n!no object-group network g-network-202\nobject-group network g-network-202\n 10.201.23.215 /32\n 10.202.4.92 /32\n 10.202.15.140 /32\n!no object-group service g-service-99\nobject-group service g-service-99\n TCP eq 80\n TCP eq 135\n TCP eq 54411\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-99 object-group g-network-201 object-group g-network-202\n!ip access-list extended ACL_OFFICE \n deny ip any any\n!"
+        },
+        "sort": [
+          1485442937000
+        ]
+      },
+      {
+        "_index": "kyn-policy-2017-01-26",
+        "_type": "policy",
+        "_id": "AVnbFXshISe-c8hencwJ",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2017-01-26T15:02:16.000Z",
+          "name": "10.133.196.1",
+          "acl": "no object-group network g-network-173\nobject-group network g-network-173\n 10.79.143.7 /32\n 10.79.143.23 /32\n 10.201.5.245 /32\n!no object-group network g-network-174\nobject-group network g-network-174\n 10.79.143.7 /32\n 10.201.16.101 /32\n 10.201.16.104 /32\n!ip access-list extended ACL_OFFICE \n permit UDP object-group g-network-173 object-group g-network-174\n!no object-group network g-network-175\nobject-group network g-network-175\n 10.79.129.211 /32\n 10.79.130.89 /32\n 10.79.130.217 /32\n 10.79.131.71 /32\n 10.79.131.166 /32\n 10.79.131.230 /32\n 10.79.133.79 /32\n 10.79.133.200 /32\n 10.79.134.54 /32\n 10.201.2.12 /32\n!no object-group network g-network-176\nobject-group network g-network-176\n 10.79.133.17 /32\n 10.79.133.18 /32\n 10.79.134.11 /32\n 10.254.127.1 /32\n 10.254.127.2 /32\n!no object-group service g-service-85\nobject-group service g-service-85\n UDP eq 53\n UDP eq 161\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-85 object-group g-network-175 object-group g-network-176\n!no object-group network g-network-177\nobject-group network g-network-177\n 10.79.129.39 /32\n 10.79.130.122 /32\n 10.79.132.215 /32\n 10.79.133.66 /32\n 10.79.133.162 /32\n 10.79.133.199 /32\n 10.79.133.236 /32\n 10.79.134.56 /32\n!no object-group network g-network-168\nobject-group network g-network-168\n 10.99.14.54 /32\n 10.201.23.200 /32\n!no object-group service g-service-86\nobject-group service g-service-86\n TCP eq 443\n TCP eq 8080\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-86 object-group g-network-177 object-group g-network-168\n!no object-group network g-network-179\nobject-group network g-network-179\n 10.79.161.158 /32\n 10.79.163.134 /32\n 10.201.16.135 /32\n!no object-group network g-network-180\nobject-group network g-network-180\n 10.79.133.193 /32\n 10.79.143.7 /32\n 10.79.143.23 /32\n 10.79.143.40 /32\n!no object-group service g-service-87\nobject-group service g-service-87\n TCP eq 88\n TCP eq 9191\n TCP eq 64326\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-87 object-group g-network-179 object-group g-network-180\n!ip access-list extended ACL_OFFICE \n permit UDP 10.202.124.6 255.255.255.255 10.79.134.62 255.255.255.255\n!no object-group network g-network-181\nobject-group network g-network-181\n 10.79.143.56 /32\n 10.201.16.26 /32\n 10.201.17.107 /32\n!no object-group network g-network-182\nobject-group network g-network-182\n 10.79.133.76 /32\n 10.79.143.23 /32\n 10.201.3.155 /32\n!no object-group service g-service-88\nobject-group service g-service-88\n TCP eq 135\n TCP eq 5985\n TCP eq 50351\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-88 object-group g-network-181 object-group g-network-182\n!no object-group network g-network-183\nobject-group network g-network-183\n 10.79.130.114 /32\n 10.79.130.236 /32\n 10.79.133.105 /32\n 10.201.23.200 /32\n!no object-group network g-network-184\nobject-group network g-network-184\n 10.79.132.50 /32\n 10.79.133.175 /32\n 10.201.23.200 /32\n!no object-group service g-service-89\nobject-group service g-service-89\n TCP eq 55000\n TCP eq 58714\n TCP eq 59533\n TCP eq 62655\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-89 object-group g-network-183 object-group g-network-184\n!no object-group service g-service-90\nobject-group service g-service-90\n TCP eq 55895\n TCP eq 55974\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-90 10.201.7.194 255.255.255.255 10.79.134.49 255.255.255.255\n!ip access-list extended ACL_OFFICE \n deny ip any any\n!"
+        },
+        "sort": [
+          1485442936000
+        ]
+      },
+      {
+        "_index": "kyn-policy-2017-01-26",
+        "_type": "policy",
+        "_id": "AVnbFXXoISe-c8hencwI",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2017-01-26T15:02:14.000Z",
+          "name": "10.127.141.1",
+          "acl": "no object-group network g-network-169\nobject-group network g-network-169\n 10.9.248.16 /32\n 10.9.248.33 /32\n 10.72.67.32 /32\n!no object-group network g-network-170\nobject-group network g-network-170\n 10.9.226.11 /32\n 10.9.226.77 /32\n 10.9.226.140 /32\n!no object-group service g-service-83\nobject-group service g-service-83\n UDP eq 161\n UDP eq 389\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-83 object-group g-network-169 object-group g-network-170\n!no object-group network g-network-171\nobject-group network g-network-171\n 10.9.226.132 /32\n 10.9.248.126 /32\n 10.47.121.39 /32\n!no object-group network g-network-172\nobject-group network g-network-172\n 10.9.226.14 /32\n 10.9.226.132 /32\n 10.9.248.126 /32\n 10.50.0.252 /32\n!no object-group service g-service-84\nobject-group service g-service-84\n TCP eq 443\n TCP eq 895\n TCP eq 1311\n TCP eq 3046\n TCP eq 3117\n TCP eq 4851\n TCP eq 5362\n TCP eq 5985\n TCP eq 6475\n TCP eq 6595\n TCP eq 7375\n TCP eq 7634\n TCP eq 7733\n TCP eq 10371\n TCP eq 12633\n TCP eq 13529\n TCP eq 13666\n TCP eq 13999\n TCP eq 16058\n TCP eq 16257\n TCP eq 17763\n TCP eq 18253\n TCP eq 19330\n TCP eq 21022\n TCP eq 21046\n TCP eq 21102\n TCP eq 21581\n TCP eq 23372\n TCP eq 25441\n TCP eq 33346\n TCP eq 33467\n TCP eq 36064\n TCP eq 37912\n TCP eq 38228\n TCP eq 42969\n TCP eq 43524\n TCP eq 46011\n TCP eq 46943\n TCP eq 47160\n TCP eq 48540\n TCP eq 48689\n TCP eq 54745\n TCP eq 55254\n TCP eq 59281\n TCP eq 59895\n TCP eq 61161\n TCP eq 61360\n TCP eq 62257\n TCP eq 64984\n!ip access-list extended ACL_OFFICE \n permit object-group g-service-84 object-group g-network-171 object-group g-network-172\n!ip access-list extended ACL_OFFICE \n permit TCP 10.15.216.198 255.255.255.255 10.9.226.13 255.255.255.255\n!ip access-list extended ACL_OFFICE \n deny ip any any\n!"
+        },
+        "sort": [
+          1485442934000
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,99 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Summary of Security Findings]{\underline{Summary of Security Findings}}
+%
+These findings are aligned to the \textit{kyn} Use Cases configured on this instance.\\
+
+%\noindent
+%\begin{minipage}{1\textwidth}
+%\begin{addmargin}[10pt]{0pt}
+%1. \underline{Communication Pattern Anomalies}
+%   \begin{addmargin}[15pt]{0pt}
+%     To be imolemented soon.\\
+%%
+%   \end{addmargin}
+%\end{addmargin}
+%\end{minipage}
+
+\noindent
+\begin{minipage}{1\textwidth}
+\begin{addmargin}[10pt]{0pt}
+1. \underline{Network Sweeps}
+   \begin{addmargin}[15pt]{0pt}
+   1.1 Restricted Ports
+      \begin{addmargin}[15pt]{0pt}
+      The following IP addresses have been found to communicate with more than \input{csv/100_Summary_of_Security_findings_a1.csv}different destinations on restricted ports:\\
+      \input{csv/100_Summary_of_Security_findings_b.csv}\\
+      \small{\underline{\textit{It must be verified that these system are legitimate network scanners or other types of system with similar but approved behaviour.}}}\\
+
+      \end{addmargin}
+   1.2 Sources sending SYN only
+      \begin{addmargin}[15pt]{0pt}
+      The following IP addresses have been found trying to establish connections to more than \input{csv/100_Summary_of_Security_findings_a1.csv}destinations:\\
+      \input{csv/100_Summary_of_Security_findings_c.csv}\\
+      \small{\underline{\textit{It must be verified that these system are legitimate network scanners or other types of system with similar but approved behaviour.}}}\\
+      \end{addmargin}
+   \end{addmargin}
+\end{addmargin}
+\end{minipage}
+
+\noindent
+\begin{minipage}{1\textwidth}
+\begin{addmargin}[10pt]{0pt}
+2. \underline{Ping Sweep}
+   \begin{addmargin}[15pt]{0pt}
+   The following IP addresses have been found sending ICMP probes to more than \input{csv/100_Summary_of_Security_findings_a2.csv}destinations:\\
+   \input{csv/100_Summary_of_Security_findings_d.csv}\\
+   \small{\underline{\textit{It must be verified that these system are legitimate network scanners or other types of system with similar but approved behaviour.}}}\\
+   \end{addmargin}
+\end{addmargin}
+\end{minipage}
+%
+\noindent
+\begin{minipage}{1\textwidth}
+\begin{addmargin}[10pt]{0pt}
+3. \underline{Top Talker Restricted Ports}
+   \begin{addmargin}[15pt]{0pt}
+   As baselineing is not completed, so the change in communication behaviour could not yet be reported.\\
+   \end{addmargin}
+\end{addmargin}
+\end{minipage}
+%
+\noindent
+\begin{minipage}{1\textwidth}
+\begin{addmargin}[10pt]{0pt}
+4. \underline{Top 10 Ports with Session Resets aggregated by IP address}
+   \begin{addmargin}[15pt]{0pt}
+\DTLloaddb{data}{csv/300_Total_TCP_Sessions_Terminated_with_RST_a.csv}
+
+\DTLforeach{data}{%
+\Sessions=Sessions,\Percentage=Percentage}{%
+
+
+    \ifnum\Percentage<21
+      Session resets seen in the network behave in normal bounderies.
+    \fi
+    \ifnum\Percentage>20
+      Number of session resets seen in the network are unusual high. Please refer to chapter "Total TCP Sessions Terminated with RST" and following pages for additional details.
+    \fi
+    }
+
+   \end{addmargin}
+
+\end{addmargin}
+\end{minipage}
+

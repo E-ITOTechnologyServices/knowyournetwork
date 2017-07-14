@@ -1,0 +1,99 @@
+<div [hidden]="!visibility">
+    <!-- Modal Last Conversations -->
+    <div bsModal #modalConversations="bs-modal" class="modal fade modal-lara-orange modal-lara-24h-conversations" tabindex="-1" role="dialog" aria-labelledby="Last Conversations" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="hideModalConversations()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{modals.conversations.title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <iframe *ngIf="modals.conversations.src" [src]="modals.conversations.src | safe" height="400" width="100%"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="hideModalConversations()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Modal Last Conversations -->
+
+    <!-- Modal Get Host Info -->
+    <div bsModal #modalHostInfo="bs-modal" class="modal fade modal-lara-orange" tabindex="-1" role="dialog" aria-labelledby="Host Info" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="hideModalHostInfo()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Get Host Info - {{ modals.hostInfo.title }}</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="body-subtitle">CMDB</h4>
+                    <div class="dataTables_wrapper">
+                        <table border="0" id="lara-cmdbReport-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="host">IP/Network</th>
+                                <th>Name</th>
+                                <th class="lw1">City</th>
+                                <th class="lw1">Country</th>
+                                <th class="lw1">Source</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="hideModalHostInfo()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Modal Get Host Info -->
+
+    <!-- Modal Get Host Info -->
+    <div class="modal fade modal-lara-orange" id="lara-get-host-info" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Get Host Info - <span class="host-ip"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="body-subtitle">IP Admin</h4>
+                    <div class="IPAdmin-info"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Modal Get Host Info -->
+
+    <table id="lara-ruleset-table" class="nowrap" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th data-priority="1" class="no">No.</th>
+            <th class="source" data-priority="2">Source</th>
+            <th class="destination" data-priority="3">Destination</th>
+            <th class="service">Service</th>
+            <th class="action">Action</th>
+            <th class="comment">Comment</th>
+        </tr>
+        </thead>
+        <tbody class="col-last-text">
+        </tbody>
+    </table>
+
+    <!-- all rules -->
+    <label>Rules</label>
+    <div class="pre-wrapper">
+        <div *ngIf="rules!=undefined">
+            <button class="copy" [class.copy-success]= "isCopied" type="button" ngxClipboard [cbContent]="rules" (cbOnSuccess)="isCopied = true">Copy</button>
+            <pre id="acl-rules">{{rules}}</pre>
+        </div>
+        <pre *ngIf="errorMessage" class="error-message">{{errorMessage}}</pre>
+    </div>
+    <!-- / all rules -->
+</div>

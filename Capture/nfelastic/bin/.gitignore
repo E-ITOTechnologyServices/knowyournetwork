@@ -1,0 +1,12 @@
+*.[ao]
+nfdump
+nfanon
+nfreplay
+nfcapd
+nfexpire
+.deps
+Makefile
+grammar.c
+grammar.h
+nfdump.test.out
+scanner.c

@@ -1,0 +1,57 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Sources Sending ICMP Echo Requests]{\underline{Sources Sending ICMP Echo Requests}}
+\begin{flushleft}
+The following tables list systems that start network sweeps by checking the availability of other systems in other networks by sending ICMP echo requests (Ping). These systems might be compromised hosts starting a network reconnaissance to infect other systems replying to the ICMP request. The left table shows the number of pings send from a single system. The right table shows the unique count of destination IP addresses targeted. A high number of packets could be an indicator for a monitoring system, while a high number of destination IP addresses is an indication for a network scan.
+\end{flushleft}
+
+\begin{table}[h]
+\begin{center}
+  \begin{minipage}{0.45\textwidth} 
+ \begin{flushright}
+      \pgfplotstabletypeset[
+		font=\small,
+        col sep=comma, % the seperator in our .csv file
+        use comma, % Decimal separator
+        every even row/.style={ before row={\rowcolor {green4}}},
+        every head row/.style={ before row=\toprule,after row=\midrule},
+        every last row/.style={ after row=\bottomrule},
+        columns/Source IP Address/.style={column type=l,string type,column name=Source IP Address},
+        columns/Count/.style={int detect,column type=r,string type,column name=Number of Requests},
+        multicolumn names
+      ]{csv/420_Sources_Sending_ICMP_Echo_Requests_a.csv} % filename/path to file
+  \end{flushright}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.45\textwidth}
+ \begin{flushleft}
+      \pgfplotstabletypeset[
+        font=\small,
+        col sep=comma, % the seperator in our .csv file
+        use comma, % Decimal separator
+        every even row/.style={ before row={\rowcolor {green4}}},
+        every head row/.style={ before row=\toprule,after row=\midrule},
+        every last row/.style={ after row=\bottomrule},
+        columns/Source IP Address/.style={column type=l,string type,column name=Source IP Address},
+        columns/Destination IP Addresses/.style={int detect,column type=r,string type,column name=Destination IP Addresses},
+        multicolumn names
+      ]{csv/420_Sources_Sending_ICMP_Echo_Requests_b.csv} % filename/path to file
+ \end{flushleft}
+  \end{minipage}
+  \caption[\normalsize{ICMP Probes Count}]{\small{ICMP Probes Count}}
+\end{center}
+\end{table}

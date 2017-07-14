@@ -1,0 +1,48 @@
+<div class="panel panel-kite">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="hostReports-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('hostReports', isCollapsed);">
+            <i class="icon fa fa-bar-chart"></i>
+            Host reports<span *ngIf="dashboardService.lastSearch">: {{dashboardService.lastSearch}}</span> <span *ngIf="counter!=undefined" class="add-count">({{ counter }})</span>
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div id="collapse-hostReports" [collapse]="isCollapsed">
+        <div id="host-reports" class="panel-body">
+            <tabset>
+                <tab [active]="hostsTab.active">
+                    <template tabHeading>HOSTS</template>
+                    <h2>Suspicious host</h2>
+                    <div class="dataTables_wrapper">
+                        <table border="0" id="hostReport-table" class="hosts-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="host">Host</th>
+                                <th class="severity">Severity</th>
+                                <th>Events</th>
+                                <th>First detection</th>
+                                <th>Last detection</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+                <tab *ngFor="let tabz of tabs"  [heading]="tabz.title" [active]="tabz.active" [removable]="tabz.removable" (select)="tabz.active = true" (deselect)="tabz.active = false" (removed)="removeTabHandler(tabz)">
+                    <div class="dataTables_wrapper">
+                        <table id="{{tabz.id}}-table" border="0" class="host-details" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="event-type">Event Type</th><th class="number">Number</th>
+                                <th class="time">First detection</th>
+                                <th class="time">Last detection</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-table"></tbody>
+                        </table>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

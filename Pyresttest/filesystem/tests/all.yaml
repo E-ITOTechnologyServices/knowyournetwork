@@ -1,0 +1,8 @@
+---
+- import: reports-test.yaml
+- import: aql-test.yaml
+- import: lara-test.yaml
+- import: newsticker-test.yaml
+- import: ntv-test.yaml
+- import: syslog-test.yaml
+- import: kite-test.yaml

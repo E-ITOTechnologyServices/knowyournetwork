@@ -1,0 +1,97 @@
+<div [hidden]="!visibility">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title" id="lara-top-hosts-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('lara-top-hosts', isCollapsed);">
+                <i class="icon fa fa-database"></i>
+                Top Source and Destination Hosts
+                <i class="fa expandible"></i>
+            </h4>
+        </div>
+        <div id="lara-top-hosts" [collapse]="isCollapsed" class="panel-body pb-0">
+            <!-- Top Source and Destination subpanels -->
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="top-tables-dynamic-title" (click)="isDynamicCollapsed = !isDynamicCollapsed; dashboardService.onCollapse('top-tables-dynamic', isDynamicCollapsed);">
+                            <i class="icon fa fa-database"></i>
+                            Top Source and Destination Hosts in new rules
+                            <i class="fa expandible"></i>
+                        </h4>
+                    </div>
+                    <div id="top-tables-dynamic" [collapse]="isDynamicCollapsed">
+                        <div class="panel-body two-tables">
+                            <div class="col-xs-12 col-sm-6 col-md-6 left">
+                                <table border="0" id="table-top-sources-dynamic" class="laraHalfDataTable" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th class="no">No.</th>
+                                        <th>Top Source</th>
+                                        <th>Count</th>
+                                        <th>Size</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="col-last-text">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 right">
+                                <table border="0" id="table-top-destinations-dynamic" class="laraHalfDataTable" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th class="no">No.</th>
+                                        <th>Top Source</th>
+                                        <th>Count</th>
+                                        <th>Size</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="col-last-text">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="top-tables-static-title" (click)="isStaticCollapsed = !isStaticCollapsed; dashboardService.onCollapse('top-tables-static', isStaticCollapsed);">
+                            <i class="icon fa fa-database"></i>
+                            Top Source and Destination Hosts in static rules
+                            <i class="fa expandible"></i>
+                        </h4>
+                    </div>
+                    <div id="top-tables-static" [collapse]="isStaticCollapsed">
+                        <div class="panel-body two-tables">
+                            <div class="col-xs-12 col-sm-6 col-md-6 left">
+                                <table  border="0" id="table-top-sources-static" class="laraHalfDataTable" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th class="no">No.</th>
+                                        <th>Top Source</th>
+                                        <th>Count</th>
+                                        <th>Size</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="col-last-text"></tbody>
+                                </table>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 right">
+                                <table  border="0" id="table-top-destinations-static" class="laraHalfDataTable" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th class="no">No.</th>
+                                        <th>Top Destination</th>
+                                        <th>Count</th>
+                                        <th>Size</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="col-last-text"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / Top Source and Destination subpanels -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="panel panel-lara">
+    <div class="panel-heading">
+        <h4 class="panel-title" id="lara-title" (click)="isCollapsed = !isCollapsed; dashboardService.onCollapse('lara', isCollapsed);">
+            <div class="no-over">
+                <i class="icon fa fa-tasks"></i>
+                Log Analysis and Ruleset Automation: LARA for AGN Office Zone ACLs<span *ngIf="dashboardService.query">: {{dashboardService.query}}</span> <span *ngIf="outputCounts()!=undefined" class="add-count">({{ outputCounts()}})</span>
+            </div>
+            <div class="fa-info-wrapper">
+                <span class="info" tooltip="The LARA for ACL system turns traffic logs (e.g. from Netflow) into human-readable rules in HTML and Cisco configuration ready for copy-and-paste." placement="right"><i class="fa fa-info-circle"></i></span>
+            </div>
+            <i class="fa expandible"></i>
+        </h4>
+    </div>
+    <div [collapse]="isCollapsed" id="lara" class="panel-body pb-0">
+        <policyForm></policyForm>
+        <ruleset></ruleset>
+        <topHosts></topHosts>
+    </div>
+</div>

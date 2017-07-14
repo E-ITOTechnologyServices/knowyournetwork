@@ -1,0 +1,526 @@
+{
+  "took" : 8,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 2,
+    "successful" : 2,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 218,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "hosts" : {
+      "doc_count_error_upper_bound" : 0,
+      "sum_other_doc_count" : 0,
+      "buckets" : [ {
+        "key" : "10.47.9.10",
+        "doc_count" : 18,
+        "time" : {
+          "count" : 18,
+          "min" : 1.4662647E12,
+          "max" : 1.4663043E12,
+          "avg" : 1.46628835E12,
+          "sum" : 2.63931903E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T02:45:00.000Z",
+          "avg_as_string" : "2016-06-18T22:19:10.000Z",
+          "sum_as_string" : "2806-05-14T17:45:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 3
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_connections",
+            "doc_count" : 11
+          }, {
+            "key" : "scanner",
+            "doc_count" : 6
+          }, {
+            "key" : "many_destinations",
+            "doc_count" : 1
+          } ]
+        }
+      }, {
+        "key" : "10.47.9.31",
+        "doc_count" : 25,
+        "time" : {
+          "count" : 25,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.466291772E12,
+          "sum" : 3.66572943E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-18T23:16:12.000Z",
+          "sum_as_string" : "3131-08-17T05:45:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 13
+          }, {
+            "key" : "many_connections",
+            "doc_count" : 12
+          } ]
+        }
+      }, {
+        "key" : "10.47.9.72",
+        "doc_count" : 8,
+        "time" : {
+          "count" : 8,
+          "min" : 1.4662647E12,
+          "max" : 1.4662755E12,
+          "avg" : 1.4662701E12,
+          "sum" : 1.17301608E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-18T18:45:00.000Z",
+          "avg_as_string" : "2016-06-18T17:15:00.000Z",
+          "sum_as_string" : "2341-09-18T18:00:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_connections",
+            "doc_count" : 4
+          }, {
+            "key" : "many_destinations",
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "10.47.114.134",
+        "doc_count" : 15,
+        "time" : {
+          "count" : 15,
+          "min" : 1.4662647E12,
+          "max" : 1.4663043E12,
+          "avg" : 1.46628294E12,
+          "sum" : 2.19942441E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T02:45:00.000Z",
+          "avg_as_string" : "2016-06-18T20:49:00.000Z",
+          "sum_as_string" : "2666-12-21T00:15:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_connections",
+            "doc_count" : 11
+          }, {
+            "key" : "many_destinations",
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "10.47.121.39",
+        "doc_count" : 13,
+        "time" : {
+          "count" : 13,
+          "min" : 1.4662647E12,
+          "max" : 1.4663043E12,
+          "avg" : 1.4662821461538462E12,
+          "sum" : 1.90616679E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T02:45:00.000Z",
+          "avg_as_string" : "2016-06-18T20:35:46.153Z",
+          "sum_as_string" : "2574-01-15T03:45:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_connections",
+            "doc_count" : 11
+          }, {
+            "key" : "many_destinations",
+            "doc_count" : 2
+          } ]
+        }
+      }, {
+        "key" : "10.201.2.12",
+        "doc_count" : 25,
+        "time" : {
+          "count" : 25,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.466291772E12,
+          "sum" : 3.66572943E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-18T23:16:12.000Z",
+          "sum_as_string" : "3131-08-17T05:45:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 13
+          }, {
+            "key" : "many_connections",
+            "doc_count" : 12
+          } ]
+        }
+      }, {
+        "key" : "10.201.2.70",
+        "doc_count" : 21,
+        "time" : {
+          "count" : 21,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4662878428571428E12,
+          "sum" : 3.07920447E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-18T22:10:42.857Z",
+          "sum_as_string" : "2945-10-05T09:45:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 12
+          }, {
+            "key" : "many_connections",
+            "doc_count" : 9
+          } ]
+        }
+      }, {
+        "key" : "10.201.2.72",
+        "doc_count" : 22,
+        "time" : {
+          "count" : 22,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4662882636363635E12,
+          "sum" : 3.22583418E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-18T22:17:43.636Z",
+          "sum_as_string" : "2992-03-23T10:30:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 12
+          }, {
+            "key" : "many_connections",
+            "doc_count" : 10
+          } ]
+        }
+      }, {
+        "key" : "192.168.173.137",
+        "doc_count" : 3,
+        "time" : {
+          "count" : 3,
+          "min" : 1.4662935E12,
+          "max" : 1.4662971E12,
+          "avg" : 1.4662947E12,
+          "sum" : 4.3988841E12,
+          "min_as_string" : "2016-06-18T23:45:00.000Z",
+          "max_as_string" : "2016-06-19T00:45:00.000Z",
+          "avg_as_string" : "2016-06-19T00:05:00.000Z",
+          "sum_as_string" : "2109-05-25T00:15:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 2
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_connections",
+            "doc_count" : 2
+          }, {
+            "key" : "many_destinations",
+            "doc_count" : 1
+          } ]
+        }
+      }, {
+        "key" : "10.47.9.42",
+        "doc_count" : 12,
+        "time" : {
+          "count" : 12,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4662923E12,
+          "sum" : 1.75955076E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-18T23:25:00.000Z",
+          "sum_as_string" : "2527-07-31T17:00:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 12
+          } ]
+        }
+      }, {
+        "key" : "10.47.42.10",
+        "doc_count" : 3,
+        "time" : {
+          "count" : 3,
+          "min" : 1.4662719E12,
+          "max" : 1.4662971E12,
+          "avg" : 1.4662839E12,
+          "sum" : 4.3988517E12,
+          "min_as_string" : "2016-06-18T17:45:00.000Z",
+          "max_as_string" : "2016-06-19T00:45:00.000Z",
+          "avg_as_string" : "2016-06-18T21:05:00.000Z",
+          "sum_as_string" : "2109-05-24T15:15:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 3
+          } ]
+        }
+      }, {
+        "key" : "10.47.114.135",
+        "doc_count" : 13,
+        "time" : {
+          "count" : 13,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4662984846153845E12,
+          "sum" : 1.90618803E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-19T01:08:04.615Z",
+          "sum_as_string" : "2574-01-17T14:45:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_connections",
+            "doc_count" : 13
+          } ]
+        }
+      }, {
+        "key" : "10.47.114.136",
+        "doc_count" : 4,
+        "time" : {
+          "count" : 4,
+          "min" : 1.4662719E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4663061E12,
+          "sum" : 5.8652244E12,
+          "min_as_string" : "2016-06-18T17:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-19T03:15:00.000Z",
+          "sum_as_string" : "2155-11-11T13:00:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "10.47.121.44",
+        "doc_count" : 12,
+        "time" : {
+          "count" : 12,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4662923E12,
+          "sum" : 1.75955076E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-18T23:25:00.000Z",
+          "sum_as_string" : "2527-07-31T17:00:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_connections",
+            "doc_count" : 12
+          } ]
+        }
+      }, {
+        "key" : "10.201.2.45",
+        "doc_count" : 3,
+        "time" : {
+          "count" : 3,
+          "min" : 1.4662647E12,
+          "max" : 1.4662755E12,
+          "avg" : 1.4662695E12,
+          "sum" : 4.3988085E12,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-18T18:45:00.000Z",
+          "avg_as_string" : "2016-06-18T17:05:00.000Z",
+          "sum_as_string" : "2109-05-24T03:15:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 3
+          } ]
+        }
+      }, {
+        "key" : "10.201.2.101",
+        "doc_count" : 12,
+        "time" : {
+          "count" : 12,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4662923E12,
+          "sum" : 1.75955076E13,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-18T23:25:00.000Z",
+          "sum_as_string" : "2527-07-31T17:00:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 12
+          } ]
+        }
+      }, {
+        "key" : "10.210.2.72",
+        "doc_count" : 3,
+        "time" : {
+          "count" : 3,
+          "min" : 1.465976610055E12,
+          "max" : 1.465987410055E12,
+          "avg" : 1.465982610055E12,
+          "sum" : 4.397947830165E12,
+          "min_as_string" : "2016-06-15T07:43:30.055Z",
+          "max_as_string" : "2016-06-15T10:43:30.055Z",
+          "avg_as_string" : "2016-06-15T09:23:30.055Z",
+          "sum_as_string" : "2109-05-14T04:10:30.165Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "scanner",
+            "doc_count" : 3
+          } ]
+        }
+      }, {
+        "key" : "192.168.173.136",
+        "doc_count" : 4,
+        "time" : {
+          "count" : 4,
+          "min" : 1.4662647E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4663187E12,
+          "sum" : 5.8652748E12,
+          "min_as_string" : "2016-06-18T15:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-19T06:45:00.000Z",
+          "sum_as_string" : "2155-11-12T03:00:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "192.168.173.145",
+        "doc_count" : 2,
+        "time" : {
+          "count" : 2,
+          "min" : 1.4663727E12,
+          "max" : 1.4663727E12,
+          "avg" : 1.4663727E12,
+          "sum" : 2.9327454E12,
+          "min_as_string" : "2016-06-19T21:45:00.000Z",
+          "max_as_string" : "2016-06-19T21:45:00.000Z",
+          "avg_as_string" : "2016-06-19T21:45:00.000Z",
+          "sum_as_string" : "2062-12-07T19:30:00.000Z"
+        },
+        "cardinal" : {
+          "value" : 1
+        },
+        "events" : {
+          "doc_count_error_upper_bound" : 0,
+          "sum_other_doc_count" : 0,
+          "buckets" : [ {
+            "key" : "many_destinations",
+            "doc_count" : 2
+          } ]
+        }
+      } ]
+    }
+  }
+}

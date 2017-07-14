@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Middleware clean script
+#
+# Author: Hrvoje Zeljko
+#
+# Date: 23-02-2017
+#
+# Purpose: Clean the build folder.
+#
+# Usage: clean
+#
+####################################################################################################
+# Include convenience functions.
+#
+. ../ci_scripts/common
+#
+####################################################################################################
+# Configuration
+#
+MODULE="Middleware"
+#
+# Middleware absolute path
+#
+MW_PATH="$(dirname "$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )")"
+#
+####################################################################################################
+# Removing target folder
+#
+log $MODULE "removing target folder..."
+LOG=$(rm -rf "$MW_PATH/KynKite/KynKiteWebApp/target")
+log_success $? $LOG
+#
+####################################################################################################
+#

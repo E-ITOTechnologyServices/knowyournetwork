@@ -1,0 +1,171 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%Make sure you are using LuaLaTeX or LuaTeX or XeLaTeX and you have installed the ubuntu fonts
+
+\documentclass[12pt]{report} %Sets the default font size to 12pt and the default style to report 
+
+\input{pages/packages.tex} %Packages which are needed to compile the Document
+\input{pages/style.tex} %Stylefile
+
+\fancyhead{} %Fixes the header when there is a pagebreak
+\fancyfoot{} %Fixes the footer when there is a pagebreak
+\pagestyle{plain} %Fixes the pagestyle when there is a pagebreak
+
+% Setup siunitx:
+%\sisetup{
+%  round-mode          = places, % Rounds numbers
+%  round-precision     = 2, % to 2 places
+%}
+
+
+\begin{document} %Starts the text
+\newgeometry{left=2.5cm} %Defines the distance on the left site between the text and the page
+
+\input{pages/000_title.tex} %Titlepage
+
+\restoregeometry %restore the default geometry
+\newpage %starts a new page after the titlepage
+\pagenumbering{arabic} %sets style of the pagenumbering to arabic
+
+%\input{pages/010_summary.tex} %imports the summery page before the table of contents starts
+
+\renewcommand\contentsname{\fontsize{30pt}{40pt}\selectfont Contents} %The Headline "Contents" is written large
+\tableofcontents %builds an automatic Table of Contents
+\newpage %List of tables starts on a new page
+\renewcommand\listtablename{\fontsize{30pt}{40pt}\selectfont List of Tables} %The Headline "List of tables" is written large
+\listoftables %builds an automatic Table of Tables
+\newpage %List of figures starts on a new page
+\renewcommand\listfigurename{\fontsize{30pt}{40pt}\selectfont List of Figures} %The Headline "List of Figures" is written large
+\listoffigures %builds an automatic Table of Figures
+\clearpage %The Content starts on a new page
+
+
+
+%Here starts the import of the .tex Files. \newpage makes sure that every new .tex File starts on a new page
+
+\input{pages/020_volumetric.tex}
+\newpage
+
+\input{pages/100_Summary_of_Security_findings.tex}
+\newpage
+
+%\input{pages/110_traffic_On_Restricted_Ports.tex}
+%\newpage
+
+\input{pages/120_Communication_Pattern_Anomalies.tex}
+\newpage
+
+\input{pages/200_Network_Sweep.tex}
+\newpage
+
+\input{pages/210_Ping_Sweeps.tex}
+\newpage
+
+\input{pages/220_Top_Talker_Restricted_Ports.tex}
+\newpage
+
+\input{pages/230_Insecure_Protocols.tex}
+\newpage
+
+%\input{pages/230_Increase_of_Network_activity_per_subnet.tex}
+%\newpage
+
+%\includepdf{kw46_largetest.pdf}
+
+%\input{pages/Test5.tex}
+%\newpage
+
+%\input{pages/Test2.tex}
+%\newpage
+
+%\input{pages/Test3.tex}
+%\newpage
+
+%\input{pages/Test4.tex}
+%\newpage
+
+\input{pages/240_Subnet_Accessed_by_Number_of_Sources.tex}
+\newpage
+
+\input{pages/250_Number_of_Hosts_per_Subnet.tex}
+\newpage
+
+\input{pages/260_Total_Sessions_per_protocol.tex}
+\newpage
+
+\input{pages/270_Protocol_Distribution.tex}
+\newpage
+
+\input{pages/280_Sum_of_Transferred_Bytes_per_Protocol.tex}
+\newpage
+
+\input{pages/300_Total_TCP_Sessions_Terminated_with_RST.tex}
+\newpage
+
+\input{pages/310_Multiday_View_of_Sessions_Terminated_with_RST.tex}
+\newpage
+
+\input{pages/320_Top_10_Ports_with_Session_Resets_aggregated_by_IP_address.tex}
+\newpage
+
+\input{pages/330_Top_10_Ports_with_Session_Resets.tex}
+\newpage
+
+\input{pages/340_Top_10_Destinations_with_Session_Resets.tex}
+\newpage
+
+\input{pages/350_Top_20_Destination_TCP_and_UDP_Ports_by_Traffic_Volume_in_Bytes.tex}   % Top 20 Destination TCP and UDP Ports by Traffic Volumen Byte
+\newpage
+
+\input{pages/360_Top_10_Sources_by_Traffic_Volume.tex}
+\newpage
+
+\input{pages/370_Top_10_Sources_by_Number_of_Connections.tex}
+\newpage
+
+\input{pages/380_Total_Transferred_Bytes.tex}
+\newpage
+
+\input{pages/390_Sessions_per_VLAN.tex}
+\newpage
+
+\input{pages/400_Bytes_per_VLAN.tex}
+\newpage
+
+\input{pages/410_Sources_Sending_SYN_Only.tex}
+\newpage
+
+\input{pages/420_Sources_Sending_ICMP_Echo_Requests.tex} % ICMP Probes Count
+\newpage
+
+\input{pages/430_Source_Sending_SNMP_Get_Requests.tex} % SNMP Get Count
+\newpage
+
+\input{pages/440_GRE_Tunnel_Detection.tex}
+\newpage
+
+%\input{pages/500_Appendix.tex}
+%\newpage
+
+%\input{pages/farben.tex}
+%\newpage
+
+%fertige Bausteine:
+%\input{pages/Diagram.tex}
+%\newpage
+
+\end{document}

@@ -1,0 +1,294 @@
+{
+  "took" : 14,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2200,
+    "max_score" : null,
+    "hits" : [ {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_M",
+      "_score" : null,
+      "_source" : {
+        "Source" : "92.246.34.12",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "56451",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.11"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_N",
+      "_score" : null,
+      "_source" : {
+        "Source" : "54.230.46.149",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "59307",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: Suspicious Document Write Call 13544 tcp ",
+        "Destination" : "194.127.4.19"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_O",
+      "_score" : null,
+      "_source" : {
+        "Source" : "104.94.49.35",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "52289",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: Suspicious PNG Image 6520 tcp ",
+        "Destination" : "194.127.8.26"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_P",
+      "_score" : null,
+      "_source" : {
+        "Source" : "151.249.89.140",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "62280",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: Suspicious PNG Image 6520 tcp ",
+        "Destination" : "194.127.4.19"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_Q",
+      "_score" : null,
+      "_source" : {
+        "Source" : "194.127.9.104",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "443",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTPS: Yammer Site Access 13074 tcp ",
+        "Destination" : "13.107.6.159"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6tqFUUybCf4bF-",
+      "_score" : null,
+      "_source" : {
+        "Source" : "92.246.34.12",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "56451",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.11"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6uqFUUybCf4bF_",
+      "_score" : null,
+      "_source" : {
+        "Source" : "54.230.46.149",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "59307",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: Suspicious Document Write Call 13544 tcp ",
+        "Destination" : "194.127.4.19"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6uqFUUybCf4bGA",
+      "_score" : null,
+      "_source" : {
+        "Source" : "104.94.49.35",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "52289",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: Suspicious PNG Image 6520 tcp ",
+        "Destination" : "194.127.8.26"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6uqFUUybCf4bGB",
+      "_score" : null,
+      "_source" : {
+        "Source" : "151.249.89.140",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "62280",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: Suspicious PNG Image 6520 tcp ",
+        "Destination" : "194.127.4.19"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6uqFUUybCf4bGC",
+      "_score" : null,
+      "_source" : {
+        "Source" : "194.127.9.104",
+        "@timestamp" : "2016-06-30T07:31:44.360Z",
+        "Destinationport" : "443",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTPS: Yammer Site Access 13074 tcp ",
+        "Destination" : "13.107.6.159"
+      },
+      "sort" : [ 1467271904360 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_G",
+      "_score" : null,
+      "_source" : {
+        "Source" : "184.25.219.27",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "56513",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.12"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_H",
+      "_score" : null,
+      "_source" : {
+        "Source" : "184.25.219.27",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "53479",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.13"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_I",
+      "_score" : null,
+      "_source" : {
+        "Source" : "54.192.46.39",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "61720",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.11"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_J",
+      "_score" : null,
+      "_source" : {
+        "Source" : "54.194.44.8",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "36724",
+        "IPS_System" : "10.254.128.17",
+        "log" : "UDP: DTLS Packet 13873 udp ",
+        "Destination" : "194.127.9.109"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_K",
+      "_score" : null,
+      "_source" : {
+        "Source" : "54.231.17.16",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "33064",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.30"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVjUQXPjsYemHJ3OLD_L",
+      "_score" : null,
+      "_source" : {
+        "Source" : "194.127.9.106",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "443",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTPS: Yammer Site Access 13074 tcp ",
+        "Destination" : "134.170.148.16"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6tqFUUybCf4bF4",
+      "_score" : null,
+      "_source" : {
+        "Source" : "184.25.219.27",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "56513",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.12"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6tqFUUybCf4bF5",
+      "_score" : null,
+      "_source" : {
+        "Source" : "184.25.219.27",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "53479",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.13"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6tqFUUybCf4bF6",
+      "_score" : null,
+      "_source" : {
+        "Source" : "54.192.46.39",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "61720",
+        "IPS_System" : "10.254.128.17",
+        "log" : "HTTP: RFC 2397 Data URL Scheme Policy 3232 tcp ",
+        "Destination" : "194.127.8.11"
+      },
+      "sort" : [ 1467271904359 ]
+    }, {
+      "_index" : "kyn-syslog-ips-demo",
+      "_type" : "ipslogs",
+      "_id" : "AVkWPv6tqFUUybCf4bF7",
+      "_score" : null,
+      "_source" : {
+        "Source" : "54.194.44.8",
+        "@timestamp" : "2016-06-30T07:31:44.359Z",
+        "Destinationport" : "36724",
+        "IPS_System" : "10.254.128.17",
+        "log" : "UDP: DTLS Packet 13873 udp ",
+        "Destination" : "194.127.9.109"
+      },
+      "sort" : [ 1467271904359 ]
+    } ]
+  }
+}

@@ -1,0 +1,68 @@
+---
+- config:
+    - testset: "Newsticker test set"
+    - variable_binds: 
+        {  
+            username : 'admin'
+            , password : 'admin'
+        }
+    - timeout: 100  # Increase timeout from the default 10 seconds
+
+- test:
+    - name: "Successful login"
+    - url: "/KynKiteWebApp/rest/login"
+    - method: "POST"
+    - body: {template: 'username=$username&password=$password'}
+    - headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    - extract_binds:
+      - 'authtoken_cookie' : { jsonpath_mini : 'content.access_token_cookie' }
+      - 'authtoken' : { jsonpath_mini : 'content.access_token' }
+      - 'username_cookie' : { jsonpath_mini : 'content.username_cookie' }
+      - 'username' : { jsonpath_mini : 'content.username' }
+
+
+#
+# Newsticker - OK
+#
+- test:
+    - name: "Newsticker"
+    - url: "/KynKiteWebApp/rest/newsTicker"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeFrom": "2016-01-01 00:00:00.000",
+                "dateTimeTo": "2016-01-01 07:00:00.000"
+            },
+            "query": "<some expression>",
+            "size": 2
+        }
+    '
+    - validators:
+        # Check if status is 0 - OK
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 0}
+        
+#
+# Newsticker - Invalid date time range
+#
+- test:
+    - name: "Newsticker - Invalid date time range"
+    - url: "/KynKiteWebApp/rest/newsTicker"
+    - method: "POST"
+    - headers: { template: {"Cookie" : "${authtoken_cookie}=${authtoken}; ${username_cookie}=${username}", 'Content-Type': 'application/json'}}
+    - body: '
+        {
+            "dateTimeRange": {
+                "dateTimeTo": "2016-01-01 07:00:00.000"
+            },
+            "query": "<some expression>",
+            "size": 2
+        }
+    '
+    - validators:
+        # Check if status is 1
+        - compare: {jsonpath_mini: "status", comparator: "eq", expected: 1}
+        # Check if error message is right
+        - compare: {jsonpath_mini: "errorMessage", comparator: "eq", expected: 'Invalid date time range'}
+        

@@ -1,0 +1,264 @@
+######  LISTENER  ######
+input {
+  tcp {
+    port => "5514"
+    codec => plain { charset => "ISO-8859-1" }
+    type => "syslog"
+  }
+}
+
+######  FILTER  ######
+filter {
+  if [type] == "syslog" {
+    if [message] =~ /10.133.13.249|10.133.7.249|%ASA-/ {
+      mutate { replace => { "type" => "cisco-asa"} }
+    }
+  
+    elseif [message] =~ /10.254.128.17/ {
+      mutate { replace => { "type" => "ipslogs"} }
+    }
+
+    else if [message] =~ /Module=\"network\.|agn-robotic/ {
+      mutate { replace => { "type" => "voice"} }
+    }
+
+    else if [message] =~ /dhcpd.*DHCPACK/ {
+      mutate { replace => { "type" => "dhcp"} }
+    }
+
+    else if [message] =~ /dhcpd/ {
+      drop {} 
+    }
+
+    else {
+      mutate { replace => { "type" => "syslog-router"} }
+    }
+  }
+}
+
+######  ASA  ######
+filter {
+  if [type] == "cisco-asa" {
+    grok {
+      match => ["message", "%{CISCO_TAGGED_SYSLOG} %{GREEDYDATA:cisco_message}\n"]
+    }
+
+    # Clean up redundant fields if parsing was successful
+    if "_grokparsefailure" not in [tags] {
+      mutate {
+        rename => ["cisco_message", "message"]
+        remove_field => ["timestamp"]
+      }
+    }
+    # Extract fields from each of the detailed message types
+    # The patterns provided below are included in Logstash since 1.2.0
+    grok {
+      match => [
+        "message", "%{CISCOFW106001}",
+        "message", "%{CISCOFW106006_106007_106010}",
+        "message", "%{CISCOFW106014}",
+        "message", "%{CISCOFW106015}",
+        "message", "%{CISCOFW106021}",
+        "message", "%{CISCOFW106023}",
+        "message", "%{CISCOFW106100}",
+        "message", "%{CISCOFW110002}",
+        "message", "%{CISCOFW302010}",
+        "message", "%{CISCOFW302013_302014_302015_302016}",
+        "message", "%{CISCOFW302020_302021}",
+        "message", "%{CISCOFW305011}",
+        "message", "%{CISCOFW313001_313004_313008}",
+        "message", "%{CISCOFW313005}",
+        "message", "%{CISCOFW402117}",
+        "message", "%{CISCOFW402119}",
+        "message", "%{CISCOFW419001}",
+        "message", "%{CISCOFW419002}",
+        "message", "%{CISCOFW500004}",
+        "message", "%{CISCOFW602303_602304}",
+        "message", "%{CISCOFW710001_710002_710003_710005_710006}",
+        "message", "%{CISCOFW713172}",
+        "message", "%{CISCOFW733100}"
+      ]
+    }
+  }
+}
+
+output {
+  #stdout { codec => rubydebug }
+  if [type] == "cisco-asa" {
+    elasticsearch {
+      index => "kyn-syslog-asa-%{+YYYY-MM-dd}"
+      flush_size => 2500
+      hosts => ["elasticsearch:9200"]
+    }
+  }
+}
+
+
+######  DHCP  ######
+filter {
+  if [type] == "dhcp" {
+    grok {
+      match => ["message", "%{IP:AD-Server}.* - - DHCPACK .. %{IP:CientIP} .?.?\s?\(?%{MAC:macaddr}\)?" ] 
+    }
+    # Clean up redundant fields if parsing was successful
+    if "_grokparsefailure" not in [tags] {
+      mutate {
+        rename => ["dhcp_message", "message"]
+        remove_field => ["timestamp"]
+      }
+      ruby {
+        init => '@mac = Hash[File.read("/var/kyn/mac_address_vendor.txt").scan(/(.+?) (.+)\r/)]'
+        code => 'event["mac_vendor"] = @mac[event["macaddr"][0,8].gsub(/\:/,"-").upcase]'
+      }
+    }
+  }
+}
+
+output {
+  if [type] == "dhcp" {
+    elasticsearch {
+      index => "kyn-syslog-dhcp-%{+YYYY-MM-dd}"
+      flush_size => 2500
+      hosts => ["elasticsearch:9200"]
+    }
+  }
+}
+
+
+######  IPS  ######
+filter {
+  if [type] == "ipslogs" {
+    mutate {
+      gsub => ["message", "\t"," "]
+    }
+
+    grok {
+      match => ["message", "%{TIMESTAMP_ISO8601:timestamp} %{IP:IPS_System}.* - - - %{GREEDYDATA:log} %{WORD:Protocol} %{IP:Source} %{NUMBER:Sourceport} %{IP:Destination} %{NUMBER:Destinationport} %{NUMBER} %{USERNAME} %{USERNAME}.* %{HOSTNAME:Devicename}.* +%{NUMBER} +%{NUMBER} +%{NUMBER}"]
+    }
+
+    if "_grokparsefailure" not in [tags] {
+      mutate {
+        rename => ["sms_message", "message"]
+        remove_field => ["timestamp", "number1", "number2", "number3"]
+      }
+    }
+  }
+}
+
+output {
+  if [type] == "ipslogs" {
+    elasticsearch {
+      index => "kyn-syslog-ips-%{+YYYY-MM-dd}"
+      flush_size => 2500
+      hosts => ["elasticsearch:9200"]
+    }
+  }
+}
+
+
+######  SYSLOG ROUTER  ######
+filter {
+  if [type] == "syslog-router" {
+    grok {
+      match => ["message","%{IP:sender}.* %{IP:router}.*- - (-.*%{SYSLOGTIMESTAMP:timestamp}.*UTC: %(?<cisco_code>[^:]*):)? (?<cisco_message>.*)"] 
+    }
+
+    mutate {
+      strip => ["message"]
+      remove_field => ["timestamp","host"]
+    }
+ 
+    date {
+      match => ["timestamp","MMM d HH:mm:ss.SSS", "MMM dd HH:mm:ss.SSS", "ISO8601"]
+      timezone => "UTC"
+    }
+  }
+}
+
+output {
+  if [type] == "syslog-router" {
+    #stdout { codec => rubydebug }
+    elasticsearch {
+      index => "kyn-syslog-router-%{+YYYY-MM-dd}"
+      flush_size => 2500
+      hosts => ["elasticsearch:9200"]
+    }
+  }
+}
+
+
+######  VOICE  ######
+filter {
+  if [type] == "voice" {
+    mutate {
+      gsub => ["message", "\t"," "]
+    }
+
+    if ([message] =~ /( tvcs | credentialmanager | edgeconfigprovisioning | traffic_server | b2bua )/) {
+      mutate { replace => { "type" => "voice_kv"} }
+    }
+
+    if [type] == "voice" {
+      grok {
+        match => ["message", "(.* )?(?<timestamp_syslog>.*) %{IP:voicegw} %{HOSTNAME:hostname}( %{TIMESTAMP_ISO8601:timestamp} UTC \[%{WORD:Level}\]:)?\s*(?<Detail>.*)"]
+      }
+
+      if [timestamp] {
+        date {
+          match => ["timestamp", "yyyy-MM-dd HH:mm:ss"]
+          timezone => "Europe/Berlin"
+        }
+      }
+      else {
+        date {
+          match => ["timestamp_syslog", "ISO8601", "MMM dd HH:mm:ss"]
+          timezone => "Europe/Berlin"
+        }
+      }
+    }
+  }
+  if [type] == "voice_kv" {
+    grok {
+      match => ["message", "%{TIMESTAMP_ISO8601} %{IP:voicegw} \b\w+\b - - - UTCTime=\"%{TIMESTAMP_ISO8601}.[0-9]{3}\" %{GREEDYDATA:shortmessage}"]
+    }
+
+    kv {}
+
+    if [UTCTime] {
+      date {
+        match => ["UTCTime", "yyyy-MM-dd HH:mm:ss,SSS"]
+        timezone => "UTC"
+      }
+    }
+    else {
+      date {
+        match => ["timestamp_syslog", "ISO8601", "MMM dd yyyy HH:mm:ss"]
+        timezone => "Europe/Berlin"
+      }
+    }
+
+    mutate {
+      gsub => ["Detail", "\"",""]
+      gsub => ["Detail", "H.245","H_245"]
+    }
+
+    kv {
+     source => "Detail"
+     field_split => ",\t"
+    }
+
+    mutate {
+      remove_field => ["message", "removeme"]
+    }
+  }
+}
+
+output {
+  if [type] == "voice" or [type] == "voice_kv" {
+    elasticsearch {
+      index => "kyn-syslog-voice-%{+YYYY-MM-dd}"
+      flush_size => 2500
+      hosts => ["elasticsearch:9200"]
+    }
+  }
+}

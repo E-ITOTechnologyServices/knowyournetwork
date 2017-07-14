@@ -1,0 +1,55 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Source Sending "SNMP Get" Requests]{\underline{Source Sending "SNMP Get" Requests}}
+\begin{flushleft}
+The following tables list systems that start querying devices via "SNMP Get". While "SNMP Walks" over the entire "SNMP tree" of a device can still create high CPU workload, there is also a security aspect to be considered, as some security devices provide deep insight views to the security configuration. Only authorized servers shall be able to query e.g. firewall’s rule sets or provide an overview of active NIPS signatures. "SNMP Write" is a low risk for security devices like firewalls, as only "SNMP Read" is supported for most of the vendors.
+\end{flushleft}
+
+\begin{table}[h]
+\begin{center}
+  \begin{minipage}{0.45\textwidth} 
+ \begin{flushright}
+      \pgfplotstabletypeset[
+        font=\small,
+        col sep=comma, % the seperator in our .csv file
+        use comma, % Decimal separator
+        every even row/.style={ before row={\rowcolor {green4}}},
+        every head row/.style={ before row=\toprule,after row=\midrule},
+        every last row/.style={ after row=\bottomrule},
+        columns/Source IP Address/.style={column type=l,string type,column name=Source IP Address},
+        columns/Count/.style={int detect,column type=r,string type,column name=Number of Requests},
+        multicolumn names
+      ]{csv/430_Source_Sending_SNMP_Get_Requests_a.csv} % filename/path to file
+  \end{flushright}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.45\textwidth}
+      \pgfplotstabletypeset[
+        font=\small,
+        col sep=comma, % the seperator in our .csv file
+        use comma, % Decimal separator
+        every even row/.style={ before row={\rowcolor {green4}}},
+        every head row/.style={ before row=\toprule,after row=\midrule},
+        every last row/.style={ after row=\bottomrule},
+        columns/Source IP Address/.style={column type=l,string type,column name=Source IP Address},
+        columns/Destination IP Addresses/.style={int detect,column type=r,string type,column name=Destination IP Addresses},
+        multicolumn names
+      ]{csv/430_Source_Sending_SNMP_Get_Requests_b.csv} % filename/path to file
+  \end{minipage}
+  \caption[\normalsize{"SNMP Get" Count}]{\small{"SNMP Get" Count}}
+\end{center}
+\end{table}

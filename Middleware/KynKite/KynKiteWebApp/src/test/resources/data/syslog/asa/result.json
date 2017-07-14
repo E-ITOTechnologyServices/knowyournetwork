@@ -1,0 +1,124 @@
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2200,
+    "max_score" : null,
+    "hits" : [ {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVjUQXZmsYemHJ3OLEOR",
+      "_score" : null,
+      "_source" : {
+        "message" : "Built inbound UDP connection 2355756265 for outside:10.29.155.65/60952 (10.29.155.65/60952) to inside:10.254.229.162/53 (10.254.229.162/53)\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.515Z"
+      },
+      "sort" : [ 1467269111515 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVjUQXZmsYemHJ3OLEOS",
+      "_score" : null,
+      "_source" : {
+        "message" : "Teardown UDP connection 2355756264 for outside:10.29.155.65/58066 to inside:10.254.229.162/53 duration 0:00:00 bytes 209\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.515Z"
+      },
+      "sort" : [ 1467269111515 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVjUQXZmsYemHJ3OLEOT",
+      "_score" : null,
+      "_source" : {
+        "message" : "Teardown UDP connection 2355756262 for outside:10.29.179.140/65098 to inside:10.254.229.162/53 duration 0:00:00 bytes 396\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.515Z"
+      },
+      "sort" : [ 1467269111515 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVkWPv97qFUUybCf4bVD",
+      "_score" : null,
+      "_source" : {
+        "message" : "Built inbound UDP connection 2355756265 for outside:10.29.155.65/60952 (10.29.155.65/60952) to inside:10.254.229.162/53 (10.254.229.162/53)\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.515Z"
+      },
+      "sort" : [ 1467269111515 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVkWPv97qFUUybCf4bVE",
+      "_score" : null,
+      "_source" : {
+        "message" : "Teardown UDP connection 2355756264 for outside:10.29.155.65/58066 to inside:10.254.229.162/53 duration 0:00:00 bytes 209\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.515Z"
+      },
+      "sort" : [ 1467269111515 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVkWPv97qFUUybCf4bVF",
+      "_score" : null,
+      "_source" : {
+        "message" : "Teardown UDP connection 2355756262 for outside:10.29.179.140/65098 to inside:10.254.229.162/53 duration 0:00:00 bytes 396\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.515Z"
+      },
+      "sort" : [ 1467269111515 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVjUQXZmsYemHJ3OLEOP",
+      "_score" : null,
+      "_source" : {
+        "message" : "Built inbound UDP connection 2355756264 for outside:10.29.155.65/58066 (10.29.155.65/58066) to inside:10.254.229.162/53 (10.254.229.162/53)\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.514Z"
+      },
+      "sort" : [ 1467269111514 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVjUQXZmsYemHJ3OLEOQ",
+      "_score" : null,
+      "_source" : {
+        "message" : "Teardown UDP connection 2355756263 for outside:10.29.172.52/62274 to inside:10.254.229.162/53 duration 0:00:00 bytes 398\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.514Z"
+      },
+      "sort" : [ 1467269111514 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVkWPv97qFUUybCf4bVB",
+      "_score" : null,
+      "_source" : {
+        "message" : "Built inbound UDP connection 2355756264 for outside:10.29.155.65/58066 (10.29.155.65/58066) to inside:10.254.229.162/53 (10.254.229.162/53)\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.514Z"
+      },
+      "sort" : [ 1467269111514 ]
+    }, {
+      "_index" : "kyn-syslog-asa-demo",
+      "_type" : "cisco-asa",
+      "_id" : "AVkWPv97qFUUybCf4bVC",
+      "_score" : null,
+      "_source" : {
+        "message" : "Teardown UDP connection 2355756263 for outside:10.29.172.52/62274 to inside:10.254.229.162/53 duration 0:00:00 bytes 398\n",
+        "asa_fw" : "10.133.13.249",
+        "@timestamp" : "2016-06-30T06:45:11.514Z"
+      },
+      "sort" : [ 1467269111514 ]
+    } ]
+  }
+}

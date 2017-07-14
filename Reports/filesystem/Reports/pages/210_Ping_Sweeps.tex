@@ -1,0 +1,40 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Ping Sweeps]{\underline{Ping Sweeps}}
+
+\begin{flushleft}
+The following table list systems that start network sweeps by checking the availability respectively reachability of systems in other networks by sending an unusual high amount of ICMP echo requests (Ping). These systems might be compromised hosts starting a network reconnaissance to infect other systems replying to the ICMP request.
+\end{flushleft}
+
+
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Source IP/.style={column type=l,string type,column name=Source IP Address},
+      columns/Destination Addresses/.style={int detect,column type=r,string type,column name=Destination IP Addresses},
+      multicolumn names
+    ]{csv/210_Ping_Sweeps.csv} % filename/path to file
+    \caption[\normalsize{Indicator of ICMP Sweeps}]{\small{Indicator of ICMP Sweeps}}
+  \end{center}
+\end{table}
+

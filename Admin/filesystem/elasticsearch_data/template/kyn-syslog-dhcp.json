@@ -1,0 +1,32 @@
+{
+    "order": 1,
+    "template": "kyn-syslog-dhcp-*",
+    "settings": {
+      "index": {
+        "codec": "best_compression"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "properties": {
+          "AD-Server": {
+            "type": "ip"
+          },
+          "geoip": {
+            "properties": {
+              "location": {
+                "type": "geo_point"
+              }
+            }
+          },
+          "CientIP": {
+            "type": "ip"
+          }
+        },
+        "_all": {
+          "enabled": false
+        }
+      }
+    },
+    "aliases": {}
+  }

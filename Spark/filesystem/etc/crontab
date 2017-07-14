@@ -1,0 +1,1 @@
+0 2 * * * cd /var/kyn/scripts/; /var/kyn/scripts/kynscore.rb >/dev/null 2>&1

@@ -1,0 +1,75 @@
+#!/bin/bash
+#
+# Middleware site builder (documentation)
+#
+# Author: Steve Chaplin
+#
+# Date: 11-10-2016
+#
+# Purpose: Build and publish the middleware documentation.
+#
+# Usage: makedocs
+#
+####################################################################################################
+# Include convenience functions.
+#
+. ../ci_scripts/common
+#
+####################################################################################################
+# Configuration.
+#
+MODULE="Middleware"
+#
+TAG="tmp" # Doesn't matter as we will be deleting it after the build.
+#
+# Name of the Docker image.
+#
+IMAGE="kyn/middleware-docs"
+NAME="middleware-docs"
+#
+####################################################################################################
+#
+which docker > /dev/null
+check_error $? "Docker must be installed"
+#
+####################################################################################################
+# Build the middleware documentation.
+#
+log $MODULE "creating documentation builder..."
+LOG=$( docker build -f ci_scripts/Dockerfile.build -t ${IMAGE}:$TAG . 2>&1 )
+log_success $? "$LOG"
+#
+log $MODULE "running documentation builder..."
+LOG=$( docker run --rm -v $PWD:/tmp/middleware -u $(id -u):$(id -g) -it ${IMAGE}:$TAG site 2>&1 )
+log_success $? "$LOG"
+#
+log $MODULE "removing ${IMAGE}:$TAG image..."
+LOG=$( docker rmi ${IMAGE}:$TAG 2>&1 )
+log_success $? "$LOG"
+#
+####################################################################################################
+# Remove a running container if there is one.
+#
+log $MODULE "removing running container..."
+LOG=$( docker rm -f `docker ps -aqf name=middleware-docs` 2>&1 )
+log_success $? "$LOG"
+#
+####################################################################################################
+# Publish the documentation.
+#
+log $MODULE "creating documentation website..."
+LOG=$( docker build -f ci_scripts/Dockerfile.docs -t ${IMAGE}:latest . 2>&1 )
+log_success $? "$LOG"
+#
+log $MODULE "running documentation website..."
+CONTAINER_OR_LOG=$( docker run --name=$NAME -dP ${IMAGE}:latest 2>&1 )
+log_success $? "$CONTAINER_OR_LOG"
+#
+# Inform the user where to find it.
+#
+PORT=`docker port $CONTAINER_OR_LOG 80 | cut -d: -f2`
+MACHINE=${DOCKER_HOST:-`hostname`}
+echo "Documentation published at http://${MACHINE}:${PORT}"
+#
+####################################################################################################
+exit 0

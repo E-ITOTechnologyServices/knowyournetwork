@@ -1,0 +1,37 @@
+%    Copyright (C) 2017 e-ito Technology Services GmbH
+%    e-mail: info@e-ito.de
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\chapter[Total Sessions per Protocol]{\underline{Total Sessions per Protocol}}
+\begin{flushleft}
+The next table shows the analyzed sessions per protocol. This statistic provides information about the protocol mixture in the network. Depending on the use of certain networks the ratio of UDP and TCP varies and a certain amount of ICMP is very normal as ICMP is not only used for monitoring purposes but also for MTU or next hop discovery.
+\end{flushleft}
+
+\begin{table}[H]
+  \begin{center}
+    \pgfplotstabletypeset[
+      font=\small,
+      col sep=comma, % the seperator in our .csv file
+      use comma, % Decimal separator
+      every even row/.style={ before row={\rowcolor {green4}}},
+      every head row/.style={ before row=\toprule,after row=\midrule},
+      every last row/.style={ after row=\bottomrule},
+      columns/Protocol/.style={column type=r,string type,column name=Protocol},
+      columns/Sessions/.style={int detect,column type=r,string type,column name=Sessions},
+    ]{csv/260_Total_Sessions_per_protocol.csv} % filename/path to file
+    \caption[\normalsize{Total Number of Sessions per Protocol}]{\small{Total Number of Sessions per Protocol}}
+  \end{center}
+\end{table}
+
