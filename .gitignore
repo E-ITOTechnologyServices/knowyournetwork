@@ -1,0 +1,25 @@
+build/
+
+# Ignore auxiliary LaTeX files.
+/Reports/**/*.log
+/Reports/**/*.lof
+/Reports/**/*.aux
+/Reports/**/*.lot
+/Reports/**/*.pdf
+/Reports/**/*.toc
+/Reports/**/*.csv
+/Reports/**/*.out
+
+# Ignore auxiliary python files
+**/*.pyc
+**/.cache
+**/.eggs
+**/__pycache__
+**/*.egg-info
+
+# Ignore JUnit test files
+**/junit.xml
+
+# Also ignoring IDE / editor metafiles
+.vscode
+*.sublime-*
